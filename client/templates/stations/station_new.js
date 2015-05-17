@@ -7,8 +7,8 @@ Template.stationNew.events({
       address: $(e.target).find('[name=address]').val()
     };
 
-    station.image_url =  Session.get('stationPhotoUrl');
-    Session.set('stationPhotoUrl', null);
+    // station.image_path =  Session.get('stationImagePath');
+    // Session.set('stationImagePath', null);
 
     Meteor.call('stationCreate', station, function(error, result) {
       if (error)
@@ -18,12 +18,12 @@ Template.stationNew.events({
   }
 });
 
-Template.stationNew.helpers({
-  stationPhotoUploadCallback: function() {
-    return {
-      finished: function(index, fileInfo, templateContext) {
-        Session.set('stationPhotoUrl', "/uploads/stations" + fileInfo.path);
-      }
-    };
-  }
-});
+// Template.stationNew.helpers({
+//   stationImageUploadCallback: function() {
+//     return {
+//       finished: function(index, fileInfo, templateContext) {
+//         Session.set('stationImagePath', fileInfo.path);
+//       }
+//     };
+//   }
+// });

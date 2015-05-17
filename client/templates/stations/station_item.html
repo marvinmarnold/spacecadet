@@ -1,10 +1,6 @@
 <template name="stationItem">
   <div>
-    <div>
-      <img src="{{image_url}}" class="img-responsive img-rounded" />
-      <h3>{{name}}</h3>
-      <p>{{address}}</p>
-    </div>
+    {{> stationPreview}}
     <a href="{{pathFor 'stationPage'}}" class="btn btn-default">View Pads</a>
   </div>
 </template>
