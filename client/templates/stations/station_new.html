@@ -1,5 +1,5 @@
 <template name="stationNew">
-  <form class="main form page">
+  <form class="main form page"  id="station-form">
     <div class="form-group">
       <label class="control-label" for="name">Name</label>
       <div class="controls">
@@ -12,6 +12,8 @@
           <input name="address" id="address" type="text" value="" placeholder="Station address" class="form-control"/>
       </div>
     </div>
+    {{> upload_bootstrap callbacks=stationPhotoUploadCallback}}
+    {{> dropzone callbacks=stationPhotoUploadCallback}}
     <input type="submit" value="Submit" class="btn btn-primary"/>
   </form>
 </template>
