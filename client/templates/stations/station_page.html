@@ -2,4 +2,14 @@
   <div>
     {{> stationPreview}}
   </div>
+  <ul>
+    {{#each pads}}
+      {{> padItem}}
+    {{/each}}
+  </ul>
+  {{#if currentUser}}
+    {{> padNew}}
+  {{else}}
+    <p>Please log in to add a Launch Pad.</p>
+  {{/if}}
 </template>
