@@ -1,5 +1,9 @@
-Meteor.publish('stations', function() {
-  return Stations.find();
+Meteor.publish('stations', function(options) {
+  check(options, {
+    sort: Object,
+    limit: Number
+  });
+  return Stations.find({}, options);
 });
 
 Meteor.publish('pads', function(stationId) {
