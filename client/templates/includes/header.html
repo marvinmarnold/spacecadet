@@ -61,8 +61,8 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index.html">
-                      <img id="logo-header" src="/img/logo.png" alt="Logo">
+                  <a class="navbar-brand" href="/">
+                      <img id="logo-header" src="/logo_sm.png" alt="Logo">
                   </a>
               </div>
 
@@ -336,18 +336,15 @@
                       </li>
                       <!-- End Books -->
 
-                      <!-- Clothes -->
-                      <li class="dropdown">
-                          <a href="javascript:void(0);" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown" data-delay="1000">
-                              Clothes
-                          </a>
-                          <ul class="dropdown-menu">
-                              <li><a href="#">Jeans</a></li>
-                              <li><a href="#">T-shirts</a></li>
-                              <li><a href="#">Shorts</a></li>
-                          </ul>
-                      </li>
-                      <!-- End Clothes -->
+                      <!-- Add Station -->
+                      {{#if currentUser}}
+                        <li class="dropdown">
+                            <a href="{{pathFor 'stationNew'}}" class="dropdown-toggle">
+                                Add Station
+                            </a>
+                        </li>
+                      {{/if}}
+                      <!-- End Add Station -->
 
                       <!-- Main Demo -->
                       {{ >loginButtons }}
