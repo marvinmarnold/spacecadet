@@ -77,13 +77,3 @@ Template.CartPayNow.events({
 Template.CartPayNow.rendered = function(){
 
 };
-
-
-
-Template.CartItem.events({
-	'click .remove':function(event, template){
-		event.preventDefault();
-		if(confirm("Are You Sure?"))
-			Cart.Items.remove({_id:this._id});
-	}
-});

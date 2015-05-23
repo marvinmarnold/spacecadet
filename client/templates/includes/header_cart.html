@@ -1,0 +1,21 @@
+<template name="headerCart">
+<!-- Shopping Cart -->
+<ul class="list-inline shop-badge badge-lists badge-icons pull-right">
+  <li>
+    <a href="{{pathFor 'cartPage'}}"><i class="fa fa-shopping-cart"></i></a>
+    <span class="badge badge-sea rounded-x">{{cartItemCount}}</span>
+    <ul class="list-unstyled badge-open mCustomScrollbar" data-mcs-theme="minimal-dark">
+        {{#each cartItems}}
+            {{> headerCartItem}}
+        {{/each}}
+        <li class="subtotal">
+            <div class="overflow-h margin-bottom-10">
+                <span>Subtotal</span>
+                <span class="pull-right subtotal-cost">${{cartTotal}}</span>
+            </div>
+        </li>
+    </ul>
+  </li>
+</ul>
+<!-- End Shopping Cart -->
+</template>
