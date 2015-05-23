@@ -1,0 +1,21 @@
+<template name="cartItem">
+<tr>
+  <td class="product-in-table">
+      <img class="img-responsive" src="img/thumb/08.jpg" alt="">
+      <div class="product-it-in">
+          <h3>{{name}}</h3>
+          <span>{{size}}</span>
+      </div>
+  </td>
+  <td>$ {{price}}</td>
+  <td>
+      <button type='button' class="quantity-button" name='subtract' onclick='javascript: subtractQty1();' value='-'>-</button>
+      <input type='text' class="quantity-field" name='qty1' value="5" id='qty1'/>
+      <button type='button' class="quantity-button" name='add' onclick='javascript: document.getElementById("qty1").value++;' value='+'>+</button>
+  </td>
+  <td class="shop-red">$ {{price}}</td>
+  <td>
+      <button type="button" class="close remove-from-cart"><span>&times;</span><span class="sr-only">Close</span></button>
+  </td>
+</tr>
+</template>

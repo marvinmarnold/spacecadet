@@ -52,28 +52,3 @@ Tracker.autorun(function(){
 	Session.set('Cart-itemTotal', Math.floor(total*100)/100);
 	Session.set('Cart-itemCount', items.count());
 });
-
-
-
-Template.CartSummary.helpers({
-	'itemCount':function(){
-		return Session.get('Cart-itemCount');
-	},
-	'itemTotal':function(){
-		return Session.get('Cart-itemTotal');
-	},
-	'itemsInCart':function(){
-		return !Session.equals('Cart-itemCount', 0);
-	}
-});
-
-
-Template.CartPayNow.events({
-	'click #pay-now':function(event, template){
-		event.preventDefault();
-	}
-});
-
-Template.CartPayNow.rendered = function(){
-
-};
