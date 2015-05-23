@@ -5,10 +5,12 @@ Template.padNew.events({
     var $name = $(e.target).find('[name=name]');
     var $size = $(e.target).find('[name=size]');
     var $description = $(e.target).find('[name=description]');
+    var $price = $(e.target).find('[name=price]');
 
     var pad = {
       name: $name.val(),
       size: $size.val(),
+      price: parseFloat($price.val()),
       description: $description.val(),
       stationId: template.data._id
     };
@@ -20,6 +22,7 @@ Template.padNew.events({
         $name.val('');
         $size.val('');
         $description.val('');
+        $price.val('');
       }
     });
   }

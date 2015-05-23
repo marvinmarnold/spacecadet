@@ -32,7 +32,7 @@
             <p>{{description}}</p><br>
 
             <ul class="list-inline shop-product-prices margin-bottom-30">
-                <li class="shop-red">$57.00</li>
+                <li class="shop-red">{{price}}</li>
                 <li class="line-through">$70.00</li>
                 <li><small class="shop-bg-red time-day-left">4 days left</small></li>
             </ul><!--/end shop product prices-->
@@ -80,7 +80,7 @@
                     <input type='text' class="quantity-field" name='qty' value="1" id='qty'/>
                     <button type='button' class="quantity-button" name='add' onclick='javascript: document.getElementById("qty").value++;' value='+'>+</button>
                 </form>
-                <button type="button" class="btn-u btn-u-sea-shop btn-u-lg">Add to Cart</button>
+                <button type="button" class="btn-u btn-u-sea-shop btn-u-lg add-item">Add to Cart</button>
             </div><!--/end product quantity-->
 
             <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
