@@ -1,10 +1,10 @@
 <template name="headerCartItem">
-<li>
+<li><a href="{{pathFor 'cartPage'}}">
     <img src="/img/thumb/03.jpg" alt="">
     <button type="button" class="close remove-from-cart">×</button>
     <div class="overflow-h">
         <span>{{name}}</span>
         <small>{{price}}</small>
-    </div>
+    </div></a>
 </li>
 </template>
