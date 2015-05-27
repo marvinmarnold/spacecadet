@@ -17,14 +17,13 @@ if (Stations.find().count() === 0) {
         name: 'Landing pad #' + j,
         size: "2x2",
         description: "Some type of description",
-        price: 20,
         stationId: stationId
       });
 
       for (var k = 1; k < 3; k++) {
         Dockings.insert({
           timePeriod: "Day",
-          price: 20,
+          price: 21,
           padId: padId
         });
       }

@@ -10,32 +10,9 @@
         <div class="col-md-6">
             <div class="shop-product-heading">
                 <h2>{{name}}</h2>
-                <ul class="list-inline shop-product-social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                </ul>
             </div><!--/end shop product social-->
 
-            <ul class="list-inline product-ratings margin-bottom-30">
-                <li><i class="rating-selected fa fa-star"></i></li>
-                <li><i class="rating-selected fa fa-star"></i></li>
-                <li><i class="rating-selected fa fa-star"></i></li>
-                <li><i class="rating fa fa-star"></i></li>
-                <li><i class="rating fa fa-star"></i></li>
-                <li class="product-review-list">
-                    <span>(1) <a href="#">Review</a> | <a href="#"> Add Review</a></span>
-                </li>
-            </ul><!--/end shop product ratings-->
-
             <p>{{description}}</p><br>
-
-            <ul class="list-inline shop-product-prices margin-bottom-30">
-                <li class="shop-red">{{price}}</li>
-                <li class="line-through">$70.00</li>
-                <li><small class="shop-bg-red time-day-left">4 days left</small></li>
-            </ul><!--/end shop product prices-->
 
             <h3 class="shop-product-title">Docking Times</h3>
             <ul class="list-inline product-color margin-bottom-30">
@@ -44,28 +21,23 @@
                 {{/each}}
             </ul><!--/end docking times-->
 
+            {{#with selectedDocking}}
+                <ul class="list-inline shop-product-prices margin-bottom-30">
+                    <li class="shop-red">${{price}}</li>
+                </ul><!--/end shop product prices-->
+            {{/with}}
+
             {{#if currentUser}}
                 {{> dockingNew}}
             {{else}}
                 <p>Please log in to add a Docking time.</p>
             {{/if}}
 
-            <h3 class="shop-product-title">Quantity</h3>
-            <div class="margin-bottom-40">
-                <button type="button" class="btn-u btn-u-sea-shop btn-u-lg add-item">Add to Cart</button>
+            {{#with selectedDocking}}
+                <div class="margin-bottom-40">
+                <button type="button" class="btn-u btn-u-sea-shop btn-u-lg add-item">Add to Cart (${{price}})</button>
             </div><!--/end product quantity-->
-
-            <ul class="list-inline add-to-wishlist add-to-wishlist-brd">
-                <li class="wishlist-in">
-                    <i class="fa fa-heart"></i>
-                    <a href="#">Add to Wishlist</a>
-                </li>
-                <li class="compare-in">
-                    <i class="fa fa-exchange"></i>
-                    <a href="#">Add to Compare</a>
-                </li>
-            </ul>
-            <p class="wishlist-category"><strong>Categories:</strong> <a href="#">Clothing,</a> <a href="#">Shoes</a></p>
+            {{/with}}
         </div>
       </div><!--/end row-->
     </div>
