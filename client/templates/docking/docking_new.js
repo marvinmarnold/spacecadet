@@ -8,7 +8,7 @@ Template.dockingNew.events({
     var docking = {
       timePeriod: $timePeriod.val(),
       price: parseFloat($price.val()),
-      // padId: template.data._id
+      padId: template.data._id
     };
 
     Meteor.call('dockingCreate', docking, function(error, dockingId) {

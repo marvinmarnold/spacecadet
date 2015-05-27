@@ -20,6 +20,6 @@ Template.padItem.events({
 
 Template.padItem.helpers({
   dockings: function() {
-    return Dockings.find({});
+    return Dockings.find({padId: this._id});
   }
 });

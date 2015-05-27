@@ -16,7 +16,12 @@ Meteor.publish('pads', function(stationId) {
   return Pads.find({stationId: stationId});
 });
 
-Meteor.publish('dockings', function() {
+Meteor.publish('dockings', function(padId) {
+  check(padId, String);
+  return Dockings.find({padId: padId});
+});
+
+Meteor.publish('dockingsAll', function() {
   return Dockings.find({});
 });
 
