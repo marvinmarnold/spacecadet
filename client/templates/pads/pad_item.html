@@ -37,12 +37,8 @@
                 <li><small class="shop-bg-red time-day-left">4 days left</small></li>
             </ul><!--/end shop product prices-->
 
-            <h3 class="shop-product-title">Size</h3>
+            <h3 class="shop-product-title">Docking time</h3>
             <ul class="list-inline product-size margin-bottom-30">
-                <li>
-                    <input type="radio" id="size-1" name="size">
-                    <label for="size-1">S</label>
-                </li>
                 <li>
                     <input type="radio" id="size-2" name="size">
                     <label for="size-2">M</label>
@@ -57,21 +53,18 @@
                 </li>
             </ul><!--/end product size-->
 
-            <h3 class="shop-product-title">Color</h3>
+            <h3 class="shop-product-title">Docking Times</h3>
             <ul class="list-inline product-color margin-bottom-30">
-                <li>
-                    <input type="radio" id="color-1" name="color">
-                    <label class="color-one" for="color-1"></label>
-                </li>
-                <li>
-                    <input type="radio" id="color-2" name="color" checked>
-                    <label class="color-two" for="color-2"></label>
-                </li>
-                <li>
-                    <input type="radio" id="color-3" name="color">
-                    <label class="color-three" for="color-3"></label>
-                </li>
-            </ul><!--/end product color-->
+                {{#each dockings}}
+                    {{> docking}}
+                {{/each}}
+            </ul><!--/end docking times-->
+
+            {{#if currentUser}}
+                {{> padNew}}
+            {{else}}
+                <p>Please log in to add a Docking time.</p>
+            {{/if}}
 
             <h3 class="shop-product-title">Quantity</h3>
             <div class="margin-bottom-40">

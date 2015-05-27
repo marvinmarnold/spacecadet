@@ -10,7 +10,7 @@
             </ul>
         </div>
         <!-- End Breadcrumbs v5 -->
-
+        {{#with station}}
         <div class="container">
           <div class="row">
             <div class="col-sm-9">
@@ -25,9 +25,8 @@
               {{/if}}
             </div>
           </div>
-
         </div>
-
+        {{/with}}
 
         {{#each pads}}
           {{> padItem}}

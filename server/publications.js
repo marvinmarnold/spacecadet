@@ -9,11 +9,16 @@ Meteor.publish('stations', function(options) {
 Meteor.publish('singleStation', function(id) {
   check(id, String);
   return Stations.find(id);
-})
+});
 
 Meteor.publish('pads', function(stationId) {
   check(stationId, String);
   return Pads.find({stationId: stationId});
+});
+
+Meteor.publish('dockings', function(padId) {
+  check(padId, String);
+  return Pads.find({padId: padId});
 });
 
 Meteor.publish("Cart-userOrders", function () {
