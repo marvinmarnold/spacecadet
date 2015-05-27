@@ -17,3 +17,9 @@ Template.padItem.events({
     Cart.Items.insert(item);
   }
 });
+
+Template.padItem.helpers({
+  dockings: function() {
+    return Dockings.find({});
+  }
+});

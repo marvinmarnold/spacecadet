@@ -37,22 +37,6 @@
                 <li><small class="shop-bg-red time-day-left">4 days left</small></li>
             </ul><!--/end shop product prices-->
 
-            <h3 class="shop-product-title">Docking time</h3>
-            <ul class="list-inline product-size margin-bottom-30">
-                <li>
-                    <input type="radio" id="size-2" name="size">
-                    <label for="size-2">M</label>
-                </li>
-                <li>
-                    <input type="radio" id="size-3" name="size" checked>
-                    <label for="size-3">L</label>
-                </li>
-                <li>
-                    <input type="radio" id="size-4" name="size">
-                    <label for="size-4">XL</label>
-                </li>
-            </ul><!--/end product size-->
-
             <h3 class="shop-product-title">Docking Times</h3>
             <ul class="list-inline product-color margin-bottom-30">
                 {{#each dockings}}
@@ -61,18 +45,13 @@
             </ul><!--/end docking times-->
 
             {{#if currentUser}}
-                {{> padNew}}
+                {{> dockingNew}}
             {{else}}
                 <p>Please log in to add a Docking time.</p>
             {{/if}}
 
             <h3 class="shop-product-title">Quantity</h3>
             <div class="margin-bottom-40">
-                <form name="f1" class="product-quantity sm-margin-bottom-20">
-                    <button type='button' class="quantity-button" name='subtract' onclick='javascript: subtractQty();' value='-'>-</button>
-                    <input type='text' class="quantity-field" name='qty' value="1" id='qty'/>
-                    <button type='button' class="quantity-button" name='add' onclick='javascript: document.getElementById("qty").value++;' value='+'>+</button>
-                </form>
                 <button type="button" class="btn-u btn-u-sea-shop btn-u-lg add-item">Add to Cart</button>
             </div><!--/end product quantity-->
 
