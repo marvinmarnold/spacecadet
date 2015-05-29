@@ -6,8 +6,8 @@ Template.padItem.events({
     var item = this;
     if(item._id){
       item.productId = item._id;
-      item.dockingStartsAt = new Date();
-      item.dockingEndsAt = new Date();
+      item.dockingStartsAt = new Date(Session.get('availabilityStarts'));
+      item.dockingEndsAt = new Date(Session.get('availabilityEnds'));
       delete item._id;
     }
     if(!Meteor.userId()){
