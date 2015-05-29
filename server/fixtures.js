@@ -14,7 +14,7 @@ if (Stations.find().count() === 0) {
 
     for (var j = 1; j < 3; j++) {
       var padId = Pads.insert({
-        name: 'Landing pad #' + j,
+        name: 'Landing pad #' + (i + 2 *j),
         size: "2x2",
         description: "Some type of description",
         stationId: stationId
@@ -23,7 +23,7 @@ if (Stations.find().count() === 0) {
       for (var k = 1; k < 3; k++) {
         Dockings.insert({
           timePeriod: "Day",
-          price: 21 + i + j + 5 * k,
+          price: 21 + ( i + 2 * j + 4 * k),
           padId: padId
         });
       }

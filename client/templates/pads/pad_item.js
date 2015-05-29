@@ -35,8 +35,12 @@ Template.padItem.helpers({
   selectedDocking: function () {
     var padId = this._id;
     var dockingId = Session.get(padId + '-selectedDockingTime');
-    console.log(dockingId);
-    var docking = Dockings.findOne(dockingId);
+    var docking;
+    if(dockingId) {
+      docking = Dockings.findOne(dockingId);
+    } else {
+      docking = Dockings.find({padId: this._id}).fetch()[0];
+    }
     return docking;
   }
 });
