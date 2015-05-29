@@ -4,8 +4,13 @@ Template.padItem.events({
 
     //TODO - need to take an attribute hash and send in all values
     var item = this;
+    var pad = Pads.findOne(item.padId);
+    var station = Stations.findOne(pad.stationId);
+
     if(item._id){
       item.productId = item._id;
+      item.padName = pad.name;
+      item.stationName = station.name;
       item.dockingStartsAt = new Date(Session.get('availabilityStarts'));
       item.dockingEndsAt = new Date(Session.get('availabilityEnds'));
       delete item._id;
