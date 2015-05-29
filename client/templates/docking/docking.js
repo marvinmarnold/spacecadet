@@ -6,6 +6,7 @@ Template.docking.events({
     event.preventDefault();
 
     var docking = this;
+    console.log(template.data._id);
     Session.set('selectedDockingTime', this._id);
     console.log(this._id);
   }

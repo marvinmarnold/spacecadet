@@ -23,7 +23,7 @@ if (Stations.find().count() === 0) {
       for (var k = 1; k < 3; k++) {
         Dockings.insert({
           timePeriod: "Day",
-          price: 21,
+          price: 21 + i + j + 5 * k,
           padId: padId
         });
       }

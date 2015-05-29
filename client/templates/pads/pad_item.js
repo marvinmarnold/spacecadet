@@ -17,6 +17,14 @@ Template.padItem.events({
     }
 
     Cart.Items.insert(item);
+  },
+  'click .color-one': function(event, template){
+    event.preventDefault();
+
+    var docking = this;
+    var padId = template.data._id;
+
+    Session.set(padId + '-selectedDockingTime', this._id);
   }
 });
 
@@ -25,7 +33,9 @@ Template.padItem.helpers({
     return Dockings.find({padId: this._id});
   },
   selectedDocking: function () {
-    var dockingId = Session.get('selectedDockingTime');
+    var padId = this._id;
+    var dockingId = Session.get(padId + '-selectedDockingTime');
+    console.log(dockingId);
     var docking = Dockings.findOne(dockingId);
     return docking;
   }

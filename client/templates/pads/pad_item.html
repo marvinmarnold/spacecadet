@@ -9,15 +9,18 @@
 
         <div class="col-md-6">
             <div class="shop-product-heading">
-                <h2>{{name}}</h2>
+                <h2>{{name}} ({{size}})</h2>
             </div><!--/end shop product social-->
 
             <p>{{description}}</p><br>
 
             <h3 class="shop-product-title">Docking Times</h3>
             <ul class="list-inline product-color margin-bottom-30">
-                {{#each dockings}}
-                    {{> docking}}
+                {{#each dockings }}
+                    <li>
+                      <input type="radio" id="color-1" name="color">
+                      <label class="color-one" for="color-1"></label>
+                    </li>
                 {{/each}}
             </ul><!--/end docking times-->
 
