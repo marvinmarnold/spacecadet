@@ -16,6 +16,7 @@ if (Stations.find().count() === 0) {
       var padId = Pads.insert({
         name: 'Landing pad #' + (i + 2 *j),
         size: "2x2",
+        numAvailable: (i + j),
         description: "Some type of description",
         stationId: stationId
       });
