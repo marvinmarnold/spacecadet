@@ -18,32 +18,8 @@
         <div class="container">
             <form class="shopping-cart" action="#">
                 <div>
-                    <div class="header-tags">
-                        <div class="overflow-h">
-                            <h2>Shopping Cart</h2>
-                            <p>Review &amp; edit your product</p>
-                        </div>
-                    </div>
-                    <section>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Station</th>
-                                        <th>Landing Pad</th>
-                                        <th>Docking Start</th>
-                                        <th>Docking End</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  {{#each cartItems}}
-                                    {{> cartItem}}
-                                  {{/each}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
+                    {{> cartPageSummary }}
+                    {{> cartPageBilling }}
 
                     <div class="coupon-code">
                         <div class="row">
@@ -51,19 +27,6 @@
                             </div>
                             <div class="col-sm-3 col-sm-offset-5">
                                 <ul class="list-inline total-result">
-                                    <li>
-                                        <h4>Subtotal:</h4>
-                                        <div class="total-result-in">
-                                            <span>$ {{itemTotal}}</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <h4>Shipping:</h4>
-                                        <div class="total-result-in">
-                                            <span class="text-right">- - - -</span>
-                                        </div>
-                                    </li>
-                                    <li class="divider"></li>
                                     <li class="total-price">
                                         <h4>Total:</h4>
                                         <div class="total-result-in">
@@ -71,7 +34,9 @@
                                         </div>
                                     </li>
                                 </ul>
+
                             </div>
+                            <button type="button" class="pull-right btn-u btn-lg btn-u-sea-shop">Buy Docking Time</button>
                         </div>
                     </div>
                 </div>

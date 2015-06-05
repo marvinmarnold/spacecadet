@@ -1,0 +1,28 @@
+<template name="cartPageSummary">
+<div class="header-tags">
+    <div class="overflow-h">
+        <h2>Shopping Cart</h2>
+        <p>Review &amp; edit your product</p>
+    </div>
+</div>
+<section>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Station</th>
+                    <th>Landing Pad</th>
+                    <th>Docking Start</th>
+                    <th>Docking End</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+              {{#each cartItems}}
+                {{> cartItem}}
+              {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+</template>
