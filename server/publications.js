@@ -16,15 +16,6 @@ Meteor.publish('pads', function(stationId) {
   return Pads.find({stationId: stationId});
 });
 
-Meteor.publish('dockings', function(padId) {
-  check(padId, String);
-  return Dockings.find({padId: padId});
-});
-
-Meteor.publish('dockingsAll', function() {
-  return Dockings.find({});
-});
-
 Meteor.publish("Cart-userOrders", function () {
   check(arguments, [Match.Any]);
   if(this.userId){

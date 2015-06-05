@@ -14,33 +14,15 @@
 
             <p>{{description}}</p><br>
 
-            <h3 class="shop-product-title">Docking Times</h3>
-            <ul class="list-inline product-color margin-bottom-30">
-                {{#each dockings }}
-                    <li>
-                      <input type="radio" id="color-1" name="color">
-                      <label class="color-one" for="color-1"></label>
-                    </li>
-                {{/each}}
-            </ul><!--/end docking times-->
+            <ul class="list-inline shop-product-prices margin-bottom-30">
+                <li class="shop-red">${{price}}</li>
+            </ul><!--/end shop product prices-->
 
-            {{#with selectedDocking}}
-                <ul class="list-inline shop-product-prices margin-bottom-30">
-                    <li class="shop-red">${{price}}</li>
-                </ul><!--/end shop product prices-->
-            {{/with}}
 
-            {{#if currentUser}}
-                {{> dockingNew}}
-            {{else}}
-                <p>Please log in to add a Docking time.</p>
-            {{/if}}
-
-            {{#with selectedDocking}}
-                <div class="margin-bottom-40">
-                <button type="button" class="btn-u btn-u-sea-shop btn-u-lg add-item">Add to Cart (${{price}})</button>
+            <div class="margin-bottom-40">
+            <button type="button" class="btn-u btn-u-sea-shop btn-u-lg add-item">Add to Cart (${{price}})</button>
             </div><!--/end product quantity-->
-            {{/with}}
+
         </div>
       </div><!--/end row-->
     </div>
