@@ -52,3 +52,7 @@ Tracker.autorun(function(){
 	Session.set('Cart-itemTotal', Math.floor(total*100)/100);
 	Session.set('Cart-itemCount', items.count());
 });
+
+Meteor.startup(function() {
+    Stripe.setPublishableKey(Meteor.settings.public.stripe_pk);
+});

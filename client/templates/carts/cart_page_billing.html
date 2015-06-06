@@ -1,4 +1,5 @@
 <template name="cartPageBilling">
+<form name="paymentForm" class="form">
 <div class="header-tags">
     <div class="overflow-h">
         <h2>Payment</h2>
@@ -7,6 +8,7 @@
     </div>
 </div>
 <section>
+
     <div class="row">
         <div class="col-md-6 md-margin-bottom-50">
             <h2 class="title-type">Choose a payment method</h2>
@@ -33,18 +35,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 no-col-space control-label">Card Number</label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control required" name="cardnumber" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-4 no-col-space control-label">Payment Types</label>
-                                    <div class="col-sm-8">
-                                        <ul class="list-inline payment-type">
-                                            <li><i class="fa fa-cc-paypal"></i></li>
-                                            <li><i class="fa fa-cc-visa"></i></li>
-                                            <li><i class="fa fa-cc-mastercard"></i></li>
-                                            <li><i class="fa fa-cc-discover"></i></li>
-                                        </ul>
+                                        <input type="text" class="form-control required" name="cardNumber" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -58,7 +49,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-4 no-col-space control-label">CSC</label>
                                     <div class="col-sm-8 input-small-field">
-                                        <input type="text" name="number" placeholder="" class="form-control required">
+                                        <input type="text" name="cvc" placeholder="" class="form-control required">
                                         <a href="#">What's this?</a>
                                     </div>
                                 </div>
@@ -138,4 +129,24 @@
         </div>
     </div>
 </section>
+
+<div class="coupon-code">
+    <div class="row">
+        <div class="col-sm-4 sm-margin-bottom-30">
+        </div>
+        <div class="col-sm-3 col-sm-offset-5">
+            <ul class="list-inline total-result">
+                <li class="total-price">
+                    <h4>Total:</h4>
+                    <div class="total-result-in">
+                        <span>$ {{itemTotal}}</span>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <button type="submit" class="pull-right btn-lg btn-u-sea-shop pay-and-checkout">Buy Now</button>
+    </div>
+</div>
+</form>
 </template>
