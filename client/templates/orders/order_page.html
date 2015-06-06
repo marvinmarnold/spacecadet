@@ -1,0 +1,27 @@
+<template name="orderPage">
+<div class="container">
+  <h1>Order Confirmation</h1>
+  {{#with order}}<h2>#{{_id}}</h2>{{/with}}
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Station</th>
+                <th>Landing Pad</th>
+                <th>Docking Start</th>
+                <th>Docking End</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+          {{#each lineItems}}
+            {{> lineItem}}
+          {{/each}}
+        </tbody>
+    </table>
+  </div>
+
+  {{#with order}}<h2>Total: ${{total}}</h2>{{/with}}
+</div>
+</template>

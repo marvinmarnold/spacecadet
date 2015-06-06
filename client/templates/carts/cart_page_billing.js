@@ -16,11 +16,11 @@ Template.cartPageBilling.events({
         exp_year: expYr,
     }, function(status, response) {
         stripeToken = response.id;
-        Meteor.call('chargeCard', stripeToken, Session.get('Cart-deviceId'), function(error, result) {
+        Meteor.call('chargeCard', stripeToken, Session.get('Cart-deviceId'), function(error, orderId) {
             if(error) {
                 alert(JSON.stringify(error));
             } else {
-                alert("payment successful");
+                Router.go('orderPage', {_id: orderId});
             }
         });
     });

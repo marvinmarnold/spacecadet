@@ -11,6 +11,11 @@ Meteor.publish('singleStation', function(id) {
   return Stations.find(id);
 });
 
+Meteor.publish('singleOrder', function(id) {
+  check(id, String);
+  return Orders.find(id);
+});
+
 Meteor.publish('pads', function(stationId) {
   check(stationId, String);
   return Pads.find({stationId: stationId});
@@ -34,4 +39,9 @@ Meteor.publish("Cart-deviceOrders", function(deviceId){
     ];
   }
   this.ready();
+});
+
+Meteor.publish("lineItems", function(orderId){
+  check(orderId, String);
+  return LineItems.find({orderId: orderId});
 });
