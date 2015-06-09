@@ -7,7 +7,7 @@ Template.stationNew.events({
       address: $(e.target).find('[name=address]').val()
     };
 
-    station.imagePath =  "/uploads/stations/" + Session.get('stationImagePath');
+    station.imagePath =  "/uploads/stations" + Session.get('stationImagePath');
     Session.set('stationImagePath', null);
 
     Meteor.call('stationCreate', station, function(error, result) {

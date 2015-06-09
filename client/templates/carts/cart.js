@@ -54,5 +54,5 @@ Tracker.autorun(function(){
 });
 
 Meteor.startup(function() {
-    Stripe.setPublishableKey(Meteor.settings.public.stripe_pk);
+    Stripe.setPublishableKey(Meteor.settings.stripe.stripe_pk);
 });
