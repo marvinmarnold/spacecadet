@@ -1,7 +1,9 @@
 Template.stationItem.helpers({
   imageUrl: function() {
-    var path = this.image_path;
-    console.log(path);
-    return path ? "/uploads" + path : "lot.jpg";
+    var path = this.imagePath;
+    path = path ? path : "/lot.jpg";
+
+    console.log("imageUrl: " + path);
+    return path;
   }
 });
