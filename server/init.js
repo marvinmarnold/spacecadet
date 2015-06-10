@@ -5,3 +5,9 @@ Meteor.startup(function () {
     checkCreateDirectories: true //create the directories for you
   });
 });
+
+S3.config = {
+    key: Meteor.settings.aws_key,
+    secret: Meteor.settings.aws_secret,
+    bucket: Meteor.settings.aws_bucket
+};

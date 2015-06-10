@@ -12,8 +12,14 @@
           <input name="address" id="address" type="text" value="" placeholder="Station address" class="form-control"/>
       </div>
     </div>
-    {{> upload_bootstrap callbacks=stationImageUploadCallback}}
-    {{> dropzone callbacks=stationImageUploadCallback}}
+
+<input type="file" class="file_bag">
+    <button type="button" class="upload">Upload</button>
+
+    {{#each files}}
+        <p>{{percent_uploaded}}</p>
+    {{/each}}
+
     <input type="submit" value="Submit" class="btn btn-primary"/>
   </form>
 </template>
