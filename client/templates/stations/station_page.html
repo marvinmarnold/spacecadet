@@ -1,8 +1,9 @@
 <template name="stationPage">
   <!--=== Shop Product ===-->
     <div class="shop-product">
-        <!-- Breadcrumbs v5 -->
+
         <div class="container">
+            <!-- Breadcrumbs v5 -->
             <ul class="breadcrumb-v5">
                 <li><a href="index.html"><i class="fa fa-home"></i></a></li>
                 <li><a href="#">Stations</a></li>
@@ -10,14 +11,15 @@
                 <li><a href="#">State/Province</a></li>
                 <li class="active">City</li>
             </ul>
-        </div>
-        <!-- End Breadcrumbs v5 -->
+            <!-- End Breadcrumbs v5 -->
+        {{> stationAvailabilityInput}}
         {{#with station}}
-        <div class="container">
+
           <div class="row">
             <div class="col-sm-9">
               <h1>{{name}}</h1>
               <h2>{{address}}</h2>
+              <img class="full-width img-responsive" src="{{imageUrl}}" alt="{{name}}">
             </div>
             <div class="col-sm-3">
               {{#if currentUser}}
@@ -27,10 +29,8 @@
               {{/if}}
             </div>
           </div>
-          {{> stationAvailabilityInput}}
-        </div>
-        {{/with}}
-
+    {{/with}}
+</div>
 
 
         {{#each pads}}

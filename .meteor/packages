@@ -10,12 +10,11 @@ underscore
 iron:router
 sacha:spin
 accounts-password
-tomi:upload-server
-tomi:upload-jquery
 ian:accounts-ui-bootstrap-3
 amplify
 accounts-google
 accounts-facebook
 accounts-twitter
 mrgalaxy:stripe
-lepozepo:s3
+edgee:slingshot
+reactive-var

@@ -1,7 +1,6 @@
 Template.stationNew.events({
   'submit form': function(e) {
     e.preventDefault();
-    console.log("hen");
     var station = {
       name: $(e.target).find('[name=name]').val(),
       address: $(e.target).find('[name=address]').val()
@@ -17,32 +16,16 @@ Template.stationNew.events({
     });
   },
   "click button.upload": function(){
-    var files = $("input.file_bag")[0].files;
-
-    S3.upload({
-        files:files,
-        path:"/uploads/stations"
-      },function(e,r){
-        console.log("uploaded?");
-        if(e) {
-          console.log(e);
-        } else {
-          Session.set('stationImagePath', secure_url);
-        }
+    var uploader = new Slingshot.Upload("allUploads");
+    uploader.send(document.getElementById('fileUpload').files[0], function (error, downloadUrl) {
+      if (error) {
+        // Log service detailed response.
+        console.error('Error uploading', uploader.xhr.response);
+        alert (error);
       }
-    );
-  }
-});
-
-Template.stationNew.helpers({
-  stationImageUploadCallback: function() {
-    return {
-      finished: function(index, fileInfo, templateContext) {
-        Session.set('stationImagePath', fileInfo.path);
+      else {
+        Session.set('stationImagePath', downloadUrl);
       }
-    };
-  },
-  "files": function(){
-    return S3.collection.find();
+    });
   }
 });
