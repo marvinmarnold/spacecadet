@@ -1,8 +1,24 @@
 <template name="index">
-  {{> showcaseProducts}}
-  {{> twitter}}
-  {{> moreProducts}}
-  {{> smallBanner}}
-  {{> subscribe}}
-  {{> footer}}
+  <div class="search-bar">
+  <div class="container">
+    <form class="form-inline" id="searchForm">
+      <div class="form-group">
+        <input type="text" class="form-control"
+                id="searchWhat"
+                placeholder="Event, city, place" />
+      </div>
+      <button type="submit" class="btn btn-default">Search stations</button>
+    </form>
+  </div>
+</div>
+  {{#if isSearching }}
+    {{> searchResults}}
+  {{else}}
+    {{> showcaseProducts}}
+    {{> twitter}}
+    {{> moreProducts}}
+    {{> smallBanner}}
+    {{> subscribe}}
+    {{> footer}}
+  {{/if}}
 </template>
