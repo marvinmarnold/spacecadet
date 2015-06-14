@@ -12,7 +12,9 @@
   </div>
 </div>
   {{#if isSearching }}
-    {{> searchResults}}
+    {{#each searchResults}}
+      {{>stationItem}}
+    {{/each}}
   {{else}}
     {{> showcaseProducts}}
     {{> twitter}}

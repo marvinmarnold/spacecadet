@@ -10,7 +10,6 @@ Meteor.publish('states', function() {
   return States.find({});
 });
 
-
 Meteor.publish('singleStation', function(id) {
   check(id, String);
   return Stations.find(id);
