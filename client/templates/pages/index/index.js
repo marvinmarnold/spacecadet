@@ -7,7 +7,6 @@ Template.index.events({
     var regex = ".*" + val + ".*"
     template.searchResults.set(Stations.find({name: {$regex: regex}}).fetch());
 
-    console.log(Stations.find({name: {$regex: regex}}).fetch());
     template.isSearching.set(val.length > 0);
   }, 200)
 });
