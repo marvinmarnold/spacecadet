@@ -4,8 +4,8 @@ Template.index.events({
     var val = $(event.target).val();
 
     Session.set('search-term', val);
-    var regex = ".*" + val + ".*"
-    template.searchResults.set(Stations.find({name: {$regex: regex}}).fetch());
+    var regex = new RegExp(val, 'ig');
+    template.searchResults.set(Stations.find({name: regex}).fetch());
 
     template.isSearching.set(val.length > 0);
   }, 200)
