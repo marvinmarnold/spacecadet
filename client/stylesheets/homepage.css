@@ -1,0 +1,30 @@
+.homepage-banner {
+  background-image: url("/city.jpg");
+  background-size:   cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.homepage-title {
+  padding-top: 125px;
+}
+
+.homepage-search {
+  margin-top: 225px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: rgba(141,155,153,0.8);
+  /*background-color: rgba(28,152,153,0.2);*/
+}
+
+.homepage-navbar {
+  padding-top: 10px;
+}
+.navbar{
+  background: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
