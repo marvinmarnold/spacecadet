@@ -1,7 +1,11 @@
 .stations-list {
-  margin-top: 50px;
+  margin-top: 75px;
 }
 
 .stations-row {
   margin-top: 25px;
+}
+
+.new-station-button {
+  margin-top: 50px;
 }

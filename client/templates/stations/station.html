@@ -1,3 +1,16 @@
 <template name="station">
-
+<div class="container">
+{{#with station}}
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center">{{name}}</h3>
+      <h4 class="text-center">{{city}}, {{state}}</h4>
+      <p class="station-description">{{description}}</p>
+    </div>
+    <div class="col-md-8">
+      <img src="{{imagePath}}" class="img-responsive img-rounded">
+    </div>
+  </div>
+{{/with}}
+</div>
 </template>
