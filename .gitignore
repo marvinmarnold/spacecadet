@@ -1,4 +1,1 @@
-/public/uploads
-/public/tmp
-*_settings.json
-deployment/*
+*settings.json
