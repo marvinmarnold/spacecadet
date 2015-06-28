@@ -25,16 +25,14 @@ if ( Meteor.users.find().count() === 0 ) {
   test = Meteor.users.findOne(testId);
 }
 if (Stations.find().count() === 0) {
-  var louisiana = States.findOne({name: "Louisiana"});
-
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 6; i++) {
     var stationId = Stations.insert({
       name: 'Test station #' + i,
       description: "Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium. Qui animated corpse, cricket bat max brucks terribilem incessu zomby.",
       address: "1307 Oretha Castle Haley Blvd, Suite 303M",
       city: "New Orleans",
       zip: "70113",
-      stateId: louisiana._id,
+      state: "LA",
       userId: testId,
       imagePath: "/station.jpg"
     });

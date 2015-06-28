@@ -23,4 +23,18 @@
 
 .homepage-featured {
   margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.homepage-featured-station {
+  margin-top: 50px;
+}
+
+.homepage-featured-image {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.last-featured-row {
+  margin-bottom: 50px;
 }

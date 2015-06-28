@@ -1,6 +1,6 @@
 <template name="homepage">
 <div class="homepage-banner">
-  {{> homepageNavbar}}
+  {{> navbar}}
   <div class="container-fluid">
     <div class="row homepage-title">
       <h1 class="text-center">Find Space</h1>
@@ -20,8 +20,25 @@
     </div>
   </div>
 </div>
-<div class="homepage-featured">
+<div class="homepage-featured container">
   <h2 class="text-center">Zombie ipsum reversus</h2>
   <h4 class="text-center">De apocalypsi gorger omero undead survivor</h4>
+  <div class="homepage-featured-stations">
+    {{#each stations}}
+      <div class="homepage-featured-station">
+        <a href="{{pathFor 'station'}}">
+          <div class="col-md-4">
+            <div class="row">
+              <img src="{{imagePath}}" class="img-responsive img-rounded homepage-featured-image">
+            </div>
+            <div class="row last-featured-row">
+              <div class="col-md-6">{{name}}</div>
+              <div class="col-md-6">{{city}}, {{state}}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
 </div>
 </template>

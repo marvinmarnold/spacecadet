@@ -8,6 +8,10 @@ Meteor.publish("managedStations", function () {
   this.ready();
 });
 
+Meteor.publish("allStations", function() {
+  return Stations.find({});
+});
+
 Meteor.publish('singleStation', function(id) {
   check(id, String);
   return Stations.find(id);
