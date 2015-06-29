@@ -11,6 +11,16 @@
       <img src="{{imagePath}}" class="img-responsive img-rounded">
     </div>
   </div>
+  <div class="row">
+    {{#each pads}}
+      <div class="col-md-3">
+        <h4 clsas="text-center">{{name}} - ${{price}}</h4>
+        <img src="{{imagePath}}" class="img-responsive img-rounded">
+        {{size}} - {{description}}
+        <button class="btn btn-success" id="pad-{{_id}}">Add to Cart</button>
+      </div>
+    {{/each}}
+  </div>
 {{/with}}
 </div>
 </template>
