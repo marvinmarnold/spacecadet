@@ -10,8 +10,8 @@ Template.newStation.events({
       state: $(e.target).find('[name=state]').val()
     };
 
-    station.imagePath =  Session.get('stationImagePath');
-    Session.set('stationImagePath', null);
+    station.imagePath =  Session.get('imagePath');
+    Session.set('imagePath', null);
 
     Meteor.call('stationCreate', station, function(error, result) {
       if (error)
@@ -19,17 +19,4 @@ Template.newStation.events({
       Router.go('station', {_id: result._id});
     });
   },
-  "click button.upload": function(){
-    var uploader = new Slingshot.Upload("allUploads");
-    uploader.send(document.getElementById('fileUpload').files[0], function (error, downloadUrl) {
-      if (error) {
-        // Log service detailed response.
-        console.error('Error uploading', uploader.xhr.response);
-        alert (error);
-      }
-      else {
-        Session.set('stationImagePath', downloadUrl);
-      }
-    });
-  }
 });

@@ -43,13 +43,13 @@
       <div class="form-group">
         <label class="control-label" for="fileUpload">Station Photo</label>
         <div class="controls">
-          <input type="file" class="file_bag" id="fileUpload"/>
-          <button type="button" class="btn btn-success upload">Upload</button>
+          {{> imageUploader}}
         </div>
       </div>
 
+      {{> imageUploadProgress}}
 
-      <input type="submit" value="Submit" class="btn btn-primary"/>
+      <input type="submit" value="Submit" class="btn btn-primary btn-lg btn-block"/>
     </form>
   </div>
 </div>

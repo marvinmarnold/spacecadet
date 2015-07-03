@@ -6,6 +6,12 @@
       <h3 class="text-center">{{name}}</h3>
       <h4 class="text-center">{{city}}, {{state}}</h4>
       <p class="station-description">{{description}}</p>
+      {{#if notAddingLandingPad}}
+        <br/><button class="btn btn-info" id="addPadButton">Add a landing pad</button>
+      {{/if}}
+      {{#if addingLandingPad}}
+        {{> newPad}}
+      {{/if}}
     </div>
     <div class="col-md-8">
       <img src="{{imagePath}}" class="img-responsive img-rounded center-block">
@@ -18,7 +24,7 @@
         <h4 clsas="text-center">{{name}} - ${{price}}</h4>
         <p>{{size}} - {{description}}</p>
         <img src="{{imagePath}}" class="img-responsive img-rounded"><br/>
-        <button class="btn btn-success btn-block" id="pad-{{_id}}">Add to Cart</button>
+        <button class="btn btn-success btn-block btn-lg" id="pad-{{_id}}">Add to Cart (${{price}})</button>
       </div>
     {{/each}}
   </div>
