@@ -1,15 +1,18 @@
 Template.station.helpers({
   notAddingLandingPad: function() {
-    return isOwner(Meteor.userId(), this.userId) && !Session.get('addingLandingPad');
+    return isOwner(Meteor.userId(), this.station.userId) && !Session.get('addingLandingPad');
   },
   addingLandingPad: function() {
-    return isOwner(Meteor.userId(), this.userId) && Session.get('addingLandingPad');
+    return isOwner(Meteor.userId(), this.station.userId) && Session.get('addingLandingPad');
   },
 });
 
 Template.station.events({
   'click #addPadButton': function(e) {
     Session.set('addingLandingPad', true);
+  },
+  'click #cancelPadButton': function(e) {
+    Session.set('addingLandingPad', false);
   },
 });
 
