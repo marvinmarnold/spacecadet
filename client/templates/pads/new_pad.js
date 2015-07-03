@@ -1,7 +1,7 @@
 Template.newPad.events({
   'submit form': function(e) {
     e.preventDefault();
-    console.log(e.target.price.value);
+
     var pad = {
       name: $(e.target).find('[name=name]').val(),
       description: $(e.target).find('[name=description]').val(),
