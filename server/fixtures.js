@@ -10,11 +10,11 @@ if (States.find().count() === 0) {
   }
 }
 
-var testId;
-var test;
+var testUserId;
+var testUser;
 
 if ( Meteor.users.find().count() === 0 ) {
-  testId = Accounts.createUser({
+  testUserId = Accounts.createUser({
     username: "admin",
     email: 'test@spacecadet.io',
     password: 'spacecadet',
@@ -22,8 +22,9 @@ if ( Meteor.users.find().count() === 0 ) {
       name: 'Test account'
     }
   });
-  test = Meteor.users.findOne(testId);
+  testUser = Meteor.users.findOne(testUserId);
 }
+
 if (Stations.find().count() === 0) {
   for (var i = 0; i < 6; i++) {
     var stationId = Stations.insert({
@@ -33,19 +34,23 @@ if (Stations.find().count() === 0) {
       city: "New Orleans",
       zip: "70113",
       state: "LA",
-      userId: testId,
+      userId: testUserId,
       imagePath: "/station.jpg"
     });
 
-    // for (var j = 1; j < 3; j++) {
-    //   var padId = Pads.insert({
-    //     name: 'Landing pad #' + (i + 2 *j),
-    //     size: "2x2",
-    //     price: (i*10 + j*100),
-    //     numAvailable: (i + j),
-    //     description: "Some type of description",
-    //     stationId: stationId
-    //   });
-    // }
+    for (var j = 1; j < 3; j++) {
+      var padId = Pads.insert({
+        name: 'Landing pad #' + (i + 2 *j),
+        size: "2x2",
+        price: (i*10 + j*100),
+        numAvailable: (i + j),
+        description: "Some type of description",
+        stationId: stationId,
+        imagePath: "/pad.jpg",
+        occupancy: (i + j*10),
+        availabilityStarts: new Date(),
+        availabilityEnds: new Date()
+      });
+    }
   }
 }

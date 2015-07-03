@@ -16,3 +16,8 @@ Meteor.publish('singleStation', function(id) {
   check(id, String);
   return Stations.find(id);
 });
+
+Meteor.publish('padsForStation', function(stationId) {
+  check(stationId, String);
+  return Pads.find({stationId: stationId});
+});

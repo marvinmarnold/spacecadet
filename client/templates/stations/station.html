@@ -8,19 +8,19 @@
       <p class="station-description">{{description}}</p>
     </div>
     <div class="col-md-8">
-      <img src="{{imagePath}}" class="img-responsive img-rounded">
+      <img src="{{imagePath}}" class="img-responsive img-rounded center-block">
     </div>
   </div>
-  <div class="row">
+{{/with}}
+  <div class="landing-pads">
     {{#each pads}}
       <div class="col-md-3">
         <h4 clsas="text-center">{{name}} - ${{price}}</h4>
-        <img src="{{imagePath}}" class="img-responsive img-rounded">
-        {{size}} - {{description}}
-        <button class="btn btn-success" id="pad-{{_id}}">Add to Cart</button>
+        <p>{{size}} - {{description}}</p>
+        <img src="{{imagePath}}" class="img-responsive img-rounded"><br/>
+        <button class="btn btn-success btn-block" id="pad-{{_id}}">Add to Cart</button>
       </div>
     {{/each}}
   </div>
-{{/with}}
 </div>
 </template>
