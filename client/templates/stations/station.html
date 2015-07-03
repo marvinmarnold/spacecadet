@@ -20,11 +20,11 @@
 </div>
   <div class="landing-pads">
     {{#if addingLandingPad}}
-    <div class="col-md-6">
-      <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
-      {{> newPad}}
-    </div>
-  {{/if}}
+      <div class="col-md-6">
+        <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
+        {{> newPad}}
+      </div>
+    {{/if}}
     {{#each pads}}
       <div class="col-md-3">
         <h4 clsas="text-center">{{name}} - ${{price}}</h4>
