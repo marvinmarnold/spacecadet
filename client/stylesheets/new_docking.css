@@ -28,3 +28,7 @@
 .docking-request-details {
   margin-top: 20px;
 }
+
+.newDocking hr {
+  border-color: #DADADA;
+}
