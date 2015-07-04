@@ -1,38 +1,42 @@
 <template name="station">
-<div class="container">
-{{#with station}}
-  <div class="row">
-    <div class="col-md-4">
-      <h3 class="text-center">{{name}}</h3>
-      <h4 class="text-center">{{city}}, {{state}}</h4>
-      <p class="station-description">{{description}}</p>
+  {{#with station}}
+    <div class="container-fluid">
+      <div class="row">
+        <img src="{{bannerPath}}" class="station-image">
+      </div>
     </div>
-    <div class="col-md-8">
-      <img src="{{imagePath}}" class="img-responsive img-rounded center-block">
+  {{/with}}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        {{#with station}}
+          <h3 class="text-center">{{name}}</h3>
+          <h4 class="text-center">{{city}}, {{state}}</h4>
+          <p class="station-description">{{description}}</p>
+        {{/with}}
+        <div class="station-search row">
+          <form>
+            <div class="col-md-6"><div class="form-group">
+              <label for="startDockingOn">Start Docking</label>
+              <input type="date" class="form-control input-lg" id="startDockingOn" placeholder="Email">
+            </div></div>
+            <div class="col-md-6"><div class="form-group">
+              <label for="endDockingOn">End Docking</label>
+              <input type="date" class="form-control input-lg" id="endDockingOn" placeholder="Email">
+            </div></div>
+          </form>
+        </div>
+        {{#if notAddingLandingPad}}
+          <br/><button class="btn btn-info btn-block" id="addPadButton">Add a landing pad</button>
+        {{/if}}
+        {{#if addingLandingPad}}
+          <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
+          {{> newPad}}
+        {{/if}}
+      </div>
+      {{#each pads}}
+        {{> pad}}
+      {{/each}}
     </div>
   </div>
-{{/with}}
-<div class="row new-landing-pad">
-  {{#if notAddingLandingPad}}
-    <br/><button class="btn btn-info btn-block" id="addPadButton">Add a landing pad</button>
-  {{/if}}
-
-</div>
-  <div class="landing-pads">
-    {{#if addingLandingPad}}
-      <div class="col-md-6">
-        <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
-        {{> newPad}}
-      </div>
-    {{/if}}
-    {{#each pads}}
-      <div class="col-md-3">
-        <h4 clsas="text-center">{{name}} - ${{price}}</h4>
-        <p>{{size}} - {{description}}</p>
-        <img src="{{imagePath}}" class="img-responsive img-rounded"><br/>
-        <button class="btn btn-success btn-block btn-lg" id="pad-{{_id}}">Add to Cart (${{price}})</button>
-      </div>
-    {{/each}}
-  </div>
-</div>
 </template>

@@ -35,10 +35,11 @@ if (Stations.find().count() === 0) {
       zip: "70113",
       state: "LA",
       userId: testUserId,
-      imagePath: "/station.jpg"
+      previewPath: "/station.jpg",
+      bannerPath: "/station-banner.jpg"
     });
 
-    for (var j = 1; j < 3; j++) {
+    for (var j = 1; j < 6; j++) {
       var padId = Pads.insert({
         name: 'Landing pad #' + (i + 2 *j),
         size: "2x2",

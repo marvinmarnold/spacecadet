@@ -2,10 +2,14 @@
   margin-top: 25px;
 }
 
-.landing-pads {
+.new-landing-pad {
   padding-top: 25px;
 }
 
-.new-landing-pad {
+.station-image {
+  width: 100%;
+}
+
+.station-search {
   padding-top: 25px;
 }
