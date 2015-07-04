@@ -52,18 +52,17 @@
         <button type="submit" class="btn btn-default btn-lg btn-success btn-block submit-billing-form">Request Docking</button>
       </form>
     </div>
-    <div class="col-md-5 col-md-offset-1">
+    <div class="col-md-5 col-md-offset-1 docking-request-summary">
       {{#with pad}}
         <img src="{{imagePath}}" class="img-responsive img-rounded homepage-featured-image">
       {{/with}}
-      <h4>{{pad.name}} at {{station.name}}</h4>
+      <h4 class="docking-request-details">{{pad.name}} at {{station.name}}</h4>
       {{#with station}}
         <p>{{address}}, {{city}}, {{state}}, {{zip}}</p>
       {{/with}}
       {{#with pad}}
         <hr/>
-        <h5>Docking Starts: {{dockingStarts}}</h5>
-        <h5>Docking Ends: {{dockingEnds}}</h5>
+        <h5>{{startDockingOn}} - {{endDockingOn}}</h5>
         <hr/>
         <h5>${{price}} x {{dockingPeriod}}</h5>
         <hr/>

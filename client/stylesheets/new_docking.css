@@ -16,3 +16,15 @@
   background-color: #EBEBEB;
   padding-top: 50px;
 }
+
+.docking-request-summary {
+  border-width: 2px;
+  border-color: #DADADA;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.docking-request-details {
+  margin-top: 20px;
+}

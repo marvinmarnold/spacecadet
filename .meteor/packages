@@ -15,3 +15,6 @@ fortawesome:fontawesome
 amplify
 underscore
 mrgalaxy:stripe
+momentjs:moment
+rajit:bootstrap3-datepicker
+u2622:persistent-session

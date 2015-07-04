@@ -2,13 +2,13 @@ Template.newDocking.helpers({
   total: function() {
     return 100;
   },
-  dockingStarts: function() {
-    Session.get('startDockingOn');
+  startDockingOn: function() {
+    return moment(Session.get('startDockingOn')).format('ddd, MMM D, YYYY');
   },
-  dockingEnds: function() {
-    Session.get('endDockingOn');
+  endDockingOn: function() {
+    return moment(Session.get('endDockingOn')).format('ddd, MMM D, YYYY');
   },
   dockingPeriod: function() {
-    "3 days"
+    return moment(Session.get('endDockingOn')).diff(moment(Session.get('startDockingOn')), 'days') + " days";
   }
 });
