@@ -3,6 +3,6 @@
     <h4 clsas="text-center">{{name}} - ${{price}}</h4>
     <p>{{size}} - {{description}}</p>
     <img src="{{imagePath}}" class="img-responsive img-rounded"><br/>
-    <button class="btn btn-success btn-block btn-lg add-docking-to-cart">Request to Dock (${{price}})</button>
+    <a href="/dock?pad_id={{_id}}&station_id={{stationId}}" class="btn btn-success btn-block btn-lg add-docking-to-cart">Request to Dock (${{price}})</a>
   </div>
 </template>

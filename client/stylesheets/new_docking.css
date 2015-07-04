@@ -1,0 +1,18 @@
+.billing-form {
+  margin-top: 30px;
+}
+
+.billing-form .form-group {
+  margin-top: 15px;
+}
+
+.submit-billing-form {
+  margin-top: 30px;
+  height: 75px;
+  font-size: 30px;
+}
+
+.newDocking {
+  background-color: #EBEBEB;
+  padding-top: 50px;
+}

@@ -1,44 +1,46 @@
 <template name="homepage">
-<div class="homepage-banner">
-  {{> navbar}}
-  <div class="container-fluid">
-    <div class="row homepage-title">
-      <h1 class="text-center">Find Space</h1>
-      <h3 class="text-center">Daily rentals in your city's most beautiful spaces.</h3>
+<div class="page">
+  <div class="homepage-banner">
+    {{> navbar}}
+    <div class="container-fluid">
+      <div class="row homepage-title">
+        <h1 class="text-center">Find Space</h1>
+        <h3 class="text-center">Daily rentals in your city's most beautiful spaces.</h3>
+      </div>
     </div>
-  </div>
-  <div class="homepage-search">
-    <div class="container">
-      <div class="input-group input-group-lg">
-        <input type="text" class="form-control input-lg"  placeholder="Where are you looking for space?">
-        <span class="input-group-btn">
-          <button type="submit" class="btn btn-success btn-lg">
-            Select your city
-          </button>
-        </span>
+    <div class="homepage-search">
+      <div class="container">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control input-lg"  placeholder="Where are you looking for space?">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-success btn-lg">
+              Select your city
+            </button>
+          </span>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="homepage-featured container">
-  <h2 class="text-center">Zombie ipsum reversus</h2>
-  <h4 class="text-center">De apocalypsi gorger omero undead survivor</h4>
-  <div class="homepage-featured-stations">
-    {{#each stations}}
-      <div class="homepage-featured-station">
-        <a href="{{pathFor 'station'}}">
-          <div class="col-md-4">
-            <div class="row">
-              <img src="{{previewPath}}" class="img-responsive img-rounded homepage-featured-image">
+  <div class="homepage-featured container">
+    <h2 class="text-center">Zombie ipsum reversus</h2>
+    <h4 class="text-center">De apocalypsi gorger omero undead survivor</h4>
+    <div class="homepage-featured-stations">
+      {{#each stations}}
+        <div class="homepage-featured-station">
+          <a href="{{pathFor 'station'}}">
+            <div class="col-md-4">
+              <div class="row">
+                <img src="{{previewPath}}" class="img-responsive img-rounded homepage-featured-image">
+              </div>
+              <div class="row last-featured-row">
+                <div class="col-md-6">{{name}}</div>
+                <div class="col-md-6 text-right">{{city}}, {{state}}</div>
+              </div>
             </div>
-            <div class="row last-featured-row">
-              <div class="col-md-6">{{name}}</div>
-              <div class="col-md-6 text-right">{{city}}, {{state}}</div>
-            </div>
-          </div>
-        </a>
-      </div>
-    {{/each}}
+          </a>
+        </div>
+      {{/each}}
+    </div>
   </div>
 </div>
 </template>
