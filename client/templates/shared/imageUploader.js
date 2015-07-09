@@ -1,13 +1,15 @@
 Template.imageUploader.events({
   "click button.upload": function(e){
-    this.uploader.send(document.getElementById('fileUpload').files[0], function (error, downloadUrl) {
+    var _imageName = this.imageName;
+    this.uploader.send(document.getElementById(_imageName).files[0], function (error, downloadUrl) {
     if (error) {
       // Log service detailed response.
       console.error('Error uploading', uploader.xhr.response);
       alert (error);
     }
     else {
-      Session.set('imagePath', downloadUrl);
+      console.log("imageName " + _imageName + "from " + downloadUrl);
+      Session.set(_imageName, downloadUrl);
     }
   });
 }

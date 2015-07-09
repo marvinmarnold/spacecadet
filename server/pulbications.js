@@ -27,21 +27,11 @@ Meteor.publish('padsForStation', function(stationId) {
   return Pads.find({stationId: stationId});
 });
 
-Meteor.publish("Cart-userDocking", function () {
+Meteor.publish("dockingsForUser", function () {
   check(arguments, [Match.Any]);
   if(this.userId){
     return [
-      Cart.Dockings.find({userId:this.userId})
-    ];
-  }
-  this.ready();
-});
-
-Meteor.publish("Cart-deviceDockings", function(deviceId){
-  check(arguments, [Match.Any]);
-  if(deviceId){
-    return [
-      Cart.Dockings.find({deviceId:deviceId})
+      Dockings.find({userId:this.userId})
     ];
   }
   this.ready();

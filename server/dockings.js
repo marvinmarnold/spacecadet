@@ -26,6 +26,7 @@ Meteor.methods({
         createdAt: new Date(),
         padId: pad._id,
         stationId: station._id,
+        imagePath: station.imagePath,
         padName: pad.name,
         stationName: station.name,
         startDockingOn: startDockingOn,

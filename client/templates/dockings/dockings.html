@@ -1,0 +1,21 @@
+<template name="dockings">
+<div class="page">
+  <div class="container">
+    <h3 class="text-center">Docking History</h3>
+    {{#if dockings}}
+      {{#each dockings}}
+        <div class="row">
+          <div class="col-md-4">
+            <img src="{{imagePath}}" class="img-responsive">
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-center">{{total}}</h4>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <h4>You have not docked yet</h4>
+    {{/if}}
+  </div>
+</div>
+</template>
