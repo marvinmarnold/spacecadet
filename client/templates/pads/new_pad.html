@@ -54,12 +54,12 @@
         <label class="control-label" for="fileUpload">Landing Pad Photo</label>
         <div class="controls">
           <div class="row">
-            {{> imageUploader}}
+            {{>  imageUploader imageName=padImageName uploader=padImageUploader}}
           </div>
         </div>
       </div>
 
-      {{> imageUploadProgress}}
+        {{> imageUploadProgress uploader=padImageUploader}}
 
       <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg"/>
     </form>

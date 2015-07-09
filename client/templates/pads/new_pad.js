@@ -14,8 +14,8 @@ Template.newPad.events({
       stationId: this.station._id
     };
 
-    pad.imagePath =  Session.get('imagePath');
-    Session.set('imagePath', null);
+    pad.imagePath =  Session.get(this.padImageName);
+    Session.set(this.padImageName, null);
 
     Meteor.call('createPad', pad, function(error, result) {
       if (error)
