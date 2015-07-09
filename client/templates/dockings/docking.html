@@ -1,10 +1,16 @@
 <template name="docking">
 <div class="page">
   <div class="container">
-  <h3 class="text-center">Docking Request Submitted</h3>
-  <p>We have submitted your docking request to the landlord.
-  You will be notified when the landlord approves.</p>
-  <p><b>You will only be charged once approval is complete.</b></p>
+    {{#with docking}}
+      {{#if isStateAwaitingLandlordApproval}}
+        <h3 class="text-center">Docking Request Submitted</h3>
+        <p>We have submitted your docking request to the landlord.
+        You will be notified when the landlord approves.</p>
+        <p><b>You will only be charged once approval is complete.</b></p>
+      {{else}}
+        <h1>hi</h1>
+      {{/if}}
+    {{/with}}
   </div>
 </div>
 </template>

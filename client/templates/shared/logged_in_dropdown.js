@@ -1,4 +1,7 @@
 Template._loginButtonsLoggedInDropdown.events({
+  'click #login-buttons-manage-dockings': function(event) {
+      Router.go('manageDockings');
+  },
   'click #login-buttons-docking-history': function(event) {
       Router.go('dockings');
   },

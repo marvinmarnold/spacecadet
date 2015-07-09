@@ -6,7 +6,7 @@ Meteor.methods({
 
     var userId = this.userId;
     var pad = Pads.findOne(padId);
-    var station = Stations.find(pad.stationId)
+    var station = Stations.findOne(pad.stationId)
     var Stripe = StripeAPI(Meteor.settings.stripe_sk);
     var days = moment(endDockingOn).diff(moment(startDockingOn), 'days');
     var total = pad.price * days;
@@ -22,15 +22,18 @@ Meteor.methods({
 
       dockingId = Dockings.insert({
         userId: userId,
+        landlordId: userId,
         total: total,
         createdAt: new Date(),
         padId: pad._id,
         stationId: station._id,
-        imagePath: station.imagePath,
+        previewPath: station.previewPath,
+        bannerPath: station.bannerPath,
         padName: pad.name,
         stationName: station.name,
         startDockingOn: startDockingOn,
-        endDockingOn: endDockingOn
+        endDockingOn: endDockingOn,
+        state: Dockings.state_awaiting_landlord_approval
       });
 
       return dockingId;
