@@ -2,7 +2,7 @@
 <div class="page">
   <div class="container">
     <div class="col-md-8">
-      {{#if dockingsAwaitingLandlordApproval}}
+      {{#if hasDockingsAwaitingLandlordApproval}}
         <h3 class="text-center bottom50">Dockings Requiring Approval</h3>
         {{#each dockingsAwaitingLandlordApproval}}
           <div class="row bottom25">
@@ -14,7 +14,7 @@
               <h4>{{padName}}</h4>
               <h4><b>Start:</b> {{longDate startDockingOn}}</h4>
               <h4><b>End:</b> {{longDate endDockingOn}}</h4>
-              <h3>Total: ${{total}}</h3>
+              <h3>Total: {{accounting total}}</h3>
             </div>
             <div class="col-md-4">
               <button class="btn btn-lg btn-success landlord-approve-docking btn-block">
@@ -26,12 +26,35 @@
             </div>
           </div>
         {{/each}}
-      {{else}}
-        <h3 class="text-center">Upcoming Dockings</h3>
       {{/if}}
+      <h3 class="text-center">Financial Summary</h3>
     </div>
     <div class="col-md-4">
-      <h3 class="text-center">Financial Summary</h3>
+      <h3 class="text-center">Upcoming Dockings</h3>
+      {{#if hasDockingsUpcoming}}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Station</th>
+              <th>Pad</th>
+              <th>Start</th>
+              <th>End</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each dockingsUpcoming}}
+              <tr>
+                <td>{{stationName}}</td>
+                <td>{{padName}}</td>
+                <td>{{shortDate startDockingOn}}</td>
+                <td>{{shortDate endDockingOn}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <h4>You have no upcoming dockings.</h4>
+      {{/if}}
     </div>
   </div>
 </div>

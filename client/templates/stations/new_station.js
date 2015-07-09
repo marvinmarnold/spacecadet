@@ -10,12 +10,10 @@ Template.newStation.events({
       state: $(e.target).find('[name=state]').val()
     };
 
-
     station.bannerPath =  Session.get(this.stationBannerName);
     Session.set(this.stationBannerName, null);
     station.previewPath =  Session.get(this.stationPreviewName);
     Session.set(this.stationPreviewName, null);
-
 
     Meteor.call('stationCreate', station, function(error, result) {
       if (error)

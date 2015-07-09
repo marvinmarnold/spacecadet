@@ -3,6 +3,7 @@ Meteor.methods({
     check(padId, String);
     check(startDockingOn, Date);
     check(endDockingOn, Date);
+    check(stripeToken, String);
 
     var userId = this.userId;
     var pad = Pads.findOne(padId);

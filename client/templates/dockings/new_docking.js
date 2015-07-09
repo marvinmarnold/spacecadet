@@ -25,8 +25,6 @@ Template.newDocking.events({
     var expYr = $(event.target).find('[id=expirationyear]').val();
     var cvc = $(event.target).find('[id=cvc]').val();
 
-    console.log(event);
-    console.log(template.data.pad._id);
     Stripe.card.createToken({
         number: ccNum,
         cvc: cvc,
