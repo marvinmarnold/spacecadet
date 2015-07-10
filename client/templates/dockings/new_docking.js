@@ -1,6 +1,6 @@
 Template.newDocking.helpers({
   total: function() {
-    return this.price * dockingPeriod();
+    return this.price * daysBetween();
   },
   startDockingOn: function() {
     return moment(Session.get('startDockingOn')).format('ddd, MMM D, YYYY');
@@ -8,12 +8,13 @@ Template.newDocking.helpers({
   endDockingOn: function() {
     return moment(Session.get('endDockingOn')).format('ddd, MMM D, YYYY');
   },
-  dockingPeriod: function() {
-    return dockingPeriod() + " days";
+  daysBetween: function() {
+    return daysBetween();
   }
 });
-var dockingPeriod = function() {
-  return moment(Session.get('endDockingOn')).diff(moment(Session.get('startDockingOn')), 'days');
+
+var daysBetween = function () {
+  return moment(Session.get('endDockingOn')).diff(moment(Session.get('startDockingOn')), 'days') + 1;
 }
 
 Template.newDocking.events({
@@ -24,6 +25,7 @@ Template.newDocking.events({
     var expMo = $(event.target).find('[id=expirationmonth]').val();
     var expYr = $(event.target).find('[id=expirationyear]').val();
     var cvc = $(event.target).find('[id=cvc]').val();
+    var cardholder = $(event.target).find('[id=cardholder]').val();
 
     Stripe.card.createToken({
         number: ccNum,
@@ -32,7 +34,13 @@ Template.newDocking.events({
         exp_year: expYr,
     }, function(status, response) {
         stripeToken = response.id;
-        Meteor.call('chargeCard', stripeToken, template.data.pad._id, Session.get('startDockingOn'),Session.get('endDockingOn'), function(error, dockingId) {
+        Meteor.call('chargeCard',
+          stripeToken,
+          template.data.pad._id,
+          Session.get('startDockingOn'),
+          Session.get('endDockingOn'),
+          cardholder,
+          function(error, dockingId) {
             if(error) {
                 alert(JSON.stringify(error));
             } else {

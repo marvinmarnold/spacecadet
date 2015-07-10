@@ -9,4 +9,14 @@ Template.docking.helpers({
   isStateAwaitingPayment: function() {
     return this.state === Dockings.state_awaiting_payment;
   },
+  reservationNumber: function() {
+    return this._id.toUpperCase();
+  },
+  daysBetween: function() {
+    return daysBetween(this.startDockingOn, this.endDockingOn);
+  }
 });
+
+var daysBetween = function (start, end) {
+  return moment(end).diff(moment(start), 'days') + 1;
+}

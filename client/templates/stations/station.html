@@ -22,7 +22,7 @@
               <div class="form-group">
                 <label for="startDockingOn">Start Docking</label>
                 <div class="input-group datepicker">
-                  <input type="text" class="form-control input-lg" id="startDockingOn" value="{{startDockingOn}}">
+                  <input type="text" class="form-control input-lg" id="startDockingOn" value="{{longDate startDockingOn}}">
                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
               </div>
@@ -31,7 +31,7 @@
               <div class="form-group">
                 <label for="endDockingOn">End Docking</label>
                 <div class="input-group datepicker">
-                  <input type="text" class="form-control input-lg" id="endDockingOn" value="{{endDockingOn}}">
+                  <input type="text" class="form-control input-lg" id="endDockingOn" value="{{longDate endDockingOn}}">
                   <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
               </div>
@@ -39,7 +39,7 @@
           </form>
         </div>
         {{#if isDockingPeriodSet}}
-          <h4>You want to dock for {{dockingPeriod}}</h4>
+          <h4>You want to dock for {{daysBetween}} days</h4>
         {{/if}}
         {{#if notAddingLandingPad}}
           <br/><button class="btn btn-info btn-block" id="addPadButton">Add a landing pad</button>

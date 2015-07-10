@@ -1,15 +1,40 @@
 <template name="docking">
-<div class="page">
-  <div class="container">
+<div class="docking">
+  <div class="container docking-request-summary">
     {{#with docking}}
       {{#if isStateAwaitingLandlordApproval}}
-        <h3 class="text-center">Docking Request Submitted</h3>
-        <p>We have submitted your docking request to the landlord.
-        You will be notified when the landlord approves.</p>
-        <p><b>You will only be charged once approval is complete.</b></p>
-      {{else}}
-        <h1>hi</h1>
+        <h3 class="text-center bottom50">Docking Request Submitted</h3>
+        <h4>We have submitted your docking request to the landlord.
+        You will be notified when the landlord approves.</h4>
+        <h4 class="bottom50"><b>You will only be charged once approval is complete.</b></h4>
       {{/if}}
+
+      <h3 class="bottom25">Docking Receipt</h3>
+      <h4><b>Reservation Number</b></h4>
+      <h4>{{reservationNumber}}</h4>
+
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><h4><b>Name</b></h4></div>
+        <div class="col-md-3"><h4><b>Address</b></h4></div>
+        <div class="col-md-3"><h4><b>Start</b></h4></div>
+        <div class="col-md-3"><h4><b>End</b></h4></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3"><h4>{{dockerName}}</h4></div>
+        <div class="col-md-3"><h4>{{address}}</h4><h4>{{city}} {{zip}}</h4></div>
+        <div class="col-md-3"><h4>{{shortDate startDockingOn}}</h4></div>
+        <div class="col-md-3"><h4>{{shortDate endDockingOn}}</h4></div>
+      </div>
+
+      <hr/>
+
+      <h4>
+        {{daysBetween}} days x {{accounting dailyPadPrice}}
+      </h4>
+      <h3>Total: {{accounting total}}</h3>
+
     {{/with}}
   </div>
 </div>

@@ -1,9 +1,10 @@
 Meteor.methods({
-  'chargeCard': function(stripeToken, padId, startDockingOn, endDockingOn) {
+  'chargeCard': function(stripeToken, padId, startDockingOn, endDockingOn, dockerName) {
     check(padId, String);
     check(startDockingOn, Date);
     check(endDockingOn, Date);
     check(stripeToken, String);
+    check(dockerName, String)
 
     var userId = this.userId;
     var pad = Pads.findOne(padId);
@@ -23,15 +24,20 @@ Meteor.methods({
 
       dockingId = Dockings.insert({
         userId: userId,
+        dockerName: dockerName,
         landlordId: userId,
         total: total,
         createdAt: new Date(),
         padId: pad._id,
+        dailyPadPrice: pad.price,
         stationId: station._id,
         previewPath: station.previewPath,
         bannerPath: station.bannerPath,
         padName: pad.name,
         stationName: station.name,
+        address: station.address,
+        city: station.city,
+        zip: station.zip,
         startDockingOn: startDockingOn,
         endDockingOn: endDockingOn,
         state: Dockings.state_awaiting_landlord_approval

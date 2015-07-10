@@ -14,10 +14,16 @@ Template.station.helpers({
   endDockingOn: function() {
     return Session.get('endDockingOn');
   },
-  dockingPeriod: function() {
-    return moment(Session.get('endDockingOn')).diff(moment(Session.get('startDockingOn')), 'days') + " days";
-  }
+  daysBetween: function() {
+    return moment(Session.get('endDockingOn')).diff(moment(Session.get('startDockingOn')), 'days') + 1;
+  },
+
 });
+
+var daysBetween = function () {
+  return moment(Session.get('endDockingOn')).diff(moment(Session.get('startDockingOn')), 'days') + 1;
+};
+
 
 Template.station.events({
   'click #addPadButton': function(e) {

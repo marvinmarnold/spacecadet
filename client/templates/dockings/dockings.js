@@ -1,5 +1,5 @@
 Template.dockings.helpers({
   hasDockings: function() {
-    this.dockings
+    return this.dockings.count() > 0;
   }
 });
