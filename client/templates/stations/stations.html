@@ -1,28 +1,37 @@
 <template name="stations">
-<div class="container">
-  <h1 class="text-center">Your Stations</h1>
+<div class="page">
+  <div class="container">
+    <h1 class="text-center">Your Stations</h1>
 
-  <div class="row new-station-button">
-    <div class="col-xs-12 col-md-10 col-md-offset-1">
-      <button id="new-station-button" class="btn btn-lg btn-block btn-success">Create new Station</button>
+    <div class="row new-station-button">
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <button id="new-station-button" class="btn btn-lg btn-block btn-success">Create new Station</button>
+      </div>
     </div>
-  </div>
-  <div class="stations-list">
-    {{#each stations}}
-      <a href="{{pathFor 'station'}}">
-        <div class="row stations-row">
-          <div class="col-md-4 col-md-offset-1">
-            <img src="{{previewPath}}" class="img-responsive img-rounded">
+    <div class="stations-list">
+      {{#each stations}}
+        <a href="{{pathFor 'station'}}">
+          <div class="row stations-row">
+            <div class="col-md-4 col-md-offset-1">
+              <img src="{{previewPath}}" class="img-responsive img-rounded">
+            </div>
+            <div class="col-md-6">
+              <p><b>{{name}}</b></p>
+              <p>{{address}}, {{city}}</p>
+              <p class="bottom25">{{state}} {{zip}}</p>
+              <div class="row">
+                <div class="col-md-8">
+                  <a href="{{pathFor 'editStation'}}" class="btn btn-lg btn-info btn-block">Edit Station</a>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                  <button class="btn btn-danger pull-right delete-station-button">Delete Station</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-md-6">
-            <p><b>{{name}}</b></p>
-            <p>{{address}}, {{city}}</p>
-            <p>{{state}} {{zip}}</p>
-            <a href="{{pathFor 'editStation'}}" class="btn btn-lg btn-info">Edit {{name}}</a>
-          </div>
-        </div>
-      </a>
-    {{/each}}
+        </a>
+      {{/each}}
+    </div>
   </div>
 </div>
 </template>
