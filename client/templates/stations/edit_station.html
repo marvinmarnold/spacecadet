@@ -33,7 +33,13 @@
         {{/if}}
         {{#if addingLandingPad}}
           <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
-          {{> newPad}}
+          {{> newPad
+            padImageName=padImageName
+            padImageUploader=padImageUploader
+            pad=pad
+            stationId=stationId
+            submitButton="Create Landing Pad"
+          }}
         {{/if}}
       </div>
     </div>

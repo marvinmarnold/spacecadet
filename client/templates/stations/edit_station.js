@@ -5,6 +5,9 @@ Template.editStation.helpers({
   addingLandingPad: function() {
     return isOwner(Meteor.userId(), this.station.userId) && Session.get('addingLandingPad');
   },
+  stationId: function() {
+    return this.station._id;
+  }
 });
 
 var isOwner = function(actualUserId, stationUserId) {

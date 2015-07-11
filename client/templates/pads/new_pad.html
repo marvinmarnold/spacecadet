@@ -1,67 +1,10 @@
 <template name="newPad">
     <h4>New Landing Pad</h4>
-    <form class="form"  id="station-form">
-      <div class="form-group">
-        <label class="control-label" for="name">Name</label>
-        <div class="controls">
-            <input name="name" id="name" type="text" value="" placeholder="Station name" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="name">Description</label>
-        <div class="controls">
-            <input name="description" id="description" type="text" value="" placeholder="Make it sound good" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="size">Size</label>
-        <div class="controls">
-            <input name="size" id="size" type="text" value="" placeholder="Size" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="price">Price</label>
-        <div class="controls">
-            <input name="price" id="price" type="number" value="" placeholder="Price" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="numAvailable">Number Available</label>
-        <div class="controls">
-            <input name="numAvailable" id="numAvailable" type="number" value="" placeholder="Number available" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="occupancy">Occupancy</label>
-        <div class="controls">
-            <input name="occupancy" id="occupancy" type="number" value="" placeholder="Max occupancy" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="availabilityStarts">Availability Starts</label>
-        <div class="controls">
-            <input name="availabilityStarts" id="availabilityStarts" type="date" value="" placeholder="When will it first be available" class="form-control"/>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label" for="availabilityEnds">Availability Ends</label>
-        <div class="controls">
-            <input name="availabilityEnds" id="availabilityEnds" type="date" value="" placeholder="When does it stop being available" class="form-control"/>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="control-label" for="fileUpload">Landing Pad Photo</label>
-        <div class="controls">
-          <div class="row">
-            {{>  imageUploader imageName=padImageName uploader=padImageUploader}}
-          </div>
-        </div>
-      </div>
-
-        {{> imageUploadProgress uploader=padImageUploader}}
-
-      <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg"/>
-    </form>
-
+    {{> _pad
+      padImageName=padImageName
+      padImageUploader=padImageUploader
+      pad=pad
+      stationId=stationId
+      submitButton="Create Landing Pad"
+    }}
 </template>
