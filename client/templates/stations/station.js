@@ -1,10 +1,4 @@
 Template.station.helpers({
-  notAddingLandingPad: function() {
-    return isOwner(Meteor.userId(), this.station.userId) && !Session.get('addingLandingPad');
-  },
-  addingLandingPad: function() {
-    return isOwner(Meteor.userId(), this.station.userId) && Session.get('addingLandingPad');
-  },
   isDockingPeriodSet: function() {
     return Session.get('startDockingOn') && Session.get('endDockingOn');
   },
@@ -42,12 +36,7 @@ Template.station.events({
   }
 });
 
-var isOwner = function(actualUserId, stationUserId) {
-  return actualUserId && actualUserId == stationUserId;
-}
-
 Template.station.onRendered(function () {
-  Session.set('addingLandingPad', false);
   $('#startDockingOn').datepicker();
   $('#endDockingOn').datepicker();
 });

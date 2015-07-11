@@ -1,5 +1,10 @@
 Meteor.methods({
-  'chargeCard': function(stripeToken, padId, startDockingOn, endDockingOn, dockerName) {
+  'chargeCard': function(stripeToken,
+    padId,
+    startDockingOn,
+    endDockingOn,
+    dockerName) {
+
     check(padId, String);
     check(startDockingOn, Date);
     check(endDockingOn, Date);
@@ -42,6 +47,8 @@ Meteor.methods({
         endDockingOn: endDockingOn,
         state: Dockings.state_awaiting_landlord_approval
       });
+
+      Meteor.call('sendLandlordApprovalEmail', Meteor.user().emails[0].address);
 
       return dockingId;
 

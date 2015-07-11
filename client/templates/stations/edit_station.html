@@ -1,0 +1,29 @@
+<template name="editStation">
+<div class="page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="text-center">Edit Station</h2>
+          {{> _station
+            stationBannerUploader=stationBannerUploader
+            stationBannerName=stationBannerName
+            stationPreviewUploader=stationPreviewUploader
+            stationPreviewName=stationPreviewName
+            station=station
+            submitButton="Update Station"
+          }}
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-center">Edit Landing Pads</h2>
+        {{#if notAddingLandingPad}}
+          <br/><button class="btn btn-info btn-block" id="addPadButton">Add a landing pad</button>
+        {{/if}}
+        {{#if addingLandingPad}}
+          <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
+          {{> newPad}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</template>

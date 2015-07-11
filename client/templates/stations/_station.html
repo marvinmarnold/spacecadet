@@ -1,0 +1,62 @@
+<template name="_station">
+
+<form class="form"  id="station-form">
+{{#with station}}
+  <div class="form-group">
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input name="name" id="name" type="text" value="{{name}}" placeholder="Station name" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="name">Description</label>
+    <div class="controls">
+        <textarea name="description" id="description"  rows="5" value="{{description}}" placeholder="Make it sound good" class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="state">State</label>
+    <div class="controls">
+        <input name="state" id="state" type="text" value="{{state}}" placeholder="State" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="city">City</label>
+    <div class="controls">
+        <input name="city" id="city" type="text" value="{{city}}" placeholder="City" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="address">Address</label>
+    <div class="controls">
+        <input name="address" id="address" type="text" value="{{address}}" placeholder="Station address" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="address">ZIP</label>
+    <div class="controls">
+        <input name="zip" id="zip" type="text" value="{{zip}}" placeholder="Station address" class="form-control"/>
+    </div>
+  </div>
+{{/with}}
+  <div class="form-group">
+    <label class="control-label" for="stationBannerPath">Station Banner</label>
+    <div class="controls">
+      {{> imageUploader imageName=stationBannerName uploader=stationBannerUploader}}
+    </div>
+  </div>
+
+  {{> imageUploadProgress uploader=stationBannerUploader}}
+
+  <div class="form-group">
+    <label class="control-label" for="stationPreviewPath">Station Preview</label>
+    <div class="controls">
+      {{>  imageUploader imageName=stationPreviewName uploader=stationPreviewUploader}}
+    </div>
+  </div>
+
+  {{> imageUploadProgress uploader=stationPreviewUploader}}
+
+  <input type="submit" value="{{submitButton}}" class="btn btn-primary btn-lg btn-block"/>
+</form>
+</template>

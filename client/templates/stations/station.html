@@ -41,13 +41,6 @@
         {{#if isDockingPeriodSet}}
           <h4>You want to dock for {{daysBetween}} days</h4>
         {{/if}}
-        {{#if notAddingLandingPad}}
-          <br/><button class="btn btn-info btn-block" id="addPadButton">Add a landing pad</button>
-        {{/if}}
-        {{#if addingLandingPad}}
-          <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
-          {{> newPad}}
-        {{/if}}
       </div>
       {{#each pads}}
         {{> pad}}

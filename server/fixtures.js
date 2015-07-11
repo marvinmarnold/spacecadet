@@ -16,7 +16,7 @@ var testUser;
 if ( Meteor.users.find().count() === 0 ) {
   testUserId = Accounts.createUser({
     username: "admin",
-    email: 'test@spacecadet.io',
+    email: Meteor.settings.landlordEmail,
     password: 'spacecadet',
     profile: {
       name: 'Test account'
