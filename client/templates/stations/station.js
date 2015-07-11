@@ -20,12 +20,6 @@ var daysBetween = function () {
 
 
 Template.station.events({
-  'click #addPadButton': function(e) {
-    Session.set('addingLandingPad', true);
-  },
-  'click #cancelPadButton': function(e) {
-    Session.set('addingLandingPad', false);
-  },
   'change #startDockingOn': function(e) {
     var startDockingOn = $(e.target).first().val();
     Session.setPersistent('startDockingOn', new Date(startDockingOn));

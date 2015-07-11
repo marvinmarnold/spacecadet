@@ -43,7 +43,10 @@
         {{/if}}
       </div>
       {{#each pads}}
-        {{> pad}}
+        <div class="col-md-4 landing-pad">
+          {{> pad}}
+          <a href="/dock?pad_id={{_id}}&station_id={{stationId}}" class="btn btn-success btn-block btn-lg add-docking-to-cart">Request to Dock (${{price}})</a>
+        </div>
       {{/each}}
     </div>
   </div>

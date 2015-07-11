@@ -17,6 +17,19 @@
         <h2 class="text-center">Edit Landing Pads</h2>
         {{#if notAddingLandingPad}}
           <br/><button class="btn btn-info btn-block" id="addPadButton">Add a landing pad</button>
+          {{#each pads}}
+            <div class="col-md-6 landing-pad">
+              {{> pad}}
+              <div class="row">
+                <div class="col-md-7">
+                  <a href="{{pathFor 'editPad'}}" class="btn btn-lg btn-info btn-block">Edit</a>
+                </div>
+                <div class="col-md-4 col-md-offset-1">
+                  <button class="btn btn-danger pull-right delete-pad-button btn-lg">Delete</button>
+                </div>
+              </div>
+            </div>
+          {{/each}}
         {{/if}}
         {{#if addingLandingPad}}
           <button class="btn btn-danger btn-block" id="cancelPadButton">Cancel</button>
