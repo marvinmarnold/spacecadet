@@ -8,7 +8,6 @@ Template.imageUploader.events({
       alert (error);
     }
     else {
-      console.log("imageName " + _imageName + "from " + downloadUrl);
       Session.set(_imageName, downloadUrl);
     }
   });

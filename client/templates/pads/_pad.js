@@ -2,7 +2,6 @@ Template._pad.events({
   'submit form': function(e) {
     e.preventDefault();
     var stationId = this.stationId;
-    console.log("stationId: " + stationId);
     var pad = {
       name: $(e.target).find('[name=name]').val(),
       description: $(e.target).find('[name=description]').val(),

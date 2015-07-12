@@ -1,6 +1,5 @@
 Template.docking.helpers({
   isStateAwaitingLandlordApproval: function() {
-    console.log(this.state);
     return this.state === Dockings.state_awaiting_landlord_approval;
   },
   isStateLandlordApprovalRejected: function() {
@@ -14,6 +13,9 @@ Template.docking.helpers({
   },
   daysBetween: function() {
     return daysBetween(this.startDockingOn, this.endDockingOn);
+  },
+  subtotal: function() {
+    return this.landlordCut + this.connectionFee;
   }
 });
 
