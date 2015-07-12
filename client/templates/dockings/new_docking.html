@@ -64,7 +64,22 @@
         <hr/>
         <h5>{{startDockingOn}} - {{endDockingOn}}</h5>
         <hr/>
-        <h5>${{price}} x {{daysBetween}} days</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <h5>{{accounting displayPrice}} x {{daysBetween}} days</h5>
+          </div>
+          <div class="col-md-6">
+          <h5>{{accounting subtotal}}</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Service Fee</h5>
+          </div>
+          <div class="col-md-6">
+            <h5>{{accounting serviceFee}}</h5>
+          </div>
+        </div>
         <hr/>
         <h4><b>Total: {{accounting total}}</b></h4>
       {{/with}}

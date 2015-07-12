@@ -15,14 +15,30 @@ Meteor.methods({
     var pad = Pads.findOne(padId);
     var station = Stations.findOne(pad.stationId)
     var Stripe = StripeAPI(Meteor.settings.stripe_sk);
-    var days = moment(endDockingOn).diff(moment(startDockingOn), 'days');
-    var total = pad.price * days;
+
+    // avoid any weird race condition where price changes
+    // store all variables before use
+    var padPrice = pad.price;
+    var displayPadPrice = pad.displayPrice;
+    var days = moment(endDockingOn).diff(moment(startDockingOn), 'days') + 1;
+    var spacecadetServiceFee = Meteor.settings.public.spacecadetServiceFee;
+    var spacecadetConnectionFee = Meteor.settings.spacecadetConnectionFee;
+
+    var landlordCutPennies = Math.floor(padPrice * days * 100);
+    var connectionFeePennies = Math.floor(landlordCutPennies * spacecadetConnectionFee);
+    var serviceFeePennies = Math.floor((landlordCutPennies + connectionFeePennies) * spacecadetServiceFee);
+    var pennies = landlordCutPennies + connectionFeePennies + serviceFeePennies;
+
+    var total = pennies / 100
+    var landlordCut = landlordCutPennies / 100;
+    var connectionFee = connectionFeePennies / 100;
+    var serviceFee = serviceFeePennies / 100;
 
     var charge = Meteor.wrapAsync(Stripe.charges.create, Stripe.charges);
 
     try {
       charge({
-        amount: total * 100,
+        amount: pennies,
         currency: 'usd',
         source: stripeToken
       });
@@ -32,9 +48,12 @@ Meteor.methods({
         dockerName: dockerName,
         landlordId: userId,
         total: total,
+        serviceFee: serviceFee,
+        connectionFee: connectionFee,
+        landlordCut: landlordCut,
         createdAt: new Date(),
         padId: pad._id,
-        dailyPadPrice: pad.price,
+        dailyPadPrice: displayPadPrice,
         stationId: station._id,
         previewPath: station.previewPath,
         bannerPath: station.bannerPath,

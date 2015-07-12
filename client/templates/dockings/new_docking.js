@@ -1,6 +1,12 @@
 Template.newDocking.helpers({
   total: function() {
-    return this.price * daysBetween();
+    return this.displayPrice * daysBetween() * (1 + Meteor.settings.public.spacecadetServiceFee);
+  },
+  subtotal: function() {
+    return this.displayPrice * daysBetween();
+  },
+  serviceFee: function() {
+    return this.displayPrice * daysBetween() * Meteor.settings.public.spacecadetServiceFee;
   },
   startDockingOn: function() {
     return moment(Session.get('startDockingOn')).format('ddd, MMM D, YYYY');
