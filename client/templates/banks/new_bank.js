@@ -3,8 +3,6 @@ Template.newBank.events({
   'submit form': function(event, template) {
     event.preventDefault();
 
-    console.log(event);
-
     var accountName = $(event.target).find('[id=accountName]').val();
     var accountNumber = $(event.target).find('[id=accountNumber]').val();
     var routingNumber = $(event.target).find('[id=routingNumber]').val();
@@ -20,7 +18,6 @@ Template.newBank.events({
       if (response.error) {
         alert(response.error);
       } else {
-        console.log(response);
         var storeableAccount = {
           token: response.id,
           last4: response.bank_account.last4,
