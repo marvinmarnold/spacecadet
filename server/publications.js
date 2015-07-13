@@ -36,3 +36,13 @@ Meteor.publish("dockingsForUser", function () {
   }
   this.ready();
 });
+
+Meteor.publish("banksForUser", function () {
+  check(arguments, [Match.Any]);
+  if(this.userId){
+    return [
+      Banks.find({userId:this.userId})
+    ];
+  }
+  this.ready();
+});

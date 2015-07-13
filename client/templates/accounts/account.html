@@ -1,0 +1,20 @@
+<template name="account">
+<div class="page">
+  <div class="container">
+    <h2>{{user.email}}</h2>
+    <h3 class="bottom25">Bank Accounts</h3>
+    <div class="row bottom25">
+      <a href="{{pathFor 'newBank'}}" class="btn btn-success btn-lg">Add a Bank Account</a>
+    </div>
+    {{#each banks}}
+      <div class="col-md-4">
+        <h4><b>{{accountName}}</b> {{_isDefault}}</h4>
+        <h4><b>{{bankName}}</b> ({{country}}/{{currency}}) </h4>
+        <h4><b>Account Number:</b> **{{last4}}</h4>
+        <h4><b>Routing Number:</b> {{routingNumber}}</h4>
+        <button class="btn btn-info">Activate</button>
+      </div>
+    {{/each}}
+  </div>
+</div>
+</template>

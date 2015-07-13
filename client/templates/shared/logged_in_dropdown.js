@@ -8,4 +8,7 @@ Template._loginButtonsLoggedInDropdown.events({
   'click #login-buttons-stations': function(event) {
       Router.go('stations');
   },
+  'click #login-buttons-account': function(event) {
+      Router.go('account');
+  },
 });
