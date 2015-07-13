@@ -23,6 +23,17 @@ if ( Meteor.users.find().count() === 0 ) {
     }
   });
   testUser = Meteor.users.findOne(testUserId);
+
+  Banks.insert({
+    userId: testUserId,
+    token: "btok_6bCTaIylR180LV",
+    bankName: "BANK OF AMERICA, N.A.",
+    last4: "6789",
+    country: "US",
+    routingNumber: "111000025",
+    accountName: "A Test Bank Account",
+    currency: "usd"
+  });
 }
 
 if (Stations.find().count() === 0) {
