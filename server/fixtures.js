@@ -55,7 +55,6 @@ if (Stations.find().count() === 0) {
         name: 'Landing pad #' + (i + 2 *j),
         size: "2x2",
         price: (i*10 + j*100),
-        displayPrice: (i*10 + j*100) * (1 + Meteor.settings.public.spacecadetConnectionFee),
         numAvailable: (i + j),
         description: "Some type of description",
         stationId: stationId,

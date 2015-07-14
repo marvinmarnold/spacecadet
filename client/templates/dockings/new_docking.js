@@ -1,28 +1,3 @@
-Template.newDocking.helpers({
-  total: function() {
-    return this.displayPrice * daysBetween() * (1 + Meteor.settings.public.spacecadetServiceFee);
-  },
-  subtotal: function() {
-    return this.displayPrice * daysBetween();
-  },
-  serviceFee: function() {
-    return this.displayPrice * daysBetween() * Meteor.settings.public.spacecadetServiceFee;
-  },
-  startDockingOn: function() {
-    return moment(Session.get('startDockingOn')).format('ddd, MMM D, YYYY');
-  },
-  endDockingOn: function() {
-    return moment(Session.get('endDockingOn')).format('ddd, MMM D, YYYY');
-  },
-  daysBetween: function() {
-    return daysBetween();
-  }
-});
-
-var daysBetween = function () {
-  return moment(Session.get('endDockingOn')).diff(moment(Session.get('startDockingOn')), 'days') + 1;
-}
-
 Template.newDocking.events({
   'submit form': function(event, template){
     event.preventDefault();

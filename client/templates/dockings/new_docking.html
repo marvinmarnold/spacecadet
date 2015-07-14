@@ -58,10 +58,10 @@
         <hr/>
         <div class="row">
           <div class="col-md-6">
-            <h5>{{accounting displayPrice}} x {{daysBetween}} days</h5>
+            <h5>{{accounting price}} x {{dockingDurationDays}}</h5>
           </div>
           <div class="col-md-6">
-          <h5>{{accounting subtotal}}</h5>
+          <h5>{{prettyDockingSubtotal price}}</h5>
           </div>
         </div>
         <div class="row">
@@ -69,11 +69,11 @@
             <h5>Service Fee</h5>
           </div>
           <div class="col-md-6">
-            <h5>{{accounting serviceFee}}</h5>
+            <h5>{{prettyDockingSpaceCadetServiceFee price}}</h5>
           </div>
         </div>
         <hr/>
-        <h4><b>Total: {{accounting total}}</b></h4>
+        <h4><b>Total: {{prettyDockingCheckoutTotal price}}</b></h4>
       {{/with}}
     </div>
   </div>
