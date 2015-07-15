@@ -54,7 +54,16 @@
       </div>
     </div>
     <hr/>
-    <button type="submit" class="btn btn-default btn-lg btn-success btn-block submit-billing-form">Request Docking</button>
+
+    <div class="row bottom25">
+      <button type="submit"
+        id="submit-docking-button"
+        class="btn btn-default btn-lg btn-success btn-block submit-billing-form">
+        Request Docking
+      </button>
+    </div>
+    <div class="row">{{> errors}}</div>
+
   </form>
 </div>
 </template>
