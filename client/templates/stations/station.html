@@ -17,29 +17,10 @@
           <p class="station-description">{{description}}</p>
         {{/with}}
         <div class="station-search row">
-          <form>
-            <div class="col-md-8">
-              <div class="form-group">
-                <label for="startDockingOn">Start Docking</label>
-                <div class="input-group datepicker">
-                  <input type="text" class="form-control input-lg" id="startDockingOn" value="{{longDate startDockingOn}}">
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="form-group">
-                <label for="endDockingOn">End Docking</label>
-                <div class="input-group datepicker">
-                  <input type="text" class="form-control input-lg" id="endDockingOn" value="{{longDate endDockingOn}}">
-                  <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                </div>
-              </div>
-            </div>
-          </form>
+          {{> dockingDatesPicker}}
         </div>
-        {{#if isDockingPeriodSet}}
-          <h4>You want to dock for {{daysBetween}} days</h4>
+        {{#if true}}
+          <h4>You want to dock for {{dockingDurationDays}}</h4>
         {{/if}}
       </div>
       {{#each pads}}
