@@ -1,0 +1,60 @@
+<template name="newDockingBillingInformation">
+<div class="col-md-6">
+  <h3>Billing Information</h3>
+  <form class="billing-form">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group {{errorClass 'cardholder'}}">
+          <label for="cardholder">Name on Card</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="cardholder" placeholder="John Doe" value="A Test Name">
+            <span class="help-block">{{errorMessage 'cardholder'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group {{errorClass 'number'}}">
+          <label for="number" class="control-label">Card Number</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="number" placeholder="" value="4242424242424242">
+            <span class="help-block">{{errorMessage 'number'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group {{errorClass 'exp_month'}}">
+          <label for="exp_month">Expiration Month</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="exp_month" placeholder="mm" value="09">
+            <span class="help-block">{{errorMessage 'exp_month'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group {{errorClass 'exp_year'}}">
+          <label for="exp_year">Exipration Year</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="exp_year" placeholder="yy" value="19">
+            <span class="help-block">{{errorMessage 'exp_year'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group {{errorClass 'cvc'}}">
+          <label for="cvc">Security Code</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="cvc" placeholder="" value="123">
+            <span class="help-block">{{errorMessage 'cvc'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+    <button type="submit" class="btn btn-default btn-lg btn-success btn-block submit-billing-form">Request Docking</button>
+  </form>
+</div>
+</template>

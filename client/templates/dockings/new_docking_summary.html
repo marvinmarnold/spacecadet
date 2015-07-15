@@ -1,0 +1,44 @@
+<template name="newDockingSummary">
+<div class="col-md-5 col-md-offset-1 docking-request-summary">
+{{#with pad}}
+  <img src="{{imagePath}}" class="img-responsive img-rounded homepage-featured-image">
+{{/with}}
+
+  <h4 class="docking-request-details">{{pad.name}} at {{station.name}}</h4>
+{{#with station}}
+  <p>{{address}}, {{city}}, {{state}}, {{zip}}</p>
+{{/with}}
+
+{{#with pad}}
+  <hr/>
+  <h5>{{startDockingOn}} - {{endDockingOn}}</h5>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6">
+      <h5>{{accounting price}} x {{dockingDurationDays}}</h5>
+    </div>
+    <div class="col-md-6">
+    <h5>{{prettyDockingSubtotal price}}</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Service Fee</h5>
+    </div>
+    <div class="col-md-6">
+      <h5>{{prettyDockingSpaceCadetServiceFee price}}</h5>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6">
+      <h4><b>Total:</b></h4>
+    </div>
+    <div class="col-md-6">
+      <h4><b>{{prettyDockingCheckoutTotal price}}</b></h4>
+    </div>
+  </div>
+{{/with}}
+
+</div>
+</template>
