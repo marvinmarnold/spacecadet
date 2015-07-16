@@ -37,7 +37,7 @@ Template.newBank.events({
         // TODO - on response use the token to create an account
         // https://stripe.com/docs/api/node#create_bank_account - server side
         // client side https://stripe.com/docs/stripe.js?
-        Meteor.call('createBankAccount',
+        Meteor.call('createRecipient',
           response.id,
           storeableAccount,
           function(error, dockingId) {

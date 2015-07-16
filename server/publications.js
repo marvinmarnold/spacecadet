@@ -68,3 +68,13 @@ Meteor.publish("banksForUser", function () {
   }
   this.ready();
 });
+
+Meteor.publish("recipientsForUser", function () {
+  check(arguments, [Match.Any]);
+  if(this.userId){
+    return [
+      Recipients.find({userId:this.userId})
+    ];
+  }
+  this.ready();
+});

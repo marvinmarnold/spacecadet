@@ -7,12 +7,14 @@
       <a href="{{pathFor 'newBank'}}" class="btn btn-success btn-lg">Add a Bank Account</a>
     </div>
     {{#each banks}}
-      <div class="col-md-4">
+      <div class="col-md-4 bottom50">
         <h4><b>{{accountName}}</b> {{_isDefault}}</h4>
         <h4><b>{{bankName}}</b> ({{country}}/{{currency}}) </h4>
         <h4><b>Account Number:</b> **{{last4}}</h4>
         <h4><b>Routing Number:</b> {{routingNumber}}</h4>
-        <button class="btn btn-info">Activate</button>
+        {{#unless isDefault}}
+          <button class="btn btn-info activate-account btn-block">Activate</button>
+        {{/unless}}
       </div>
     {{/each}}
   </div>
