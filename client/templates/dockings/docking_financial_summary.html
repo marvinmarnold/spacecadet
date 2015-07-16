@@ -1,0 +1,64 @@
+<template name="dockingFinancialSummary">
+<h3 class="">Financial Summary</h3>
+{{#if hasDockingsPaidOut}}
+  <div class="row">
+    <div class="col-md-4">
+      <h4><b>Revenue this month:</b></h4>
+    </div>
+    <div class="col-md-4 text-right">
+      <h4><b>{{accounting revenueThisMonth}}</b></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Revenue last month:</h4>
+    </div>
+    <div class="col-md-4 text-right">
+      <h4>{{accounting revenueLastMonth}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Revenue this year:</h4>
+    </div>
+    <div class="col-md-4 text-right">
+      <h4>{{accounting revenueThisYear}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>Revenue all time:</h4>
+    </div>
+    <div class="col-md-4 text-right">
+      <h4>{{accounting revenueAllTime}}</h4>
+    </div>
+  </div>
+
+  <hr/>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Station</th>
+        <th>Pad</th>
+        <th>Docking Start</th>
+        <th>Days</th>
+        <th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each dockingsUpcoming}}
+        <tr>
+          <td>{{stationName}}</td>
+          <td>{{padName}}</td>
+          <td>{{shortDate createdAt}}</td>
+          <td>{{days}}</td>
+          <td>{{accounting landlordCut}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <h4>You have never had a docking.</h4>
+{{/if}}
+</template>
