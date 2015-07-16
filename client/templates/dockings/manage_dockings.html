@@ -14,8 +14,8 @@
                 <div class="col-md-4">
                   <h4><b>{{stationName}}</b></h4>
                   <h4>{{padName}}</h4>
-                  <h4><b>Start:</b> {{longDate startDockingOn}}</h4>
-                  <h4><b>End:</b> {{longDate endDockingOn}}</h4>
+                  <h4><b>Start:</b> {{longDate startDockingOnDate}}</h4>
+                  <h4><b>End:</b> {{longDate endDockingOnDate}}</h4>
                   <h3>Total: {{accounting total}}</h3>
                 </div>
                 <div class="col-md-4">
@@ -33,31 +33,7 @@
         <h3 class="">Financial Summary</h3>
       </div>
       <div class="col-md-4">
-        <h3 class="text-center">Upcoming Dockings</h3>
-        {{#if hasDockingsUpcoming}}
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Station</th>
-                <th>Pad</th>
-                <th>Start</th>
-                <th>End</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each dockingsUpcoming}}
-                <tr>
-                  <td>{{stationName}}</td>
-                  <td>{{padName}}</td>
-                  <td>{{shortDate startDockingOn}}</td>
-                  <td>{{shortDate endDockingOn}}</td>
-                </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        {{else}}
-          <h4>You have no upcoming dockings.</h4>
-        {{/if}}
+        {{>upcomingDockings}}
       </div>
     </div>
 <!--     <div class="row">

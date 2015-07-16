@@ -1,0 +1,27 @@
+<template name="upcomingDockings">
+<h3 class="text-center">Upcoming Dockings</h3>
+{{#if hasDockingsUpcoming}}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Station</th>
+        <th>Pad</th>
+        <th>Start</th>
+        <th>End</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each dockingsUpcoming}}
+        <tr>
+          <td>{{stationName}}</td>
+          <td>{{padName}}</td>
+          <td>{{shortDate startDockingOnDate}}</td>
+          <td>{{shortDate endDockingOnDate}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <h4>You have no upcoming dockings.</h4>
+{{/if}}
+</template>
