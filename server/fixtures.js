@@ -24,18 +24,18 @@ if ( Meteor.users.find().count() === 0 ) {
   });
   testUser = Meteor.users.findOne(testUserId);
 
-  Banks.insert({
-    userId: testUserId,
-    token: "btok_6bCTaIylR180LV",
-    bankName: "BANK OF AMERICA, N.A.",
-    last4: "6789",
-    accountNumber: "000123456789",
-    country: "US",
-    isDefault: true,
-    routingNumber: "110000000",
-    accountName: "A Test Bank Account",
-    currency: "usd"
-  });
+  // Banks.insert({
+  //   userId: testUserId,
+  //   token: "btok_6bCTaIylR180LV",
+  //   bankName: "BANK OF AMERICA, N.A.",
+  //   last4: "6789",
+  //   accountNumber: "000123456789",
+  //   country: "US",
+  //   isDefault: true,
+  //   routingNumber: "110000000",
+  //   accountName: "A Test Bank Account",
+  //   currency: "usd"
+  // });
 }
 
 if (Stations.find().count() === 0) {

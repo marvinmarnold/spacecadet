@@ -44,30 +44,16 @@ Meteor.methods({
         "routing_number": bank.routingNumber,
       }
 
-      console.log("creditLandlord is setup");
-      Stripe.bankAccount.createToken(externalAccount, function(err, b) {
-        if (err) throw new Meteor.Error("stripe-charge-error-bank", err);
-        console.log("creditLandlord set stuff");
-        var recipient = Stripe.recipients.create({
-          name: "TODO REALLY",
-          type: "individual",
-          email: landlord.id[0].address,
-          bank_account: b.token
-        }, function(err, recipient) {
-          if (err) throw new Meteor.Error("stripe-charge-error-recipient", err);
-          console.log("creditLandlord recipient");
-          var transfer = Stripe.transfers.create({
-            amount: (docking.landlordCut * 100).toFixed(0),
-            currency: "usd",
-            recipient: recipient.id,
-            bank_account: bank.token,
-            statement_descriptor: "JULY SALES"
-          }, function(err, transfer) {
-            if (err) throw new Meteor.Error("stripe-charge-error-transfer", err);
-            console.log("creditLandlord is manager");
-          });
-        });
+      console.log("creditLandlord recipient");
+      var transfer = Stripe.transfers.create({
+        amount: (docking.landlordCut * 100).toFixed(0),
+        currency: "usd",
+        recipient: bank.stripe_id,
+        description: "JULY SALES"
+      }, function(err, transfer) {
+        if (err) throw new Meteor.Error("stripe-charge-error-transfer", err);
+        console.log("creditLandlord is manager");
       });
-    }
+  }
   }
 });

@@ -3,6 +3,7 @@ Template.newDockingForm.events({
     event.preventDefault();
 
     var submitButton = $(event.target).find('[id=submit-docking-button]');
+    submitButton.prop("disabled", true);
 
     Stripe.card.createToken(getStripeCard(event), function(status, response) {
       if(response.error) {
@@ -15,7 +16,7 @@ Template.newDockingForm.events({
         var storeableCard = getStoreableCard(response, cardholder);
         var errors = validateCreditCard(storeableCard);
 
-        if (errors.present) return finishWFieldErrors(submitButton, errors);
+        if (errors.present) return finishWDokcingFieldErrors(submitButton, errors);
 
         var docker = getDocker(event);
         var errors = validateDocker(docker);
@@ -102,10 +103,8 @@ var getDocker = function(event) {
   };
 }
 
-var finishWFieldErrors = function(submitButton, errors) {
-  submitButton.prop("disabled", false);
-  Session.set('newDockingErrors', errors);
-  return;
+var finishWDockingFieldErrors = function(submitButton, errors) {
+  return finishWFieldErrors('newDockingErrors', submitButton, errors);
 }
 
 var finishWStripeError = function(submitButton,error) {
@@ -113,9 +112,4 @@ var finishWStripeError = function(submitButton,error) {
   errors[error.param] = error.message;
 
   return finishWErrors(submitButton, errors);
-}
-
-var finishWErrors = function(submitButton, msg) {
-  submitButton.prop("disabled", false);
-  return throwError(msg);
 }
