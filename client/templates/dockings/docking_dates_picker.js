@@ -12,14 +12,26 @@ Template.dockingDatesPicker.events({
 
 Template.dockingDatesPicker.helpers({
   datepickerStartDockingOn: function() {
-    return moment(getStartDockingOn()).format('L');
+    if(getStartDockingOn()) {
+      return moment(getStartDockingOn()).format('L');
+    } else {
+      return moment(new Date()).format('L');
+    }
   },
   datepickerEndDockingOn: function() {
-    return moment(getEndDockingOn()).format('L');
+    if(getStartDockingOn()) {
+      return moment(getEndDockingOn()).format('L');
+    } else {
+      return moment(new Date()).format('L');
+    }
   }
 })
 
 Template.dockingDatesPicker.onRendered(function () {
-  $('#startDockingOn').datepicker();
-  $('#endDockingOn').datepicker();
+  $('#startDockingOn').datepicker({
+    startDate: new Date()
+  });
+  $('#endDockingOn').datepicker({
+    startDate: new Date()
+  });
 });
