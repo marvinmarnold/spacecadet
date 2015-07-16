@@ -11,9 +11,6 @@ Template.docking.helpers({
   reservationNumber: function() {
     return this._id.toUpperCase();
   },
-  daysBetween: function() {
-    return daysBetween(this.startDockingOn, this.endDockingOn);
-  },
   subtotal: function() {
     return this.landlordCut + this.connectionFee;
   }

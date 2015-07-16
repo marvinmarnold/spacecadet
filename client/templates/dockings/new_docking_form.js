@@ -7,7 +7,7 @@ Template.newDockingForm.events({
     Stripe.card.createToken(getStripeCard(event), function(status, response) {
       if(response.error) {
         // Stripe didnt like the Credit Card
-        return finishWStripeError(submitButton, response.error);
+        return finishWFieldErrors(submitButton, response.error);
       } else {
         // Successfully tokenized to Stripe Credit Card
         // Validate against how card will be stored in actual DB
@@ -15,36 +15,34 @@ Template.newDockingForm.events({
         var storeableCard = getStoreableCard(response, cardholder);
         var errors = validateCreditCard(storeableCard);
 
-        if (errors.present) return finishWErrors(submitButton, errors);
+        if (errors.present) return finishWFieldErrors(submitButton, errors);
 
-        // var docker = getDocker(event);
-        // var errors = validateDocker(docker);
-        // if (errors.present) return finishWErrors(submitButton, errors);
+        var docker = getDocker(event);
+        var errors = validateDocker(docker);
+        if (errors.present) return finishWFieldErrors(submitButton, errors);
 
-        // // All seems good, try to create card
-        // Meteor.call('createCreditCard',
-        //   storeableCard,
-        //   function(error, cardId) {
-        //     if(error) {
-        //       submitButton.prop("disabled", false);
-        //       return throwError("Sorry something went wrong. Please try again later.");
-        //     } else {
-        //       Meteor.call('createDocking',
-        //         template.data.pad._id,
-        //         getStartDockingOn(),
-        //         getEndDockingOn(),
-        //         docker,
-        //         cardId,
-        //         function(error, dockingId) {
-        //           if(error) {
-        //             submitButton.prop("disabled", false);
-        //             return throwError("Sorry something went wrong. Please try again later.");
-        //           } else {
-        //             Router.go('docking', {_id: dockingId});
-        //           }
-        //       });
-        //     }
-        // });
+        // All seems good, try to create card
+        Meteor.call('createCreditCard',
+          storeableCard,
+          function(error, cardId) {
+            if(error) {
+              return finishWErrors(submitButton, "Sorry something went wrong. Please try again later.");
+            } else {
+              Meteor.call('createDocking',
+                template.data.pad._id,
+                getStartDockingOn(),
+                getEndDockingOn(),
+                docker,
+                cardId,
+                function(error, dockingId) {
+                  if(error) {
+                    return finishWErrors(submitButton, "Sorry something went wrong. Please try again later.");
+                  } else {
+                    Router.go('docking', {_id: dockingId});
+                  }
+              });
+            }
+        });
       }
     });
   },
@@ -64,7 +62,6 @@ Template.newDockingForm.helpers({
 });
 
 var getStoreableCard = function(response, cardholder) {
-  console.log(cardholder);
   return {
     token: response.id,
     cardholder: cardholder,
@@ -90,20 +87,22 @@ var getStripeCard = function(event) {
   };
 }
 
-// var getDocker = function(event) {
-//   var dockerName = $(event.target).find('[id=dockerName]').val();
-//   var dockerEmail = $(event.target).find('[id=dockerEmail]').val();
-//   var dockerPhone = $(event.target).find('[id=dockerPhone]').val();
+var getDocker = function(event) {
+  var dockerName = $(event.target).find('[id=dockerName]').val();
+  var dockerEmail = $(event.target).find('[id=dockerEmail]').val();
+  var dockerPhone = $(event.target).find('[id=dockerPhone]').val();
 
-//   return {
-//     dockerName: dockerName,
-//     dockerEmail: dockerEmail,
-//     dockerPhone: dockerPhone
-//   };
-// }
+  dockerPhone = dockerPhone.replace(/[\s\-\(]/, "");
+  dockerPhone = dockerPhone.replace(")", "");
 
-var finishWErrors = function(submitButton, errors) {
-  console.log("finishe");
+  return {
+    dockerName: dockerName,
+    dockerEmail: dockerEmail,
+    dockerPhone: dockerPhone
+  };
+}
+
+var finishWFieldErrors = function(submitButton, errors) {
   submitButton.prop("disabled", false);
   Session.set('newDockingErrors', errors);
   return;
@@ -114,4 +113,9 @@ var finishWStripeError = function(submitButton,error) {
   errors[error.param] = error.message;
 
   return finishWErrors(submitButton, errors);
+}
+
+var finishWErrors = function(submitButton, msg) {
+  submitButton.prop("disabled", false);
+  return throwError(msg);
 }

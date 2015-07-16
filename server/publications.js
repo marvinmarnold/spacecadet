@@ -31,7 +31,26 @@ Meteor.publish("dockingsForUser", function () {
   check(arguments, [Match.Any]);
   if(this.userId){
     return [
-      Dockings.find({userId:this.userId})
+      Dockings.find({$or: [
+        { userId: this.userId },
+        { isGuest: true }
+      ]})
+    ];
+  }
+  this.ready();
+});
+
+Meteor.publish("dockingForUser", function (dockingId) {
+  check(arguments, [Match.Any]);
+  if(this.userId){
+    return [
+      Dockings.find({$and: [
+        {_id: dockingId },
+        {$or: [
+          { userId: this.userId },
+          { isGuest: true }
+        ]}
+      ]})
     ];
   }
   this.ready();
