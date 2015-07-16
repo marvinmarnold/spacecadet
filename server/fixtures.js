@@ -29,8 +29,10 @@ if ( Meteor.users.find().count() === 0 ) {
     token: "btok_6bCTaIylR180LV",
     bankName: "BANK OF AMERICA, N.A.",
     last4: "6789",
+    accountNumber: "000123456789",
     country: "US",
-    routingNumber: "111000025",
+    isDefault: true,
+    routingNumber: "110000000",
     accountName: "A Test Bank Account",
     currency: "usd"
   });

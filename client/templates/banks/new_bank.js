@@ -21,6 +21,7 @@ Template.newBank.events({
         var storeableAccount = {
           token: response.id,
           last4: response.bank_account.last4,
+          accountNumber: accountNumber,
           accountName: accountName,
           bankName: response.bank_account.bank_name,
           routingNumber: response.bank_account.routing_number,
@@ -28,6 +29,9 @@ Template.newBank.events({
           currency: response.bank_account.currency,
         }
 
+        # TODO - on response use the token to create an account
+        # https://stripe.com/docs/api/node#create_bank_account - server side
+        # client side https://stripe.com/docs/stripe.js?
         Meteor.call('createBankAccount',
           storeableAccount,
           function(error, dockingId) {
