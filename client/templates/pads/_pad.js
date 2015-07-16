@@ -36,9 +36,24 @@ Template._pad.events({
       });
     }
   },
+  'change #price': function(e) {
+    var newPrice = $('#price').first().val();
+    Session.set('landlordCut', landlordCut(newPrice) );
+  }
 });
 
 Template._pad.onRendered(function () {
   $('#availabilityStarts').datepicker();
   $('#availabilityEnds').datepicker();
+  Session.set('landlordCut', landlordCut(this.data.pad.price) );
 });
+
+Template._pad.helpers({
+  landlordCut: function() {
+    return accounting.formatMoney(Session.get('landlordCut'));
+  }
+});
+
+var landlordCut = function(price) {
+  return price * (1 - Meteor.settings.public.spacecadetConnectionFee);
+}
