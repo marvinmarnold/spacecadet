@@ -35,25 +35,38 @@ Meteor.methods({
       Stripe = StripeAPI(Meteor.settings.stripe_sk);
 
       var landlord = Meteor.users.findOne(docking.landlordId);
-      var bank = Banks.findOne({userId: docking.landlordId, isDefault: true});
-
-      var externalAccount = {
-        "country": "US",
-        "currency": "USD",
-        "account_number": bank.accountNumber,
-        "routing_number": bank.routingNumber,
-      }
+      var recipient = Recipients.findOne({userId: docking.landlordId, isDefault: true});
 
       console.log("creditLandlord recipient");
       var transfer = Stripe.transfers.create({
         amount: (docking.landlordCut * 100).toFixed(0),
         currency: "usd",
-        recipient: bank.stripe_id,
-        description: "JULY SALES"
+        recipient: recipient.stripeId,
+        statement_descriptor: "JULY SALES"
       }, function(err, transfer) {
         if (err) throw new Meteor.Error("stripe-charge-error-transfer", err);
         console.log("creditLandlord is manager");
       });
-  }
+
+      // var bank = Banks.findOne({userId: docking.landlordId, isDefault: true});
+
+      // var externalAccount = {
+      //   "country": "US",
+      //   "currency": "USD",
+      //   "account_number": bank.accountNumber,
+      //   "routing_number": bank.routingNumber,
+      // }
+
+      // console.log("creditLandlord recipient");
+      // var transfer = Stripe.transfers.create({
+      //   amount: (docking.landlordCut * 100).toFixed(0),
+      //   currency: "usd",
+      //   recipient: bank.stripe_id,
+      //   description: "JULY SALES"
+      // }, function(err, transfer) {
+      //   if (err) throw new Meteor.Error("stripe-charge-error-transfer", err);
+      //   console.log("creditLandlord is manager");
+      // });
+    }
   }
 });

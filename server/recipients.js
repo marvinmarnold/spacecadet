@@ -21,7 +21,8 @@ Meteor.methods({
         bank_account: bankToken,
         email: "marvinmarnold@gmail.com"
       });
-      console.log("created recipient finished " + result);
+      recipientAttributes.stripeId = result.id;
+      console.log("created recipient finished " + result.id);
     } catch (error) {
       throw new Meteor.Error("stripe-charge-error", error.message);
     }
