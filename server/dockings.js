@@ -29,15 +29,11 @@ Meteor.methods({
     var docking = Dockings.findOne(dockingId);
 
     if(managesDocking(docking) && isAwaitingPayment(docking)) {
-      // if(managesDocking(docking)) {
-      console.log("creditLandlord is manager");
-
       Stripe = StripeAPI(Meteor.settings.stripe_sk);
 
       var landlord = Meteor.users.findOne(docking.landlordId);
       var recipient = Recipients.findOne({userId: docking.landlordId, isDefault: true});
 
-      console.log("creditLandlord recipient");
       var transfer = Stripe.transfers.create({
         amount: (docking.landlordCut * 100).toFixed(0),
         currency: "usd",
@@ -45,8 +41,9 @@ Meteor.methods({
         statement_descriptor: "JULY SALES"
       }, function(err, transfer) {
         if (err) throw new Meteor.Error("stripe-charge-error-transfer", err);
-        console.log("creditLandlord is manager");
       });
+
+      Dockings.update(dockingId, {$set: {state: Dockings.state_payments_settled}});
 
       // var bank = Banks.findOne({userId: docking.landlordId, isDefault: true});
 
