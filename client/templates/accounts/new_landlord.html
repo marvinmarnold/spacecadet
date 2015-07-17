@@ -1,0 +1,108 @@
+<template name="newLandlord">
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h2>Become a Landlord</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <p>Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens. Cum horribilem walking dead resurgere de crazed sepulcris creaturis, zombie sicut de grave feeding iride et serpens.</p>
+      <div class="row top50">
+        <div class="col-md-1">
+        <i class="fa fa-camera-retro fa-3x"></i>
+        </div>
+        <div class="col-md-5">
+          <h4>zombie sicut de grave</h4>
+        </div>
+        <div class="col-md-1">
+        <i class="fa fa-star-o fa-3x"></i>
+        </div>
+        <div class="col-md-5">
+          <h4>iride et serpens</h4>
+        </div>
+      </div>
+
+      <div class="row top75">
+        <div class="col-md-1">
+        <i class="fa fa-cog fa-3x"></i>
+        </div>
+        <div class="col-md-5">
+          <h4>dead resurgere de</h4>
+        </div>
+        <div class="col-md-1">
+        <i class="fa fa-headphones fa-3x"></i>
+        </div>
+        <div class="col-md-5">
+          <h4>zombie sicut de grave</h4>
+        </div>
+      </div>
+
+      <div class="row top75">
+        <div class="col-md-1">
+        <i class="fa fa-map-marker fa-3x"></i>
+        </div>
+        <div class="col-md-5">
+          <h4>zombie sicut de grave</h4>
+        </div>
+        <div class="col-md-1">
+        <i class="fa fa-share-square-o fa-3x"></i>
+        </div>
+        <div class="col-md-5">
+          <h4>feeding iride et serpens</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-md-offset-1">
+      <form>
+        <div class="form-group {{errorClass 'firstName'}}">
+          <label for="firstName">First Name</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="firstName" placeholder="John Doe" value="A Test Name">
+            <span class="help-block">{{errorMessage 'firstName'}}</span>
+          </div>
+        </div>
+
+        <div class="form-group {{errorClass 'lastName'}} top25">
+          <label for="lastName">Last Name</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="lastName" placeholder="John Doe" value="A Test Name">
+            <span class="help-block">{{errorMessage 'lastName'}}</span>
+          </div>
+        </div>
+
+        <div class="form-group {{errorClass 'companyName'}} top25">
+          <label for="companyName">Company Name (optional)</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="companyName" placeholder="John Doe" value="A Test Name">
+            <span class="help-block">{{errorMessage 'companyName'}}</span>
+          </div>
+        </div>
+
+        <div class="form-group {{errorClass 'email'}} top25">
+          <label for="email">Email</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="email" placeholder="John Doe" value="A Test Name">
+            <span class="help-block">{{errorMessage 'email'}}</span>
+          </div>
+        </div>
+
+        <div class="form-group {{errorClass 'password'}} top25">
+          <label for="password">Password</label>
+          <div class="controls">
+            <input type="password" class="form-control input-lg" id="password">
+            <span class="help-block">{{errorMessage 'password'}}</span>
+          </div>
+        </div>
+
+        <button type="submit"
+          id="submit-new-landlord"
+          class="btn btn-default btn-lg btn-success btn-block big-button top25 bottom25">
+          Sign Up
+        </button>
+        {{> errors}}
+      </form>
+    </div>
+  </div>
+</div>
+</template>

@@ -41,3 +41,19 @@ h5 {
 .bottom100 {
   margin-bottom: 100px;
 }
+
+.top25 {
+  margin-top: 25px;
+}
+
+.top50 {
+  margin-top: 50px;
+}
+
+.top75 {
+  margin-top: 75px;
+}
+
+.big-button {
+  font-size: 30px;
+}

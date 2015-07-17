@@ -10,3 +10,14 @@ Template.error.onRendered(function() {
     Errors.remove(error._id);
   }, 6000);
 });
+
+finishWFieldErrors = function(errorNameSpace, submitButton, errors) {
+  submitButton.prop("disabled", false);
+  Session.set(errorNameSpace, errors);
+  return;
+}
+
+finishWErrors = function(submitButton, msg) {
+  submitButton.prop("disabled", false);
+  return throwError(msg);
+}
