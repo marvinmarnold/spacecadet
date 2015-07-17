@@ -1,15 +1,19 @@
 <template name="_loginButtonsAdditionalLoggedInDropdownActions">
-  <button class="btn btn-default btn-block" id="login-buttons-manage-dockings">
-    Manage Dockings
-  </button>
-  <button class="btn btn-default btn-block" id="login-buttons-docking-history">
-    Docking History
-  </button>
-  <button class="btn btn-default btn-block" id="login-buttons-stations">
-    Manage Stations
-  </button>
-  <hr/>
-  <button class="btn btn-default btn-block" id="login-buttons-account">
-    Account Settings
-  </button>
+  {{#if isTenant}}
+    <button class="btn btn-default btn-block" id="login-buttons-docking-history">
+      Docking History
+    </button>
+  {{/if}}
+  {{#if isLandlord}}
+    <button class="btn btn-default btn-block" id="login-buttons-manage-dockings">
+      Manage Dockings
+    </button>
+    <button class="btn btn-default btn-block" id="login-buttons-stations">
+      Manage Stations
+    </button>
+    <hr/>
+    <button class="btn btn-default btn-block" id="login-buttons-account">
+      Account Settings
+    </button>
+  {{/if}}
 </template>
