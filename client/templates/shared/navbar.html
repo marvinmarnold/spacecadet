@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
-        {{#unless isLandlord}}
+        {{#unless loggedIn}}
           <li><a href="{{pathFor 'newLandlord'}}">Become a Landlord</a></li>
         {{/unless}}
       </ul>

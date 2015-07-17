@@ -5,8 +5,9 @@ Template.docking.helpers({
   isStateLandlordApprovalRejected: function() {
     return this.state === Dockings.state_landlord_approval_rejected;
   },
-  isStateAwaitingPayment: function() {
-    return this.state === Dockings.state_awaiting_payment;
+  isStateApproved: function() {
+    return this.state === Dockings.state_awaiting_payment ||
+    this.state === Dockings.state_payments_settled;
   },
   reservationNumber: function() {
     return this._id.toUpperCase();

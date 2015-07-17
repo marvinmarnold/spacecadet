@@ -9,6 +9,16 @@
         <h4 class="bottom50"><b>You will only be charged once approval is complete.</b></h4>
       {{/if}}
 
+      {{#if isStateLandlordApprovalRejected}}
+        <h3 class="text-center bottom50">Docking Request Rejected</h3>
+        <h4>Sorry he didn't approve.</h4>
+        <h4 class="bottom50"><b>You weren't charged anything.</b></h4>
+      {{/if}}
+
+      {{#if isStateApproved}}
+        <h3 class="text-center bottom50">Docking Request Approved</h3>
+      {{/if}}
+
       <h3 class="bottom25">Docking Receipt</h3>
       <h4><b>Reservation Number</b></h4>
       <h4>{{reservationNumber}}</h4>
@@ -31,7 +41,7 @@
       <hr/>
       <div class="row">
         <div class="col-md-2">
-          <h4>{{accounting dailyPadPrice}} x {{daysBetween}} days</h4>
+          <h4>{{accounting dailyPadPrice}} x {{days}} days</h4>
         </div>
         <div class="col-md-2">
         <h4>{{accounting subtotal}}</h4>

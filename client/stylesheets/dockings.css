@@ -50,3 +50,12 @@
   border-radius: 25px;
   padding: 20px;
 }
+
+.docking-preview {
+  border-width: 2px;
+  border-color: #DADADA;
+  background-color: #EBEBEB;
+  border-style: solid;
+  border-radius: 25px;
+  padding: 20px;
+}
