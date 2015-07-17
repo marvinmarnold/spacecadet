@@ -47,11 +47,11 @@
       </tr>
     </thead>
     <tbody>
-      {{#each dockingsUpcoming}}
+      {{#each dockingsPaidOut}}
         <tr>
           <td>{{stationName}}</td>
           <td>{{padName}}</td>
-          <td>{{shortDate createdAt}}</td>
+          <td>{{shortDate startDockingOnDate}}</td>
           <td>{{days}}</td>
           <td>{{accounting landlordCut}}</td>
         </tr>

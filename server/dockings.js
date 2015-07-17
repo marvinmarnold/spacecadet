@@ -34,7 +34,7 @@ Meteor.methods({
         amount: (docking.landlordCut * 100).toFixed(0),
         currency: "usd",
         recipient: recipient.stripeId,
-        statement_descriptor: "JULY SALES"
+        description: "JULY SALES"
       }, function(err, transfer) {
         if (err) throw new Meteor.Error("stripe-charge-error-transfer", err);
       });

@@ -31,8 +31,8 @@ Template.newDockingForm.events({
             } else {
               Meteor.call('createDocking',
                 template.data.pad._id,
-                getStartDockingOn(),
-                getEndDockingOn(),
+                new Date(getStartDockingOn()),
+                new Date(getEndDockingOn()),
                 docker,
                 cardId,
                 function(error, dockingId) {

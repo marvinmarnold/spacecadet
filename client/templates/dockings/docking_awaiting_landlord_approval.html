@@ -1,0 +1,29 @@
+<template name="dockingAwaitingLandlordApproval">
+<div class="docking-awaiting-landlord-approval top25">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{previewPath}}" class="img-responsive">
+    </div>
+    <div class="col-md-4">
+      <h4><b>{{stationName}}</b></h4>
+      <h4>{{padName}}</h4>
+      <h4><b>Start:</b> {{longDate startDockingOnDate}}</h4>
+      <h4><b>End:</b> {{longDate endDockingOnDate}}</h4>
+      <h4>Total: {{accounting total}}</h4>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-lg btn-success landlord-approve-docking btn-block">
+        <h4>Accept Docking</h4>(X remaining)
+      </button><br/>
+      <button class="btn btn-danger landlord-reject-docking btn-block">
+        Reject
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      <h3>Landlord Payout: {{accounting landlordCut}}</h3>
+    </div>
+  </div>
+</div>
+</template>

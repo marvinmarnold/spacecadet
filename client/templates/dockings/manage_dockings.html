@@ -2,31 +2,13 @@
 <div class="page">
   <div class="container">
     <div class="row">
+      {{#if hasDefaultRecipient}}
       <div class="col-md-8">
         {{#if hasDockingsAwaitingLandlordApproval}}
           <h3 class="bottom50">Dockings Requiring Approval</h3>
             <div class="bottom50">
             {{#each dockingsAwaitingLandlordApproval}}
-              <div class="row bottom25">
-                <div class="col-md-4">
-                  <img src="{{previewPath}}" class="img-responsive">
-                </div>
-                <div class="col-md-4">
-                  <h4><b>{{stationName}}</b></h4>
-                  <h4>{{padName}}</h4>
-                  <h4><b>Start:</b> {{longDate startDockingOnDate}}</h4>
-                  <h4><b>End:</b> {{longDate endDockingOnDate}}</h4>
-                  <h3>Total: {{accounting total}}</h3>
-                </div>
-                <div class="col-md-4">
-                  <button class="btn btn-lg btn-success landlord-approve-docking btn-block">
-                    <h4>Accept Docking</h4>(X remaining)
-                  </button><br/>
-                  <button class="btn btn-danger landlord-reject-docking btn-block">
-                    Reject
-                  </button>
-                </div>
-              </div>
+              {{> dockingAwaitingLandlordApproval}}
             {{/each}}
           </div>
         {{/if}}
@@ -35,6 +17,14 @@
       <div class="col-md-4">
         {{>upcomingDockings}}
       </div>
+      {{else}}
+        <h2 class="text-center top50">
+          You first need to add an account to accept payments.
+        </h2>
+        <a href="{{pathFor 'newBank'}}" class="btn btn-lg btn-success btn-block top50">
+          Add an account
+        </a>
+      {{/if}}
     </div>
   </div>
 </div>

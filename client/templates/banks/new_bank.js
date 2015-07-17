@@ -45,7 +45,7 @@ Template.newBank.events({
                 alert(JSON.stringify(error));
                 finishWErrors(submitButton, "Could not create account");
             } else {
-                Router.go('account');
+                Router.go('recipients');
             }
           }
         );
