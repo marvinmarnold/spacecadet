@@ -31,10 +31,17 @@ Meteor.publish("dockingsForUser", function () {
   check(arguments, [Match.Any]);
   if(this.userId){
     return [
-      Dockings.find({$or: [
-        { userId: this.userId },
-        { isGuest: true }
-      ]})
+      Dockings.find({ userId: this.userId })
+    ];
+  }
+  this.ready();
+});
+
+Meteor.publish("dockingsForLandlord", function () {
+  check(arguments, [Match.Any]);
+  if(this.userId){
+    return [
+      Dockings.find({ landlordId: this.userId })
     ];
   }
   this.ready();
