@@ -34,7 +34,7 @@ Meteor.methods({
         amount: (docking.landlordCut * 100).toFixed(0),
         currency: "usd",
         recipient: recipient.stripeId,
-        description: "JULY SALES"
+        description: stripeChargeDescription(docking)
       }, function(err, transfer) {
         if (err) throw new Meteor.Error("stripe-charge-error-transfer", err);
       });
@@ -43,3 +43,11 @@ Meteor.methods({
     }
   }
 });
+
+var stripeChargeDescription = function(docking) {
+  return "Docking #" +
+    docking._id.toUpperCase() +
+    " (checkin: " +
+    moment(docking.startDockingOnDate).format('ddd, MMM D, YYYY')+
+    ")";
+}
