@@ -10,32 +10,43 @@ if (States.find().count() === 0) {
   }
 }
 
-var testUserId;
-var testUser;
+var landlordId;
 
 if ( Meteor.users.find().count() === 0 ) {
-  testUserId = Accounts.createUser({
-    username: "admin",
+  landlordId = Accounts.createUser({
+    username: "testlandlord",
     email: Meteor.settings.landlordEmail,
     password: 'spacecadet',
     profile: {
-      name: 'Test account'
+      firstName: 'Test',
+      lastName: "Landlord",
+      company: "Test Company",
+      role: Accounts.role.landlord
     }
   });
-  testUser = Meteor.users.findOne(testUserId);
+  // landlord = Meteor.users.findOne(landlordId);
 
-  // Banks.insert({
-  //   userId: testUserId,
-  //   token: "btok_6bCTaIylR180LV",
-  //   bankName: "BANK OF AMERICA, N.A.",
-  //   last4: "6789",
-  //   accountNumber: "000123456789",
-  //   country: "US",
-  //   isDefault: true,
-  //   routingNumber: "110000000",
-  //   accountName: "A Test Bank Account",
-  //   currency: "usd"
-  // });
+  Accounts.createUser({
+    username: "testadmin",
+    email: Meteor.settings.adminEmail,
+    password: 'spacecadet',
+    profile: {
+      firstName: 'Test',
+      lastName: "Admin",
+      role: Accounts.role.admin
+    }
+  });
+
+  Accounts.createUser({
+    username: "testtenant",
+    email: Meteor.settings.tenantEmail,
+    password: 'spacecadet',
+    profile: {
+      firstName: 'Test',
+      lastName: "Tenant",
+      role: Accounts.role.tenant
+    }
+  });
 }
 
 if (Stations.find().count() === 0) {
@@ -47,7 +58,7 @@ if (Stations.find().count() === 0) {
       city: "New Orleans",
       zip: "70113",
       state: "LA",
-      userId: testUserId,
+      userId: landlordId,
       previewPath: "/station.jpg",
       bannerPath: "/station-banner.jpg"
     });

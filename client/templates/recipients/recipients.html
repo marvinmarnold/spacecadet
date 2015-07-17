@@ -1,4 +1,4 @@
-<template name="account">
+<template name="recipients">
 <div class="page">
   <div class="container">
     <h2>{{user.email}}</h2>
@@ -13,7 +13,9 @@
         <h4><b>Account Number:</b> **{{last4}}</h4>
         <h4><b>Routing Number:</b> {{routingNumber}}</h4>
         {{#unless isDefault}}
-          <button class="btn btn-info activate-account btn-block">Activate</button>
+          <button class="btn btn-info activate-account btn-block">
+          Activate
+          </button>
         {{/unless}}
       </div>
     {{/each}}

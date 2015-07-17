@@ -7,11 +7,8 @@ Accounts.onCreateUser(function(options, user) {
   }, 2 * 1000);
 
 
-  if (options.role && options.role === Accounts.role.landlord) {
-    profile.firstName = options.firstName;
-    profile.lastName = options.lastName;
-    profile.companyName = options.companyName;
-    profile.role = options.role;
+  if (options.profile && options.profile.role) {
+    profile = options.profile;
   } else {
     profile.role = Accounts.role.tenant;
   }
