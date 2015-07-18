@@ -3,7 +3,13 @@
   background-size:   cover;
   background-repeat: no-repeat;
   background-position: center center;
+  color: white;
 }
+
+.homepage-banner .navbar .nav > li > a {
+  color: white;
+}
+
 
 .homepage-title {
   padding-top: 125px;

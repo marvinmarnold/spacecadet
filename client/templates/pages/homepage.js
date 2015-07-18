@@ -11,3 +11,9 @@ Template.homepage.created = function() {
     });
   }
 };
+
+Template.homepage.helpers({
+  brandUrl: function() {
+    return "/logo-white-nav.png";
+  }
+})

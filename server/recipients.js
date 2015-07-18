@@ -1,6 +1,5 @@
 Meteor.methods({
   'createRecipient': function(bankToken, recipientAttributes) {
-    console.log("createRecipient");
     check(Meteor.userId(), String);
     check(bankToken, String);
     check(recipientAttributes, {

@@ -11,7 +11,7 @@ Template.editStation.helpers({
 });
 
 var isOwner = function(actualUserId, stationUserId) {
-  return actualUserId && actualUserId == stationUserId;
+  return isAdmin() || actualUserId && actualUserId == stationUserId;
 }
 
 Template.editStation.onRendered(function () {
