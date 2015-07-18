@@ -8,9 +8,12 @@ Meteor.methods({
 
     Email.send({
       to: to,
-      from: "team@spacecadet.io",
+      from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Approval Needed on New Docking Request",
-      text: "Todo"
+      text: "Greetings {{firstName}},\n\n" +
+      "Thank you for granting the SpaceCadet Fleet access to your Station, and you have received a request to dock at one of your Landing Pads. Please visit http://spacecadet.meteor.com/manage-dockings to review and approve the request!\n\n" +
+      "Happy Renting!\n" +
+      "The Space Cadets"
     });
   },
   sendTenantApprovalEmail: function (to) {
@@ -22,9 +25,20 @@ Meteor.methods({
 
     Email.send({
       to: to,
-      from: "team@spacecadet.io",
+      from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Docking Request Approved",
-      text: "Todo"
+      text: "Greetings Captain{firstNameRenter},\n\n" +
+      "Thank you for choosing to dock at a SpaceCadet Landing Pad, and your request to dock at {StationAddress} has been approved by the Station Commander.  The details of your docking are below.\n\n" +
+      "Reservation Number: {reservationNumber}\n" +
+      "{landingPadName} at {stationName}\n" +
+      "{stationAddress}\n" +
+      "{stationContactName}\n" +
+      "{startDate} - {endDate}\n" +
+      "{price} at {numberDays} = {subtotal}\n" +
+      "Service Fee = {price*.05}\n" +
+      "Total  = {price + service fee}\n\n" +
+      "Happy Renting!\n" +
+      "The Space Cadets"
     });
   },
   sendTenantRejectedEmail: function (to) {
@@ -36,21 +50,39 @@ Meteor.methods({
 
     Email.send({
       to: to,
-      from: "team@spacecadet.io",
+      from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Docking Request Rejected",
-      text: "Greetings Cadet,\n\nUnfortunately,  at your Station." +
-            " We hope there is a better match next time, and please let us know how we can help in the future!\n\n" +
-            "Happy Renting!\nThe Space Cadets"
+      text: "Greetings Captain{firstNameRenter}," +
+            "Your request to dock at {stationAddress} has been rejected. We hope there is a better match next time, and please let us know how we can help in the future!\n\n" +
+            "Happy Renting!\n" +
+            "The Space Cadets"
+    });
+  },
+  messageReceived: function(to) {
+    check(to, String);
+
+    // Let other method calls from the same client start running,
+    // without waiting for the email sending to complete.
+    this.unblock();
+
+    Email.send({
+      to: to,
+      from: "SpaceCadet <hello@spacecadet.io>",
+      subject: "Docking Request Rejected",
+      text: "Greetings Captain{firstNameRenter}," +
+            "Your request to dock at {stationAddress} has been rejected. We hope there is a better match next time, and please let us know how we can help in the future!\n\n" +
+            "Happy Renting!\n" +
+            "The Space Cadets"
     });
   }
 });
 
 Meteor.startup(function () {
   smtp = {
-    username: Meteor.settings.gmail_username,   // eg: server@gentlenode.com
-    password: Meteor.settings.gmail_password,   // eg: 3eeP1gtizk5eziohfervU
-    server:   'smtp.gmail.com',  // eg: mail.gandi.net
-    port: 25
+    username: Meteor.settings.smtp_username,   // eg: server@gentlenode.com
+    password: Meteor.settings.smtp_password,   // eg: 3eeP1gtizk5eziohfervU
+    server:   'smtp.mailgun.org',  // eg: mail.gandi.net
+    port: 587
   }
 
   process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;

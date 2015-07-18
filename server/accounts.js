@@ -17,3 +17,8 @@ Accounts.onCreateUser(function(options, user) {
 
   return user;
 });
+
+Meteor.startup(function() {
+  Accounts.emailTemplates.siteName = "SpaceCadet";
+  Accounts.emailTemplates.from = "SpaceCadet <hello@spacecadet.io>";
+});
