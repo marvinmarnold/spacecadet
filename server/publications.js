@@ -27,24 +27,68 @@ Meteor.publish('padsForStation', function(stationId) {
   return Pads.find({stationId: stationId});
 });
 
-Meteor.publish('tenantConversations', function() {
-  check(arguments, [Match.Any]);
-  if(this.userId){
-    return [
-      Conversations.find({ tenantId: this.userId })
-    ];
+Meteor.publish('tenantConversations', function(limit) {
+  var sub = this, messageHandles = [], conversationHandle = null;
+
+  function conversationMessages(conversationId) {
+    var messagesCursor = Messages.find({conversationId: conversationId});
+    messageHandles[conversationId] =
+      Mongo.Collection._publishCursor(messagesCursor, sub, 'messages');
   }
-  this.ready();
+
+  conversationHandle = Conversations.find({ tenantId: this.userId }).observeChanges({
+    added: function(id, conversation) {
+      conversationMessages(id);
+      sub.added('conversations', id, conversation);
+    },
+    changed: function(id, fields) {
+      sub.changed('conversations', id, fields);
+    },
+    removed: function(id) {
+      // stop observing changes on the post's comments
+      messageHandles[id] && messageHandles[id].stop();
+      // delete the post
+      sub.removed('conversations', id);
+    }
+  });
+
+  sub.ready();
+
+  // make sure we clean everything up (note `_publishCursor`
+  //   does this for us with the comment observers)
+  sub.onStop(function() { conversationHandle.stop(); });
 });
 
-Meteor.publish('landlordConversations', function() {
-  check(arguments, [Match.Any]);
-  if(this.userId){
-    return [
-      Conversations.find({ landlordId: this.userId })
-    ];
+Meteor.publish('landlordConversations', function(limit) {
+  var sub = this, messageHandles = [], conversationHandle = null;
+
+  function conversationMessages(conversationId) {
+    var messagesCursor = Messages.find({conversationId: conversationId});
+    messageHandles[conversationId] =
+      Mongo.Collection._publishCursor(messagesCursor, sub, 'messages');
   }
-  this.ready();
+
+  conversationHandle = Conversations.find({ landlordId: this.userId }).observeChanges({
+    added: function(id, conversation) {
+      conversationMessages(id);
+      sub.added('conversations', id, conversation);
+    },
+    changed: function(id, fields) {
+      sub.changed('conversations', id, fields);
+    },
+    removed: function(id) {
+      // stop observing changes on the post's comments
+      messageHandles[id] && messageHandles[id].stop();
+      // delete the post
+      sub.removed('conversations', id);
+    }
+  });
+
+  sub.ready();
+
+  // make sure we clean everything up (note `_publishCursor`
+  //   does this for us with the comment observers)
+  sub.onStop(function() { conversationHandle.stop(); });
 });
 
 Meteor.publish("dockingsForUser", function () {
