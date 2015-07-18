@@ -50,10 +50,9 @@ Meteor.publish("dockingsForLandlord", function () {
 Meteor.publish("dockingForUser", function (dockingId) {
   check(arguments, [Match.Any]);
   if(this.userId){
-    return [ Dockings.find({$and: [
-        {_id: dockingId },
-        { isGuest: false },
-        { userId: this.userId },
+    return [ Dockings.find({$or: [
+        {isGuest: false, _id: dockingId, userId: this.userId},
+        {_id: dockingId, isGuest: true}
       ]})
     ];
   } else {

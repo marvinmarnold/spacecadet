@@ -38,7 +38,9 @@ Meteor.methods({
       to: to,
       from: "team@spacecadet.io",
       subject: "Docking Request Rejected",
-      text: "Todo"
+      text: "Greetings Cadet,\n\nUnfortunately,  at your Station." +
+            " We hope there is a better match next time, and please let us know how we can help in the future!\n\n" +
+            "Happy Renting!\nThe Space Cadets"
     });
   }
 });

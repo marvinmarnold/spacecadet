@@ -19,8 +19,9 @@
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
         {{#unless loggedIn}}
-          <li><a href="{{pathFor 'newLandlord'}}">Become a Landlord</a></li>
+          <li><a href="{{pathFor 'newLandlord'}}">List Your Space</a></li>
         {{/unless}}
+        <li><a href="{{pathFor 'about'}}">About SpaceCadet</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>
