@@ -23,7 +23,7 @@ Template.newBank.events({
 
     Stripe.bankAccount.createToken(externalAccount, function(status, response) {
       if (response.error) {
-        alert(response.error);
+        finishWErrors(submitButton, "Does not appear to be a valid account");
       } else {
         var storeableAccount = {
           last4: response.bank_account.last4,
@@ -42,7 +42,6 @@ Template.newBank.events({
           storeableAccount,
           function(error, dockingId) {
             if(error) {
-                alert(JSON.stringify(error));
                 finishWErrors(submitButton, "Could not create account");
             } else {
                 Router.go('recipients');

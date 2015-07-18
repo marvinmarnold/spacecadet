@@ -18,9 +18,8 @@ Meteor.methods({
         {external_account: token
       });
       externalAccountAttributes.stripe_id = response.id;
-      console.log("chargeCard finished " + response.id);
     } catch (error) {
-      throw new Meteor.Error("stripe-charge-error", error.message);
+      // return finishWErrors(submitButton, "Could not create account");
     }
 
     var user = Meteor.user();

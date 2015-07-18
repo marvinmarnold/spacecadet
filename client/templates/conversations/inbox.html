@@ -2,9 +2,13 @@
 <div class="container">
   <h2>Your Inbox</h2>
   {{#each conversations}}
-    {{#each messages}}
-      {{content}}
-    {{/each}}
+    <div class="conversation top25">
+      <h3>Conversation with {{otherUser}}</h3>
+      {{#each messages}}
+        {{> message}}
+      {{/each}}
+    </div>
   {{/each}}
+  <div class="bottom25"></div>
 </div>
 </template>
