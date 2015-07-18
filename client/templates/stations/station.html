@@ -15,6 +15,15 @@
           <h4>{{address}}</h4>
           <h4>{{city}}, {{state}}</h4>
           <p class="station-description">{{description}}</p>
+          {{> errors}}
+          {{#if notComposing}}
+            <button id="contact-landlord" class="btn btn-link btn-lg">
+            Contact Landlord
+            </button>
+          {{/if}}
+          {{#if isComposing}}
+            {{> compose recipientId=userId}}
+          {{/if}}
         {{/with}}
         <div class="station-search row">
           {{> dockingDatesPicker}}

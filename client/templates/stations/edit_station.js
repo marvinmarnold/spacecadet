@@ -14,7 +14,7 @@ var isOwner = function(actualUserId, stationUserId) {
   return actualUserId && actualUserId == stationUserId;
 }
 
-Template.station.onRendered(function () {
+Template.editStation.onRendered(function () {
   Session.set('addingLandingPad', false);
 });
 
