@@ -46,14 +46,22 @@ Template._pad.onRendered(function () {
   $('#availabilityStarts').datepicker();
   $('#availabilityEnds').datepicker();
   Session.set('landlordCut', landlordCut(this.data.pad.price) );
+  Session.set('connectionFee', connectionFee(this.data.pad.price) );
 });
 
 Template._pad.helpers({
   landlordCut: function() {
     return accounting.formatMoney(Session.get('landlordCut'));
-  }
+  },
+  connectionFee: function() {
+    return accounting.formatMoney(Session.get('connectionFee'));
+  },
 });
 
 var landlordCut = function(price) {
   return price * (1 - Meteor.settings.public.spacecadetConnectionFee);
+}
+
+var connectionFee = function(price) {
+  return price * Meteor.settings.public.spacecadetConnectionFee;
 }

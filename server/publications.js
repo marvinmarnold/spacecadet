@@ -27,6 +27,26 @@ Meteor.publish('padsForStation', function(stationId) {
   return Pads.find({stationId: stationId});
 });
 
+Meteor.publish('tenantConversations', function() {
+  check(arguments, [Match.Any]);
+  if(this.userId){
+    return [
+      Conversations.find({ tenantId: this.userId })
+    ];
+  }
+  this.ready();
+});
+
+Meteor.publish('landlordConversations', function() {
+  check(arguments, [Match.Any]);
+  if(this.userId){
+    return [
+      Conversations.find({ landlordId: this.userId })
+    ];
+  }
+  this.ready();
+});
+
 Meteor.publish("dockingsForUser", function () {
   check(arguments, [Match.Any]);
   if(this.userId){

@@ -5,8 +5,7 @@ Template.compose.events({
   },
   'submit form': function(e, t) {
     e.preventDefault();
-    console.log(t);
-    console.log(t.data);
+
     var message = {
       content: $(e.target).find('[name=content]').val(),
       recipientId: t.data.recipientId
