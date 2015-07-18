@@ -44,6 +44,8 @@
         <th>Docking Start</th>
         <th>Days</th>
         <th>Revenue</th>
+        <th>Entity Name</th>
+        <th>Individual Responsible</th>
       </tr>
     </thead>
     <tbody>
@@ -54,6 +56,8 @@
           <td>{{shortDate startDockingOnDate}}</td>
           <td>{{days}}</td>
           <td>{{accounting landlordCut}}</td>
+          <td>{{entityName}}</td>
+          <td>{{dockerName}}</td>
         </tr>
       {{/each}}
     </tbody>

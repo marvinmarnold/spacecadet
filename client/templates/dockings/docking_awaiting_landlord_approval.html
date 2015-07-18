@@ -9,11 +9,11 @@
       <h4>{{padName}}</h4>
       <h4><b>Start:</b> {{longDate startDockingOnDate}}</h4>
       <h4><b>End:</b> {{longDate endDockingOnDate}}</h4>
-      <h4>Total: {{accounting total}}</h4>
+      <h4>Total: {{accounting subtotal}}</h4>
     </div>
     <div class="col-md-4">
       <button class="btn btn-lg btn-success landlord-approve-docking btn-block">
-        <h4>Accept Docking</h4>(X remaining)
+        <h4>Accept Docking</h4>
       </button><br/>
       <button class="btn btn-danger landlord-reject-docking btn-block">
         Reject
@@ -23,6 +23,8 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
       <h3>Landlord Payout: {{accounting landlordCut}}</h3>
+      <h4>Entity Name: {{entityName}}</h4>
+      <h4>Contact Name: {{dockerName}}</h4>
     </div>
   </div>
 </div>

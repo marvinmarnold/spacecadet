@@ -92,6 +92,7 @@ var getDocker = function(event) {
   var dockerName = $(event.target).find('[id=dockerName]').val();
   var dockerEmail = $(event.target).find('[id=dockerEmail]').val();
   var dockerPhone = $(event.target).find('[id=dockerPhone]').val();
+  var entityName = $(event.target).find('[id=entityName]').val();
 
   dockerPhone = dockerPhone.replace(/[\s\-\(]/, "");
   dockerPhone = dockerPhone.replace(")", "");
@@ -99,7 +100,8 @@ var getDocker = function(event) {
   return {
     dockerName: dockerName,
     dockerEmail: dockerEmail,
-    dockerPhone: dockerPhone
+    dockerPhone: dockerPhone,
+    entityName: entityName
   };
 }
 
