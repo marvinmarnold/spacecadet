@@ -2,12 +2,13 @@
 <div class="page">
   <div class="container">
     <h1 class="text-center">Your Stations</h1>
-
-    <div class="row new-station-button">
-      <div class="col-xs-12 col-md-10 col-md-offset-1">
-        <button id="new-station-button" class="btn btn-lg btn-block btn-success">Create new Station</button>
+    {{#if isExactlyLandlord}}
+      <div class="row new-station-button">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+          <button id="new-station-button" class="btn btn-lg btn-block btn-success">Create new Station</button>
+        </div>
       </div>
-    </div>
+    {{/if}}
     <div class="stations-list">
       {{#each stations}}
         <a href="{{pathFor 'station'}}">
