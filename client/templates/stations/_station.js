@@ -27,13 +27,13 @@ Template._station.events({
       Meteor.call('stationCreate', station, function(error, result) {
         if (error)
           return alert(error.reason);
-        Router.go('station', {_id: result._id});
+        Router.go('editStation', {_id: result._id});
       });
     } else {
       Meteor.call('editStation', this.station._id, station, function(error, result) {
         if (error)
           return alert(error.reason);
-        Router.go('station', {_id: result._id});
+        Router.go('editStation', {_id: result._id});
       });
     }
   },
