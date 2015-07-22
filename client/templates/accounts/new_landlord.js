@@ -20,15 +20,17 @@ Template.newLandlord.events({
 
     var firstName = $(event.target).find('[id=firstName]').val();
     var lastName = $(event.target).find('[id=lastName]').val();
-    var companyName = $(event.target).find('[id=companyName]').val();
+    var entityName = $(event.target).find('[id=entityName]').val();
     var email = $(event.target).find('[id=email]').val();
+    var phoneNumber = $(event.target).find('[id=phoneNumber]').val();
     var password = $(event.target).find('[id=password]').val();
 
     Meteor.call('createLandlord', {
       firstName: firstName,
       lastName: lastName,
-      companyName: companyName,
+      entityName: entityName,
       email: email,
+      phoneNumber: phoneNumber,
       password: password
     }, function(e, userId) {
       if(e) {
@@ -36,8 +38,9 @@ Template.newLandlord.events({
       }
 
       Meteor.loginWithPassword(email, password, function(e, r){
-        if (e)
-          alert("fail");
+        if (e) {
+          finishWErrors(submitButton, "Account created, but could not log you in");
+        }
         Router.go("stations");
       });
     });

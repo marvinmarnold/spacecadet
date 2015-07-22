@@ -59,6 +59,22 @@ Template.newDockingForm.helpers({
   },
   errorClass: function (field) {
     return !!Session.get('newDockingErrors')[field] ? 'has-error' : '';
+  },
+  dockerName: function() {
+    if(Meteor.user()) {
+      var profile = Meteor.user().profile;
+      return [profile.firstName, profile.lastName].join([separator = ' ']);
+    }
+    return "";
+  },
+  dockerEmail: function() {
+    return Meteor.user() ? Meteor.user().emails[0].address : "";
+  },
+  dockerPhone: function() {
+    return Meteor.user() ? Meteor.user().profile.phoneNumber : "";
+  },
+  dockerEntity: function() {
+    return Meteor.user() ? Meteor.user().profile.entityName : "";
   }
 });
 

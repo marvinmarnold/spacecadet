@@ -21,18 +21,18 @@ Meteor.methods({
       "The Space Cadets"
     });
   },
-  sendTenantApprovalEmail: function (to) {
-    check(to, String);
+  sendTenantApprovalEmail: function (docking) {
+    check(docking, Object);
 
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
 
     Email.send({
-      to: to,
+      to: docking.dockerEmail,
       from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Docking Request Approved",
-      text: "Greetings Captain{firstNameRenter},\n\n" +
+      text: "Greetings Captain {{docking.dockerName}},\n\n" +
       "Thank you for choosing to dock at a SpaceCadet Landing Pad, and your request to dock at {StationAddress} has been approved by the Station Commander.  The details of your docking are below.\n\n" +
       "Reservation Number: {reservationNumber}\n" +
       "{landingPadName} at {stationName}\n" +

@@ -61,7 +61,7 @@
         <div class="form-group {{errorClass 'entityName'}}">
           <label for="entityName" class="control-label">Business or Individual Renting</label>
           <div class="controls">
-            <input type="text" class="form-control input-lg" id="entityName" placeholder="" value="The Person Stayin">
+            <input type="text" class="form-control input-lg" id="entityName" value="{{dockerEntity}}">
             <span class="help-block">{{errorMessage 'entityName'}}</span>
           </div>
         </div>
@@ -72,7 +72,7 @@
         <div class="form-group {{errorClass 'dockerName'}}">
           <label for="dockerName" class="control-label">Contact Name</label>
           <div class="controls">
-            <input type="text" class="form-control input-lg" id="dockerName" placeholder="" value="The Person Stayin">
+            <input type="text" class="form-control input-lg" id="dockerName" value="{{dockerName}}">
             <span class="help-block">{{errorMessage 'dockerName'}}</span>
           </div>
         </div>
@@ -83,7 +83,7 @@
         <div class="form-group {{errorClass 'dockerPhone'}}">
           <label for="dockerPhone" class="control-label">Contact Phone</label>
           <div class="controls">
-            <input type="tel" class="form-control input-lg" id="dockerPhone" placeholder="" value="(301) 686-4576">
+            <input type="tel" class="form-control input-lg" id="dockerPhone" value="{{dockerPhone}}">
             <span class="help-block">{{errorMessage 'dockerPhone'}}</span>
           </div>
         </div>
@@ -94,7 +94,7 @@
         <div class="form-group {{errorClass 'dockerEmail'}}">
           <label for="dockerEmail" class="control-label">Contact Email</label>
           <div class="controls">
-            <input type="email" class="form-control input-lg" id="dockerEmail" placeholder="" value="marvin@unplugged.im">
+            <input type="email" class="form-control input-lg" id="dockerEmail" value="{{dockerEmail}}">
             <span class="help-block">{{errorMessage 'dockerEmail'}}</span>
           </div>
         </div>

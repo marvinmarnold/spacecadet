@@ -16,26 +16,30 @@
           <h4>{{city}}, {{state}}</h4>
           <p class="station-description">{{description}}</p>
           {{> errors}}
-          {{#if notComposing}}
-            <button id="contact-landlord" class="btn btn-link btn-lg">
-            Contact Landlord
-            </button>
-          {{/if}}
-          {{#if isComposing}}
-            {{> compose recipientId=userId}}
-          {{/if}}
         {{/with}}
+        <h3>Select dates and choose Landing Pad</h3>
         <div class="station-search row">
           {{> dockingDatesPicker}}
         </div>
         {{#if true}}
           <h4>You want to dock for {{dockingDurationDays}}</h4>
         {{/if}}
+        {{#with station}}
+          {{#if notComposing}}
+            <button id="contact-landlord" class="btn btn-link btn-lg">
+            Ask Landlord a question
+            </button>
+          {{/if}}
+          {{#if isComposing}}
+            {{> compose recipientId=userId}}
+          {{/if}}
+        {{/with}}
       </div>
+      <h2>Spaces available for rent</h2>
       {{#each pads}}
         <div class="col-md-4 landing-pad">
           {{> pad}}
-          <a href="/dock?pad_id={{_id}}&station_id={{stationId}}" class="btn btn-success btn-block btn-lg add-docking-to-cart">Request to Dock ({{accounting price}})</a>
+          <a href="/dock?pad_id={{_id}}&station_id={{stationId}}" class="btn btn-success btn-block btn-lg add-docking-to-cart">Request to Dock Here</a>
         </div>
       {{/each}}
     </div>

@@ -39,6 +39,7 @@ Template._pad.events({
   'change #price': function(e) {
     var newPrice = $('#price').first().val();
     Session.set('landlordCut', landlordCut(newPrice) );
+    Session.set('connectionFee', connectionFee(newPrice) );
   }
 });
 
