@@ -1,3 +1,8 @@
 <template name="message">
-  {{content}}
+  <div class="row top25">
+    <div class="{{messageAlignmentClass}}">
+      <p class="{{contentAlignmentClass}}">{{content}}</p>
+      <p class="{{timeAlignmentClass}}">{{timeAgo}}</p>
+    </div>
+  </div>
 </template>

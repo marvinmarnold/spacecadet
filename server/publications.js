@@ -27,6 +27,8 @@ Meteor.publish('padsForStation', function(stationId) {
   return Pads.find({stationId: stationId});
 });
 
+// Publish the conversations for which the current_user is the tenant
+// All conversations are exclusively between tenants and landlords
 Meteor.publish('tenantConversations', function(limit) {
   var sub = this, messageHandles = [], conversationHandle = null;
 
@@ -59,6 +61,8 @@ Meteor.publish('tenantConversations', function(limit) {
   sub.onStop(function() { conversationHandle.stop(); });
 });
 
+// Publish the conversations for which the current_user is the landlord
+// All conversations are exclusively between tenants and landlords
 Meteor.publish('landlordConversations', function(limit) {
   var sub = this, messageHandles = [], conversationHandle = null;
 

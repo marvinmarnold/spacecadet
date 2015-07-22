@@ -1,4 +1,4 @@
-Template.inbox.helpers({
+Template.conversationHistory.helpers({
   messages: function() {
     return Messages.find({conversationId: this._id}, {sort: {createdAt: -1}});
   },
