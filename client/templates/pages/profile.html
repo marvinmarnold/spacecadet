@@ -1,0 +1,55 @@
+<template name="profile">
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h2 class="text-center">Edit Profile</h2>
+    {{#with profile}}
+    <form>
+      <div class="row">
+        <div class="form-group {{errorClassForForm 'entityName'}}">
+          <label for="entityName">Company Name</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="entityName" value="{{entity}}">
+            <span class="help-block">{{errorMessageForForm 'entityName'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group {{errorClassForForm 'firstName'}}">
+          <label for="firstName">First Name</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="firstName" value="{{firstName}}">
+            <span class="help-block">{{errorMessageForForm 'firstName'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group {{errorClassForForm 'lastName'}}">
+          <label for="lastName">Last Name</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="lastName" value="{{lastName}}">
+            <span class="help-block">{{errorMessageForForm 'lastName'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group {{errorClassForForm 'phoneNumber'}}">
+          <label for="phoneNumber">Phone Number</label>
+          <div class="controls">
+            <input type="text" class="form-control input-lg" id="phoneNumber"  value="{{phoneNumber}}">
+            <span class="help-block">{{errorMessageForForm 'phoneNumber'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row bottom25">
+        <button type="submit"
+          id="submit-profile"
+          class="btn btn-default btn-lg btn-success btn-block submit-profile">
+          Update Profile
+        </button>
+      </div>
+      <div class="row">{{> errors}}</div>
+    </form>
+    {{/with}}
+  </div>
+</div>
+</template>

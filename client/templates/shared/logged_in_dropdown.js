@@ -11,4 +11,7 @@ Template._loginButtonsLoggedInDropdown.events({
   'click #login-buttons-account': function(event) {
       Router.go('recipients');
   },
+  'click #login-buttons-profile': function(event) {
+      Router.go('profile');
+  },
 });

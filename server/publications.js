@@ -8,6 +8,10 @@ Meteor.publish("managedStations", function () {
   this.ready();
 });
 
+Meteor.publish("currentUser", function() {
+  return Meteor.users.find(this.userId);
+});
+
 Meteor.publish("allStations", function() {
   return Stations.find({});
 });

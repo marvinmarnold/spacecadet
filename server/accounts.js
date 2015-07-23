@@ -22,3 +22,16 @@ Meteor.startup(function() {
   Accounts.emailTemplates.siteName = "SpaceCadet";
   Accounts.emailTemplates.from = "SpaceCadet <hello@spacecadet.io>";
 });
+
+Meteor.methods({
+  'updateProfile': function(profile) {
+    check(profile, {
+      firstName: String,
+      lastName: String,
+      entityName: String,
+      phoneNumber: String
+    });
+
+    return Meteor.users.update({_id: Meteor.userId()}, {$set: {profile: profile}});
+  }
+});

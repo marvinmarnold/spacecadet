@@ -18,9 +18,11 @@ if ( Meteor.users.find().count() === 0 ) {
     email: Meteor.settings.landlordEmail,
     password: 'spacecadet',
     profile: {
+      entityName: "SpaceCadet",
       firstName: 'Test',
       lastName: "Landlord",
       company: "Test Company",
+      phoneNumber: "3016864576",
       role: Accounts.role.landlord
     }
   });
@@ -31,8 +33,10 @@ if ( Meteor.users.find().count() === 0 ) {
     email: Meteor.settings.adminEmail,
     password: 'spacecadet',
     profile: {
+      entityName: "SpaceCadet",
       firstName: 'Test',
       lastName: "Admin",
+      phoneNumber: "3016864576",
       role: Accounts.role.admin
     }
   });
@@ -42,8 +46,10 @@ if ( Meteor.users.find().count() === 0 ) {
     email: Meteor.settings.tenantEmail,
     password: 'spacecadet',
     profile: {
+      entityName: "SpaceCadet",
       firstName: 'Test',
       lastName: "Tenant",
+      phoneNumber: "3016864576",
       role: Accounts.role.tenant
     }
   });
