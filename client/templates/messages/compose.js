@@ -10,7 +10,7 @@ Template.compose.events({
       content: $(e.target).find('[name=content]').val(),
       recipientId: t.data.recipientId
     };
-
+    console.log(t.data.recipientId);
     Meteor.call('sendMessage', message, function(e, r){
       if(e) alert(e);
       Session.set('isComposing', false);

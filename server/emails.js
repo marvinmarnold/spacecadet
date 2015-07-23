@@ -1,24 +1,27 @@
 Meteor.methods({
-  sendLandlordApprovalEmail: function (docker) {
-    check(docker, {
-      dockerName: String,
-      dockerPhone: String,
-      dockerEmail: String,
-      entityName: String
-    });
+  sendLandlordApprovalEmail: function (landlordId) {
+    check(landlordId, String),
 
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
 
+    landlord = Meteor.users.findOne(landlordId);
+    email = landlord.emails[0].address;
+    name = landlord.profile.firstName;
+    console.log("LANDLORD: " + email);
+    console.log("LANDLORD: " + name);
+
     Email.send({
-      to: docker.dockerEmail,
+      to: email,
       from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Approval Needed on New Docking Request",
-      text: "Greetings " +docker.dockerName+",\n\n" +
-      "Thank you for granting the SpaceCadet Fleet access to your Station, and you have received a request to dock at one of your Landing Pads. Please visit http://spacecadet.meteor.com/manage-dockings to review and approve the request!\n\n" +
-      "Happy Renting!\n" +
-      "The Space Cadets"
+      text: "Greetings " + name + ",\n" +
+      "Thank you for granting the SpaceCadet Fleet access to your Station, " +
+      "and you have received a request to dock at one of your Landing Pads. " +
+      "Please visit http://spacecadet.meteor.com/manage-dockings to review and approve the request!" +
+      "\n\nHappy Renting!" +
+      "\nThe Space Cadets"
     });
   },
   sendTenantApprovalEmail: function (docking) {
@@ -32,21 +35,22 @@ Meteor.methods({
       to: docking.dockerEmail,
       from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Docking Request Approved",
-      text: "Greetings Captain {{docking.dockerName}},\n\n" +
-      "Thank you for choosing to dock at a SpaceCadet Landing Pad, and your request to dock at {StationAddress} has been approved by the Station Commander.  The details of your docking are below.\n\n" +
-      "Reservation Number: {reservationNumber}\n" +
-      "{landingPadName} at {stationName}\n" +
-      "{stationAddress}\n" +
-      "{stationContactName}\n" +
-      "{startDate} - {endDate}\n" +
-      "{price} at {numberDays} = {subtotal}\n" +
-      "Service Fee = {price*.05}\n" +
-      "Total  = {price + service fee}\n\n" +
-      "Happy Renting!\n" +
+      text: "Greetings Captain "+ docking.dockerName + ",\n\n" +
+      "Thank you for choosing to dock at a SpaceCadet Landing Pad, " +
+      "and your request to dock at " + docking.address + " has been approved by the Station Commander. " +
+      "The details of your docking are below.\n\n" +
+      "Reservation Number: " + docking._id.toUpperCase() +
+      "\n" + docking.padName + " at " + docking.stationName + "\n" +
+      "\n" + docking.address +
+      "\n" + moment(new Date(docking.startDockingOnDate)).format('L') + " - " + moment(new Date(docking.endDockingOnDate)).format('L') +
+      "\n\n" + accounting.formatMoney(docking.dailyPadPrice) + " at " + docking.days + " days = " + accounting.formatMoney(docking.subtotal) +
+      "\nService Fee = " + accounting.formatMoney(docking.serviceFee) +
+      "\nTotal  = " + accounting.formatMoney(docking.total) +
+      "\n\nHappy Renting!\n" +
       "The Space Cadets"
     });
   },
-  sendTenantRejectedEmail: function (to) {
+  sendTenantRejectedEmail: function (docking) {
     check(to, String);
 
     // Let other method calls from the same client start running,
@@ -54,30 +58,34 @@ Meteor.methods({
     this.unblock();
 
     Email.send({
-      to: to,
+      to: docking.dockerEmail,
       from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Docking Request Rejected",
-      text: "Greetings Captain{firstNameRenter}," +
-            "Your request to dock at {stationAddress} has been rejected. We hope there is a better match next time, and please let us know how we can help in the future!\n\n" +
-            "Happy Renting!\n" +
-            "The Space Cadets"
+      text: "Greetings Captain " + docking.dockerName + "," +
+            "\nYour request to dock at " + docking.address + " has been rejected. We hope there is a better match next time, and please let us know how we can help in the future!" +
+            "\n\nHappy Renting!" +
+            "\nThe Space Cadets"
     });
   },
-  messageReceived: function(to) {
-    check(to, String);
+  messageReceived: function(recipientId) {
+    check(recipientId, String);
 
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
 
+    user = Meteor.users.findOne(recipientId);
+
     Email.send({
-      to: to,
+      to: user.emails[0].address,
       from: "SpaceCadet <hello@spacecadet.io>",
-      subject: "Docking Request Rejected",
-      text: "Greetings Captain{firstNameRenter}," +
-            "Your request to dock at {stationAddress} has been rejected. We hope there is a better match next time, and please let us know how we can help in the future!\n\n" +
-            "Happy Renting!\n" +
-            "The Space Cadets"
+      subject: "New Message",
+      text: "Greetings " + user.profile.firstName + "," +
+            "\nThank you for being a part of the SpaceCadet Fleet, a message has been transmitted to your inbox." +
+            " Please visit http://spacecadet.meteor.com/inbox to read and respond to this message." +
+
+            "\n\nHappy Renting," +
+            "\nThe Space Cadets"
     });
   }
 });
