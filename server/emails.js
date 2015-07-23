@@ -16,8 +16,8 @@ Meteor.methods({
       to: email,
       from: "SpaceCadet <hello@spacecadet.io>",
       subject: "Approval Needed on New Docking Request",
-      text: "Greetings " + name + ",\n" +
-      "Thank you for granting the SpaceCadet Fleet access to your Station, " +
+      text: "Greetings " + name + "," +
+      "\nThank you for granting the SpaceCadet Fleet access to your Station, " +
       "and you have received a request to dock at one of your Landing Pads. " +
       "Please visit http://spacecadet.meteor.com/manage-dockings to review and approve the request!" +
       "\n\nHappy Renting!" +
