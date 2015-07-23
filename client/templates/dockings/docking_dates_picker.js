@@ -39,6 +39,11 @@ Template.dockingDatesPicker.onRendered(function () {
 });
 
 var ensureSensibleDates = function() {
+  // Set default values
+  if(!getStartDockingOn()) Session.setPersistent('startDockingOn', new Date());
+  if(!getEndDockingOn()) Session.setPersistent('endDockingOn', new Date());
+
+  // Make sure it ends after it starts
   if(getEndDockingOn() < getStartDockingOn()){
     Session.setPersistent('endDockingOn', getStartDockingOn());
     $('#endDockingOn').first().val(moment(getEndDockingOn()).format('L'));
