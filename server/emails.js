@@ -9,8 +9,6 @@ Meteor.methods({
     landlord = Meteor.users.findOne(landlordId);
     email = landlord.emails[0].address;
     name = landlord.profile.firstName;
-    console.log("LANDLORD: " + email);
-    console.log("LANDLORD: " + name);
 
     Email.send({
       to: email,
@@ -19,7 +17,7 @@ Meteor.methods({
       text: "Greetings " + name + "," +
       "\nThank you for granting the SpaceCadet Fleet access to your Station, " +
       "and you have received a request to dock at one of your Landing Pads. " +
-      "Please visit http://spacecadet.meteor.com/manage-dockings to review and approve the request!" +
+      "Please visit http://spacecadet.io/manage-dockings to review and approve the request!" +
       "\n\nHappy Renting!" +
       "\nThe Space Cadets"
     });
@@ -82,7 +80,7 @@ Meteor.methods({
       subject: "New Message",
       text: "Greetings " + user.profile.firstName + "," +
             "\nThank you for being a part of the SpaceCadet Fleet, a message has been transmitted to your inbox." +
-            " Please visit http://spacecadet.meteor.com/inbox to read and respond to this message." +
+            " Please visit http://spacecadet.io/inbox to read and respond to this message." +
 
             "\n\nHappy Renting," +
             "\nThe Space Cadets"
