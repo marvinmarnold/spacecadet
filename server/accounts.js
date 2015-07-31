@@ -32,6 +32,7 @@ Meteor.methods({
       phoneNumber: String
     });
 
+    profile.role = Meteor.user().profile.role;
     return Meteor.users.update({_id: Meteor.userId()}, {$set: {profile: profile}});
   }
 });
