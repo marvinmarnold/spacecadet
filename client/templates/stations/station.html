@@ -30,6 +30,11 @@
             Ask Landlord a question
             </button>
           {{/if}}
+          {{#if cantCompose}}
+            <button id="sign-up-reminder" class="btn btn-link btn-lg">
+            Ask Landlord a question
+            </button>
+          {{/if}}
           {{#if isComposing}}
             {{> compose recipientId=userId}}
           {{/if}}
