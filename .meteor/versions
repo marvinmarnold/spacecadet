@@ -49,6 +49,7 @@ mongo@1.1.0
 mrgalaxy:stripe@2.1.0
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
+okgrow:analytics@0.3.0
 ordered-dict@1.0.3
 rajit:bootstrap3-datepicker@1.4.1
 random@1.0.3
