@@ -15,3 +15,4 @@ Template.registerHelper("errorMessageForForm", function (field, _formName) {
   var form = !!Session.get(formName);
   return form && form[field];
 });
+

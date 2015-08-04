@@ -1,0 +1,11 @@
+<template name="homepageStation">
+<a href="{{pathFor 'station'}}" class="col-md-4 station">
+  <div class="row">
+    <img src="{{previewPath}}" class="img-responsive img-rounded homepage-featured-image">
+  </div>
+  <div class="row last-featured-row">
+    <div class="col-md-6 text-left">{{name}}</div>
+    <div class="col-md-6 text-right">{{city}}, {{state}}</div>
+  </div>
+</a>
+</template>
