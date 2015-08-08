@@ -1,0 +1,140 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.38
+4 verbose node symlink /usr/bin/node
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/home/pili/workspace/spacecadet/tests/cucumber',
+6 verbose install   [ 'underscore' ] ]
+7 info preinstall cucumber-tests@1.0.0
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'underscore@^1.8.3', null ]
+10 verbose cache add name=undefined spec="underscore@^1.8.3" args=["underscore@^1.8.3",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'underscore@^1.8.3',
+11 verbose parsed url   path: 'underscore@^1.8.3',
+11 verbose parsed url   href: 'underscore@^1.8.3' }
+12 verbose cache add name="underscore" spec="^1.8.3" args=["underscore","^1.8.3"]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: '^1.8.3',
+13 verbose parsed url   path: '^1.8.3',
+13 verbose parsed url   href: '^1.8.3' }
+14 verbose addNamed [ 'underscore', '^1.8.3' ]
+15 verbose addNamed [ null, '>=1.8.3-0 <2.0.0-0' ]
+16 silly lockFile 763d0bdd-underscore-1-8-3 underscore@^1.8.3
+17 verbose lock underscore@^1.8.3 /home/pili/.npm/763d0bdd-underscore-1-8-3.lock
+18 silly addNameRange { name: 'underscore',
+18 silly addNameRange   range: '>=1.8.3-0 <2.0.0-0',
+18 silly addNameRange   hasData: false }
+19 verbose request where is /underscore
+20 verbose request registry https://registry.npmjs.org/
+21 verbose request id 27d24c4145c68e26
+22 verbose url raw /underscore
+23 verbose url resolving [ 'https://registry.npmjs.org/', './underscore' ]
+24 verbose url resolved https://registry.npmjs.org/underscore
+25 verbose request where is https://registry.npmjs.org/underscore
+26 info trying registry request attempt 1 at 14:25:26
+27 verbose etag "C0V65ICGJUH1VVOQXS91D0EG7"
+28 http GET https://registry.npmjs.org/underscore
+29 http 304 https://registry.npmjs.org/underscore
+30 silly registry.get cb [ 304,
+30 silly registry.get   { date: 'Sat, 08 Aug 2015 19:25:27 GMT',
+30 silly registry.get     via: '1.1 varnish',
+30 silly registry.get     'cache-control': 'max-age=60',
+30 silly registry.get     etag: '"C0V65ICGJUH1VVOQXS91D0EG7"',
+30 silly registry.get     age: '0',
+30 silly registry.get     connection: 'keep-alive',
+30 silly registry.get     'x-served-by': 'cache-jfk1020-JFK',
+30 silly registry.get     'x-cache': 'HIT',
+30 silly registry.get     'x-cache-hits': '1',
+30 silly registry.get     'x-timer': 'S1439061927.596220,VS0,VE91',
+30 silly registry.get     vary: 'Accept' } ]
+31 verbose etag https://registry.npmjs.org/underscore from cache
+32 silly addNameRange number 2 { name: 'underscore',
+32 silly addNameRange   range: '>=1.8.3-0 <2.0.0-0',
+32 silly addNameRange   hasData: true }
+33 silly addNameRange versions [ 'underscore',
+33 silly addNameRange   [ '1.0.3',
+33 silly addNameRange     '1.0.4',
+33 silly addNameRange     '1.1.0',
+33 silly addNameRange     '1.1.1',
+33 silly addNameRange     '1.1.2',
+33 silly addNameRange     '1.1.3',
+33 silly addNameRange     '1.1.4',
+33 silly addNameRange     '1.1.5',
+33 silly addNameRange     '1.1.6',
+33 silly addNameRange     '1.1.7',
+33 silly addNameRange     '1.2.0',
+33 silly addNameRange     '1.2.1',
+33 silly addNameRange     '1.2.2',
+33 silly addNameRange     '1.2.3',
+33 silly addNameRange     '1.2.4',
+33 silly addNameRange     '1.3.0',
+33 silly addNameRange     '1.3.1',
+33 silly addNameRange     '1.3.2',
+33 silly addNameRange     '1.3.3',
+33 silly addNameRange     '1.4.0',
+33 silly addNameRange     '1.4.1',
+33 silly addNameRange     '1.4.2',
+33 silly addNameRange     '1.4.3',
+33 silly addNameRange     '1.4.4',
+33 silly addNameRange     '1.5.0',
+33 silly addNameRange     '1.5.1',
+33 silly addNameRange     '1.5.2',
+33 silly addNameRange     '1.6.0',
+33 silly addNameRange     '1.7.0',
+33 silly addNameRange     '1.8.0',
+33 silly addNameRange     '1.8.1',
+33 silly addNameRange     '1.8.2',
+33 silly addNameRange     '1.8.3' ] ]
+34 verbose addNamed [ 'underscore', '1.8.3' ]
+35 verbose addNamed [ '1.8.3', '1.8.3' ]
+36 silly lockFile e5e32fca-underscore-1-8-3 underscore@1.8.3
+37 verbose lock underscore@1.8.3 /home/pili/.npm/e5e32fca-underscore-1-8-3.lock
+38 silly lockFile d5ea30aa--underscore-underscore-1-8-3-tgz https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz
+39 verbose lock https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz /home/pili/.npm/d5ea30aa--underscore-underscore-1-8-3-tgz.lock
+40 verbose addRemoteTarball [ 'https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz',
+40 verbose addRemoteTarball   '4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022' ]
+41 info retry fetch attempt 1 at 14:25:27
+42 verbose fetch to= /tmp/npm-6606-piAuMT4r/registry.npmjs.org/underscore/-/underscore-1.8.3.tgz
+43 http GET https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz
+44 http 200 https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz
+45 silly lockFile d5ea30aa--underscore-underscore-1-8-3-tgz https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz
+46 silly lockFile d5ea30aa--underscore-underscore-1-8-3-tgz https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz
+47 silly lockFile e5e32fca-underscore-1-8-3 underscore@1.8.3
+48 silly lockFile e5e32fca-underscore-1-8-3 underscore@1.8.3
+49 silly lockFile 763d0bdd-underscore-1-8-3 underscore@^1.8.3
+50 silly lockFile 763d0bdd-underscore-1-8-3 underscore@^1.8.3
+51 error Error: EACCES, mkdir '/home/pili/.npm/underscore/1.8.3'
+51 error  { [Error: EACCES, mkdir '/home/pili/.npm/underscore/1.8.3']
+51 error   errno: 3,
+51 error   code: 'EACCES',
+51 error   path: '/home/pili/.npm/underscore/1.8.3',
+51 error   parent: 'cucumber-tests' }
+52 error Please try running this command again as root/Administrator.
+53 error System Linux 3.19.0-25-generic
+54 error command "/usr/bin/node" "/usr/bin/npm" "install"
+55 error cwd /home/pili/workspace/spacecadet/tests/cucumber
+56 error node -v v0.10.38
+57 error npm -v 1.4.28
+58 error path /home/pili/.npm/underscore/1.8.3
+59 error code EACCES
+60 error errno 3
+61 error stack Error: EACCES, mkdir '/home/pili/.npm/underscore/1.8.3'
+62 verbose exit [ 3, true ]
