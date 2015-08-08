@@ -1,0 +1,25 @@
+{
+  "public" : {
+    "stripe_pk": "",
+    "spacecadetConnectionFee": 0.10,
+    "spacecadetServiceFee": 0.05,
+    "development": true,
+    "analyticsSettings": {
+      "Google Analytics" : {
+        "trackingId": ""
+      }
+    }
+  },
+  "stripe_sk":"",
+  "stripe_account_id": "",
+  "AWSBucket": "",
+  "AWSAccessKeyId":"",
+  "AWSSecretAccessKey":"",
+  "adminEmail": "",
+  "adminUsername": "",
+  "adminPassword": "",
+  "smtp_password": "",
+  "smtp_username": "",
+  "landlordEmail": "",
+  "landlordPassword": ""
+}
