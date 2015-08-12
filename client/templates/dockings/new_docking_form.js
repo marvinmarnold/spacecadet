@@ -20,7 +20,7 @@ Template.newDockingForm.events({
 
         var docker = getDocker(event);
         var errors = validateDocker(docker);
-        if (errors.present) return finishWFieldErrors(submitButton, errors);
+        if (errors.present) return finishWFieldErrors("field", submitButton, errors);
 
         // All seems good, try to create card
         Meteor.call('createCreditCard',

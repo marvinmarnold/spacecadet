@@ -19,8 +19,13 @@
       </div>
       {{else}}
         <h2 class="text-center top50">
-          You first need to add an account to accept payments.
+         Link a bank account in order to accept payments.
         </h2>
+        {{#if hasDockingsAwaitingLandlordApproval}}
+          <h4 class="text-center">
+            You have {{accumulatedTotal}} in dockings awaiting your approval
+          </h4>
+        {{/if}}
         <a href="{{pathFor 'newBank'}}" class="btn btn-lg btn-success btn-block top50">
           Add an account
         </a>
