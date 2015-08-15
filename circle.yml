@@ -2,9 +2,11 @@ dependencies:
   override:
     # Install Meteor
     - curl https://install.meteor.com | sh
+
 checkout:
   post:
     - echo $METEOR_SETTINGS > "server/settings.json"
+
 test:
   override:
     # Run tests in Velocity CI Mode
