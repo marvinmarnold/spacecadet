@@ -2,7 +2,6 @@ dependencies:
   override:
     # Install Meteor
     - curl https://install.meteor.com | sh
-
     # Install  package dependencies for Cucumber support files
     - npm install --production:
       pwd: tests/cucumber
