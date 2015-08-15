@@ -36,7 +36,8 @@ checkout:
 test:
   override:
     # Test the app with Chrome and ensure all artifacts can be traced back to the chrome run
-    - meteor --test --settings=server/settings.json::
+    - echo $METEOR_SETTINGS > "server/settings.json"
+    - meteor --test --settings=server/settings.json:
         environment:
           CUCUMBER_SCREENSHOTS_DIR: "$CIRCLE_ARTIFACTS/screenshots/chrome"
           CUCUMBER_JSON_OUTPUT: "$CIRCLE_TEST_REPORTS/chrome.cucumber"
@@ -45,7 +46,8 @@ test:
     - cp .meteor/local/log/*.log $CIRCLE_ARTIFACTS/chrome
 
     # Test the app with Firefox and ensure all artifacts can be traced back to the firefox run
-    - meteor --test --settings=server/settings.json::
+    - echo $METEOR_SETTINGS > "server/settings.json"
+    - meteor --test --settings=server/settings.json:
         environment:
           CUCUMBER_SCREENSHOTS_DIR: "$CIRCLE_ARTIFACTS/screenshots/firefox"
           CUCUMBER_JSON_OUTPUT: "$CIRCLE_TEST_REPORTS/firefox.cucumber"
