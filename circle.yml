@@ -6,8 +6,8 @@ dependencies:
 test:
   override:
     # Run tests in Velocity CI Mode
-    - echo $METEOR_SETTINGS > "settings.json"
-    - meteor --test --settings=settings.json:
+    - echo $METEOR_SETTINGS > "server/settings.json"
+    - meteor --test --settings=server/settings.json:
         environment:
           VELOCITY_CI: true
           CUCUMBER_SCREENSHOTS_DIR: "$CIRCLE_ARTIFACTS/screenshots"
