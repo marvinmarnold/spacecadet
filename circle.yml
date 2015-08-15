@@ -4,6 +4,7 @@ dependencies:
     - curl https://install.meteor.com | sh
 
 checkout:
+  # Write ENV variables to server
   post:
     - echo $METEOR_SETTINGS > "server/settings.json"
 
