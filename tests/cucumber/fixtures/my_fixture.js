@@ -8,7 +8,6 @@
       Pads.remove({});
     },
     'station/create': function (station) {
-      console.log("text output" + JSON.stringify(station));
       check(station, {
         name: String
       });

@@ -1,4 +1,4 @@
-Feature: d a new docking
+Feature: Create a new docking
 
   As a user
   I want to create a docking
