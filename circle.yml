@@ -20,7 +20,7 @@ test:
               development: true
               analyticsSettings:
                 Google Analytics:
-                  trackingId: ""
+                  trackingId: "FAKE"
             stripe_sk: "a"
             stripe_account_id: "b"
             AWSBucket: "c"
