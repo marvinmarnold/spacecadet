@@ -6,31 +6,10 @@ dependencies:
 test:
   override:
     # Run tests in Velocity CI Mode
-
-    - meteor --test:
+    - echo $METEOR_SETTINGS > "settings.json"
+    - meteor --test --settings=settings.json:
         environment:
           VELOCITY_CI: true
           CUCUMBER_SCREENSHOTS_DIR: "$CIRCLE_ARTIFACTS/screenshots"
           CUCUMBER_JSON_OUTPUT: "$CIRCLE_TEST_REPORTS/results.cucumber"
-          METEOR_SETTINGS:
-            public:
-              stripe_pk: "k"
-              spacecadetConnectionFee: 0.1
-              spacecadetServiceFee: 0.01
-              development: true
-              analyticsSettings:
-                Google Analytics:
-                  trackingId: "FAKE"
-            stripe_sk: "a"
-            stripe_account_id: "b"
-            AWSBucket: "c"
-            AWSAccessKeyId: "d"
-            AWSSecretAccessKey: "e"
-            adminEmail: "f@exmaple.com"
-            adminUsername: "g"
-            adminPassword: "password"
-            smtp_password: "h"
-            smtp_username: "i@example.com"
-            landlordEmail: "j@example.com"
-            landlordPassword: "password"
     - cp .meteor/local/log/*.log $CIRCLE_ARTIFACTS
