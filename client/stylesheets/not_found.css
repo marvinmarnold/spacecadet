@@ -1,0 +1,15 @@
+.not-found {
+  width: 100%;
+  height: 100%;
+  background-image: url("/space.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: white;
+  padding: 15em 0;
+  text-align: center;
+}
+
+.not-found-message {
+
+}
