@@ -28,7 +28,7 @@ Accounts.onCreateUser(function(options, user) {
 // Is the role defined and set to tenant or landlord
 // Other roles need special privileges to set
 var canSetRole = function(profile) {
-  profile &&
+  return profile &&
   profile.role &&
   (profile.role === Accounts.role.tenant || profile.role === Accounts.role.landlord)
 }

@@ -38,3 +38,12 @@ Template._station.events({
     }
   },
 });
+
+Template._station.helpers({
+  stationBannerPath: function() {
+    return this.station.bannerPath;
+  },
+  stationPreviewPath: function() {
+    return this.station.previewPath;
+  },
+});

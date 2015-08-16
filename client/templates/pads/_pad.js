@@ -57,6 +57,9 @@ Template._pad.helpers({
   connectionFee: function() {
     return accounting.formatMoney(Session.get('connectionFee'));
   },
+  padImagePath: function() {
+    return this.pad.bannerPath;
+  }
 });
 
 var landlordCut = function(price) {
