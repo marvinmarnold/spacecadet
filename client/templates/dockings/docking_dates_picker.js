@@ -1,12 +1,14 @@
 Template.dockingDatesPicker.events({
   'change #startDockingOn': function(e) {
     var startDockingOn = $(e.target).first().val();
-    Session.setPersistent('startDockingOn', new Date(startDockingOn));
+    startDockingOn = new Date(startDockingOn).toISOString();
+    Session.setPersistent('startDockingOn', startDockingOn);
     ensureSensibleDates();
   },
   'change #endDockingOn': function(e) {
     var endDockingOn = $(e.target).first().val();
-    Session.setPersistent('endDockingOn', new Date(endDockingOn));
+    endDockingOn = new Date(endDockingOn).toISOString();
+    Session.setPersistent('endDockingOn', endDockingOn);
     ensureSensibleDates();
   }
 });
@@ -16,14 +18,14 @@ Template.dockingDatesPicker.helpers({
     if(getStartDockingOn()) {
       return moment(getStartDockingOn()).format('L');
     } else {
-      return moment(new Date()).format('L');
+      return moment().format('L');
     }
   },
   datepickerEndDockingOn: function() {
-    if(getStartDockingOn()) {
+    if(getEndDockingOn()) {
       return moment(getEndDockingOn()).format('L');
     } else {
-      return moment(new Date()).format('L');
+      return moment().format('L');
     }
   }
 })
@@ -31,17 +33,17 @@ Template.dockingDatesPicker.helpers({
 Template.dockingDatesPicker.onRendered(function () {
   ensureSensibleDates();
   $('#startDockingOn').datepicker({
-    startDate: new Date()
+    startDate: moment().format()
   });
   $('#endDockingOn').datepicker({
-    startDate: new Date()
+    startDate: moment().format()
   });
 });
 
 var ensureSensibleDates = function() {
   // Set default values
-  if(!getStartDockingOn()) Session.setPersistent('startDockingOn', new Date());
-  if(!getEndDockingOn()) Session.setPersistent('endDockingOn', new Date());
+  if(!getStartDockingOn()) Session.setPersistent('startDockingOn', moment().format());
+  if(!getEndDockingOn()) Session.setPersistent('endDockingOn', moment().format());
 
   // Make sure it ends after it starts
   if(getEndDockingOn() < getStartDockingOn()){
