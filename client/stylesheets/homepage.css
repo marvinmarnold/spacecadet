@@ -32,10 +32,9 @@
   margin-top: 50px;
 }
 
-
 .homepage-featured-image {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 0 1em;
+  height: 15em;
 }
 
 .last-featured-row {
