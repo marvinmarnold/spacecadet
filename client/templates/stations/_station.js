@@ -63,6 +63,9 @@ Template._station.helpers({
 
 Template._station.onCreated(function() {
   Session.set('stationErrors', {});
+  // Hack, data not available in this context
+  Session.set("stationBannerPath", undefined);
+  Session.set("stationPreviewName", undefined);
 });
 
 var validateStation = function (station) {

@@ -21,8 +21,15 @@ Template._pad.events({
     var imagePath =  Session.get(this.padImageName);
 
     if(!imagePath) {
+      console.log("pad");
       imagePath = this.pad.imagePath;
     }
+    if(!imagePath) {
+      console.log("default");
+      imagePath = "/default_pad.jpg";
+    }
+    console.log("finally");
+    console.log(imagePath);
     pad.imagePath =  imagePath;
 
     var errors = validatePad(pad);
@@ -88,6 +95,7 @@ var connectionFee = function(price) {
 
 Template._pad.onCreated(function() {
   Session.set('padErrors', {});
+  Session.set("padImagePath", undefined);
 });
 
 var validatePad = function (pad) {
