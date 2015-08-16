@@ -37,12 +37,11 @@ Template.profile.events({
       entityName: entityName,
       phoneNumber: phoneNumber
     }
-    console.log(firstName+lastName+entityName+phoneNumber);
 
     Meteor.call('updateProfile', profile, function(e, r) {
       if(e)
         return finishWErrors(submitButton, "Sorry something went wrong. Please try again later.");
-      return finishWErrors(submitButton, "Profile updated.");
+      return finishWSuccess(submitButton, "Profile updated.");
     });
   }
 });

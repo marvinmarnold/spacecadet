@@ -13,7 +13,6 @@ Accounts.onCreateUser(function(options, user) {
     profile.firstName = options.firstName;
     profile.lastName = options.lastName;
     profile.entityName = options.entityName;
-    profile.termsAccepted = options.termsAccepted;
   }
 
   // Make sure role is set and only `tenant` or `landlord`

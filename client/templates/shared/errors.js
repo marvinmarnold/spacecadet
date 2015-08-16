@@ -18,6 +18,15 @@ finishWFieldErrors = function(errorNameSpace, submitButton, errors) {
 }
 
 finishWErrors = function(submitButton, msg) {
-  submitButton.prop("disabled", false);
+  enableButton(submitButton);
   return throwError(msg);
+}
+
+finishWSuccess = function(submitButton, msg) {
+  enableButton(submitButton);
+  return addNotification(msg);
+}
+
+var enableButton = function(submitButton) {
+  submitButton.prop("disabled", false);
 }

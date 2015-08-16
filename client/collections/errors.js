@@ -1,11 +1,9 @@
-Notifications = new Mongo.Collection(null);
-
-addNotification = function(message) {
-  Notifications.insert({message: message});
-};
-
 Errors = new Mongo.Collection(null);
 
 throwError = function(message) {
-  Errors.insert({message: message});
+  Errors.insert({message: message, alertClass: "alert-danger"});
+};
+
+addNotification = function(message) {
+  Errors.insert({message: message, alertClass: "alert-success"});
 };
