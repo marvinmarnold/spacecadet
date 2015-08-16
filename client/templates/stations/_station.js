@@ -86,10 +86,10 @@ var validateStation = function (station) {
     errors.zip =  "The station's zip is not valid";
     errors.present = true;
   } if (!station.bannerPath) {
-    errors.stationBannerPath =  "The station's banner is not valid";
+    errors.stationBannerPath =  "Please upload a Station Banner image to continue. This will be used in the background of your Property Profile";
     errors.present = true;
   } if (!station.previewPath) {
-    errors.stationPreviewPath =  "The station's image preview is not valid";
+    errors.stationPreviewPath =  "Please upload a Station Preview image to continue. This will be the first thing seen for your Property Profile.";
     errors.present = true;
   }
 
