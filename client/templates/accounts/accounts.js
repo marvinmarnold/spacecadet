@@ -19,12 +19,12 @@ Meteor.startup(function() {
         inputType: 'text',
         visible: true,
     },{
-        fieldName: 'company',
+        fieldName: 'entityName',
         fieldLabel: 'Company',
         inputType: 'text',
         visible: true,
     }, {
-        fieldName: 'terms',
+        fieldName: 'termsAccepted',
         fieldLabel: 'I accept the terms and conditions',
         inputType: 'checkbox',
         visible: true,
