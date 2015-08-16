@@ -2,61 +2,69 @@
 
 <form class="form"  id="station-form">
 {{#with station}}
-  <div class="form-group">
+  <div class="form-group {{errorClass 'name'}}">
     <label class="control-label" for="name">Name</label>
     <div class="controls">
       <input name="name" id="name" type="text" value="{{name}}" placeholder="Station name" class="form-control"/>
+      <span class="help-block">{{errorMessage 'name'}}</span>
     </div>
   </div>
-  <div class="form-group">
-    <label class="control-label" for="name">Description</label>
+  <div class="form-group {{errorClass 'description'}}">
+    <label class="control-label" for="description">Description</label>
     <div class="controls">
         <textarea name="description" id="description"  rows="5" value="{{description}}" placeholder="Make it sound good" class="form-control"></textarea>
+        <span class="help-block">{{errorMessage 'description'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'state'}}">
     <label class="control-label" for="state">State</label>
     <div class="controls">
         <input name="state" id="state" type="text" value="{{state}}" placeholder="State" class="form-control"/>
+        <span class="help-block">{{errorMessage 'state'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'city'}}">
     <label class="control-label" for="city">City</label>
     <div class="controls">
         <input name="city" id="city" type="text" value="{{city}}" placeholder="City" class="form-control"/>
+        <span class="help-block">{{errorMessage 'city'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'address'}}">
     <label class="control-label" for="address">Address</label>
     <div class="controls">
         <input name="address" id="address" type="text" value="{{address}}" placeholder="Station address" class="form-control"/>
+        <span class="help-block">{{errorMessage 'address'}}</span>
     </div>
   </div>
-  <div class="form-group">
-    <label class="control-label" for="address">ZIP</label>
+  <div class="form-group {{errorClass 'zip'}}">
+    <label class="control-label" for="zip">ZIP</label>
     <div class="controls">
-        <input name="zip" id="zip" type="text" value="{{zip}}" placeholder="Station address" class="form-control"/>
+        <input name="zip" id="zip" type="text" value="{{zip}}" placeholder="Zip Code" class="form-control"/>
+        <span class="help-block">{{errorMessage 'name'}}</span>
     </div>
   </div>
 {{/with}}
-  <div class="form-group">
+  <div class="form-group {{errorClass 'stationBannerPath'}}">
     <label class="control-label" for="stationBannerPath">Station Banner</label>
     <div class="controls">
       {{> imageUploader originalImagePath=stationBannerPath imageName=stationBannerName uploader=stationBannerUploader}}
+      <span class="help-block">{{errorMessage 'stationBannerPath'}}</span>
     </div>
   </div>
 
   {{> imageUploadProgress uploader=stationBannerUploader}}
 
-  <div class="form-group">
+  <div class="form-group {{errorClass 'stationPreviewPath'}}">
     <label class="control-label" for="stationPreviewPath">Station Preview</label>
     <div class="controls">
       {{>  imageUploader originalImagePath=stationPreviewPath imageName=stationPreviewName uploader=stationPreviewUploader}}
+      <span class="help-block">{{errorMessage 'stationPreviewPath'}}</span>
     </div>
   </div>
 
   {{> imageUploadProgress uploader=stationPreviewUploader}}
 
-  <input type="submit" value="{{submitButton}}" class="btn btn-primary btn-lg btn-block"/>
+  <input type="submit" value="{{submitButton}}" class="btn btn-primary btn-lg btn-block" id="update-station-button"/>
 </form>
 </template>

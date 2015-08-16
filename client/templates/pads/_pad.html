@@ -1,70 +1,79 @@
 <template name="_pad">
 <form class="form"  id="station-form">
 {{#with pad}}
-  <div class="form-group">
+  <div class="form-group {{errorClass 'name'}}">
     <label class="control-label" for="name">Name</label>
     <div class="controls">
       <input name="name" id="name" type="text" value="{{name}}" placeholder="Short description of what can be rented" class="form-control"/>
+      <span class="help-block">{{errorMessage 'name'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'description'}}">
     <label class="control-label" for="name">Description</label>
     <div class="controls">
       <input name="description" id="description" type="text" value="{{description}}" placeholder="What comes with the rental" class="form-control"/>
+      <span class="help-block">{{errorMessage 'description'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'size'}}">
     <label class="control-label" for="size">Size</label>
     <div class="controls">
       <input name="size" id="size" type="text" value="{{size}}" placeholder="Dimensions or area of available space for rent" class="form-control"/>
+      <span class="help-block">{{errorMessage 'size'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'price'}}">
     <label class="control-label" for="price">Price per Day"</label>
     <div class="input-group">
       <span class="input-group-addon"><i class="fa fa-usd fa-lg"></i></span>
       <input name="price" id="price" type="number" step="0.01" value="{{price}}" placeholder="If you know monthly, divide my number of days in month for daily" class="form-control"/>
     </div>
+    <span class="help-block">{{errorMessage 'price'}}</span>
     <span>This is the price the Rental Captains will see. The SpaceCadet Connection Charge will be <b>{{connectionFee}}</b>, and you will receive <b>{{landlordCut}}</b>.</span>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'numAvailable'}}">
     <label class="control-label" for="numAvailable">Number Available</label>
     <div class="controls">
       <input name="numAvailable" id="numAvailable" type="number" value="{{numAvailable}}" placeholder="Enter how many of these you have for rent" class="form-control"/>
+      <span class="help-block">{{errorMessage 'numAvailable'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'occupancy'}}">
     <label class="control-label" for="occupancy">Occupancy</label>
     <div class="controls">
       <input name="occupancy" id="occupancy" type="number" value="{{occupancy}}" placeholder="How many people can occupy space" class="form-control"/>
+      <span class="help-block">{{errorMessage 'occupancy'}}</span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'availabilityStarts'}}">
     <label class="control-label" for="availabilityStarts">Availability Starts</label>
       <div class="input-group datepicker">
         <input name="availabilityStarts" id="availabilityStarts" type="text" value="{{availabilityStarts}}" placeholder="When will it first be available" class="form-control"/>
         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
     </div>
+    <span class="help-block">{{errorMessage 'availabilityStarts'}}</span>
   </div>
-  <div class="form-group">
+  <div class="form-group {{errorClass 'availabilityEnds'}}">
     <label class="control-label" for="availabilityEnds">Availability Ends</label>
     <div class="input-group datepicker">
       <input name="availabilityEnds" id="availabilityEnds" type="text" value="{{availabilityEnds}}" placeholder="When does it stop being available" class="form-control"/>
       <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
     </div>
+    <span class="help-block">{{errorMessage 'availabilityEnds'}}</span>
   </div>
 {{/with}}
-  <div class="form-group">
+  <div class="form-group {{errorClass 'imagePath'}}">
     <label class="control-label" for="fileUpload">Landing Pad Photo</label>
     <div class="controls">
       <div class="row">
         {{>  imageUploader originalImagePath=padImagePath imageName=padImageName uploader=padImageUploader}}
+        <span class="help-block">{{errorMessage 'imagePath'}}</span>
       </div>
     </div>
   </div>
 
     {{> imageUploadProgress uploader=padImageUploader}}
 
-  <input type="submit" value="{{submitButton}}" class="btn btn-primary btn-block btn-lg"/>
+  <input type="submit" value="{{submitButton}}" class="btn btn-primary btn-block btn-lg" id="update-pad-button"/>
 </form>
 </template>

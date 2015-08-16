@@ -19,6 +19,15 @@ Template.imageUploader.events({
   }
 });
 
+Template.imageUploader.onCreated( function() {
+  // Hack because data context not available here so can't call
+  // quickPreview(this.imageName);
+  Session.set("quickPreviewstationBannerPath", undefined);
+  Session.set("quickPreviewstationPreviewName", undefined);
+  Session.set("quickPreviewpadImagePath", undefined);
+});
+
+
 Template.imageUploader.helpers({
   url: function () {
     var p = quickPreview(this.imageName);

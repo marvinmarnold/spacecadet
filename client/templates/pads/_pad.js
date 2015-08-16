@@ -1,6 +1,10 @@
 Template._pad.events({
   'submit form': function(e) {
     e.preventDefault();
+
+    var submitButton = $(event.target).find('[id=update-pad-button]');
+    submitButton.prop("disabled", true);
+
     var stationId = this.stationId;
     var pad = {
       name: $(e.target).find('[name=name]').val(),
@@ -8,8 +12,8 @@ Template._pad.events({
       price: parseFloat($(e.target).find('[name=price]').val()),
       numAvailable: parseInt($(e.target).find('[name=numAvailable]').val()),
       occupancy: parseInt($(e.target).find('[name=occupancy]').val()),
-      availabilityStarts: new Date($(e.target).find('[name=availabilityStarts]').val()),
-      availabilityEnds: new Date($(e.target).find('[name=availabilityEnds]').val()),
+      availabilityStarts: $(e.target).find('[name=availabilityStarts]').val(),
+      availabilityEnds: $(e.target).find('[name=availabilityEnds]').val(),
       size: $(e.target).find('[name=size]').val(),
       stationId: stationId
     };
@@ -20,6 +24,12 @@ Template._pad.events({
       imagePath = this.pad.imagePath;
     }
     pad.imagePath =  imagePath;
+
+    var errors = validatePad(pad);
+    if (errors.present) return finishWFieldErrors("padErrors", submitButton, errors);
+
+    pad.availabilityStarts = new Date(pad.availabilityStarts);
+    pad.availabilityEnds = new Date(pad.availabilityEnds);
 
     if($.isEmptyObject(this.pad)) {
       Meteor.call('createPad', pad, function(error, result) {
@@ -58,8 +68,14 @@ Template._pad.helpers({
     return accounting.formatMoney(Session.get('connectionFee'));
   },
   padImagePath: function() {
-    return this.pad.bannerPath;
-  }
+    return this.pad.imagePath;
+  },
+  errorMessage: function(field) {
+    return Session.get('padErrors')[field];
+  },
+  errorClass: function (field) {
+    return !!Session.get('padErrors')[field] ? 'has-error' : '';
+  },
 });
 
 var landlordCut = function(price) {
@@ -68,4 +84,42 @@ var landlordCut = function(price) {
 
 var connectionFee = function(price) {
   return price * Meteor.settings.public.spacecadetConnectionFee;
+}
+
+Template._pad.onCreated(function() {
+  Session.set('padErrors', {});
+});
+
+var validatePad = function (pad) {
+  var errors = {present: false};
+  if (!pad.name) {
+    errors.name =  "Please provide the pad's name";
+    errors.present = true;
+  } if (!pad.description) {
+    errors.description =  "The pad's description is not valid";
+    errors.present = true;
+  } if (!pad.size) {
+    errors.size =  "The pad's size is not valid";
+    errors.present = true;
+  } if (!pad.price) {
+    errors.price =  "The pad's price is not valid";
+    errors.present = true;
+  } if (!pad.numAvailable) {
+    errors.numAvailable =  "The number of available pads is not valid";
+    errors.present = true;
+  } if (!pad.occupancy) {
+    errors.occupancy =  "The pad's occupancy is not valid";
+    errors.present = true;
+  } if (!pad.availabilityStarts) {
+    errors.availabilityStarts =  "The pad's availability starting date is not valid";
+    errors.present = true;
+  } if (!pad.availabilityEnds) {
+    errors.availabilityEnds =  "The pad's availability ending date is not valid";
+    errors.present = true;
+  } if (!pad.imagePath) {
+    errors.imagePath =  "The pad's image is not valid";
+    errors.present = true;
+  }
+
+  return errors;
 }

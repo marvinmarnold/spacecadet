@@ -11,7 +11,6 @@ Template.error.onRendered(function() {
   }, 6000);
 });
 
-
 finishWFieldErrors = function(errorNameSpace, submitButton, errors) {
   submitButton.prop("disabled", false);
   Session.set(errorNameSpace, errors);
