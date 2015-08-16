@@ -8,20 +8,19 @@ Template.newDockingForm.events({
     Stripe.card.createToken(getStripeCard(event), function(status, response) {
       if(response.error) {
         // Stripe didnt like the Credit Card
-        return finishWFieldErrors(submitButton, response.error);
+        return finishWError(submitButton, "Sorry, something is wrong with your payment information. Please double check and try again.");
       } else {
+        console.log("tokenized stripe");
         // Successfully tokenized to Stripe Credit Card
         // Validate against how card will be stored in actual DB
         var cardholder = $(event.target).find('[id=cardholder]').val();
         var storeableCard = getStoreableCard(response, cardholder);
         var errors = validateCreditCard(storeableCard);
 
-        if (errors.present) return finishWDokcingFieldErrors(submitButton, errors);
-
+        if (errors.present) return finishWDockingFieldErrors(submitButton, errors);
         var docker = getDocker(event);
         var errors = validateDocker(docker);
-        if (errors.present) return finishWFieldErrors("field", submitButton, errors);
-
+        if (errors.present) return finishWDockingFieldErrors(submitButton, errors);
         // All seems good, try to create card
         Meteor.call('createCreditCard',
           storeableCard,

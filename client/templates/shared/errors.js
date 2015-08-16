@@ -11,13 +11,20 @@ Template.error.onRendered(function() {
   }, 6000);
 });
 
+
 finishWFieldErrors = function(errorNameSpace, submitButton, errors) {
   submitButton.prop("disabled", false);
   Session.set(errorNameSpace, errors);
   return;
 }
 
+// This is deprecated, should not be called Errors.
 finishWErrors = function(submitButton, msg) {
+  enableButton(submitButton);
+  return throwError(msg);
+}
+
+finishWError = function(submitButton, msg) {
   enableButton(submitButton);
   return throwError(msg);
 }
