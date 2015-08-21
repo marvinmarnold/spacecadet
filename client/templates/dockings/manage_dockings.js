@@ -23,11 +23,10 @@ Template.manageDockings.helpers({
   accumulatedTotal: function() {
     var total = 0;
     var dockings = this.dockingsAwaitingLandlordApproval.fetch();
-    console.log(dockings.length);
     var length = dockings.length;
 
     for(var i = 0; i < length; i++) {
-      total += dockings[i].total;
+      total += dockings[i].landlordCut;
     }
 
     return accounting.formatMoney(total);
