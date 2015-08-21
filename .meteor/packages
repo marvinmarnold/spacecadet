@@ -8,7 +8,6 @@ meteor-platform
 twbs:bootstrap
 iron:router
 accounts-password
-ian:accounts-ui-bootstrap-3
 sacha:spin
 edgee:slingshot
 fortawesome:fontawesome
@@ -22,3 +21,4 @@ lepozepo:accounting
 audit-argument-checks
 email
 okgrow:analytics
+ian:accounts-ui-bootstrap-3
