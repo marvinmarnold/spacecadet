@@ -39,4 +39,5 @@
 
 .last-featured-row {
   margin-bottom: 50px;
+  min-height: 3em;
 }
