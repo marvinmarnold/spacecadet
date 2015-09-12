@@ -1,5 +1,5 @@
 Meteor.methods({
-  'createRecipient': function(bankToken, recipientAttributes) {
+  'createRecipient': function(bankToken, recipientAttributes, taxId) {
     check(Meteor.userId(), String);
     check(bankToken, String);
     check(recipientAttributes, {
@@ -8,16 +8,19 @@ Meteor.methods({
       country: String,
       routingNumber: String,
       accountName: String,
-      currency: String
+      currency: String,
+      recipientType: String
     });
+    check(taxId, String);
+
     Stripe = StripeAPI(Meteor.settings.stripe_sk);
     var createRecipient = Meteor.wrapAsync(Stripe.recipients.create, Stripe.recipients);
     try {
       var result = createRecipient({
         name: recipientAttributes.accountName,
-        type: "individual",
+        type: recipientAttributes.recipientType,
         bank_account: bankToken,
-        email: "marvinmarnold@gmail.com"
+        tax_id: taxId
       });
       recipientAttributes.stripeId = result.id;
     } catch (error) {
@@ -38,5 +41,16 @@ Meteor.methods({
     return {
       _id: recipientId
     };
+  },
+  'updateRecipient': function(profile) {
+    check(profile, {
+      firstName: String,
+      lastName: String,
+      entityName: String,
+      phoneNumber: String
+    });
+
+    profile.role = Meteor.user().profile.role;
+    return Meteor.users.update({_id: Meteor.userId()}, {$set: {profile: profile}});
   }
 });
