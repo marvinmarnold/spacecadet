@@ -28,15 +28,12 @@ Template.newBank.events({
       taxId: taxId
     });
 
-    console.log("one");
     if (errors.present) return finishWBankFieldErrors(submitButton, errors);
 
     Stripe.bankAccount.createToken(externalAccount, function(status, response) {
       if (response.error) {
         finishWErrors(submitButton, "Does not appear to be a valid account");
       } else {
-
-    console.log("two");
         var storeableAccount = {
           last4: response.bank_account.last4,
           accountName: accountName,
@@ -58,12 +55,8 @@ Template.newBank.events({
 
     console.log("three");
             if(error) {
-                  console.log(error);
-
                 finishWErrors(submitButton, "Could not create account");
             } else {
-                  console.log("woot");
-
                 Router.go('recipients');
             }
           }

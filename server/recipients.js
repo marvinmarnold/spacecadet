@@ -28,7 +28,7 @@ Meteor.methods({
     }
 
     var firstRecipient = false;
-    if ( Recipients.find({userId: Meteor.userId()}).count() === 0 ) firstRecipient = true;
+    if ( Recipients.find( { userId: Meteor.userId() } ).count() === 0 ) firstRecipient = true;
 
     var recipient = _.extend(recipientAttributes, {
       userId: Meteor.userId(),
@@ -42,15 +42,19 @@ Meteor.methods({
       _id: recipientId
     };
   },
-  'updateRecipient': function(profile) {
-    check(profile, {
-      firstName: String,
-      lastName: String,
-      entityName: String,
-      phoneNumber: String
-    });
+  // 'updateRecipient': function(recipientId, accountName, taxid) {
+  //   check(recipientId, String);
+  //   check(accountName, String);
+  //   check(taxId, String);
 
-    profile.role = Meteor.user().profile.role;
-    return Meteor.users.update({_id: Meteor.userId()}, {$set: {profile: profile}});
-  }
+  //   var user = Meteor.user();
+  //   var userId = user._id;
+
+  //   var recipient = Recipients.findOne({userId: userId, _id: recipientId});
+
+  //   if(recipient) {
+  //     Recipients.update({_id: recipientId}, {$set: {accountName: accountName, taxId, taxId}})
+  //   }
+
+  // }
 });

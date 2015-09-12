@@ -109,6 +109,16 @@ Meteor.publish("dockingsForUser", function () {
   this.ready();
 });
 
+Meteor.publish("singleRecipient", function (recipientId) {
+  check(arguments, [Match.Any]);
+  if(this.userId){
+    return [
+      Recipients.find({ userId: this.userId, _id: recipientId })
+    ];
+  }
+  this.ready();
+});
+
 Meteor.publish("dockingsForLandlord", function () {
   check(arguments, [Match.Any]);
   if(this.userId){

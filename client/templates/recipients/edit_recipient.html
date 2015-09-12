@@ -1,0 +1,33 @@
+<template name="editRecipient">
+<div class="page">
+  <div class="container">
+    <h3 class="text-center">Update Bank Account</h3>
+    <form class="billing-form">
+      <div class="form-group {{errorClass 'accountName'}}">
+        <label for="accountName">Name on Account</label>
+        <div class="controls">
+          <input type="text" class="form-control input-lg" id="accountName" placeholder="Individual or Business Name" value="Marvin Arnold">
+          <span class="help-block">{{errorMessage 'accountName'}}</span>
+        </div>
+      </div>
+      <div class="form-group {{errorClass 'taxId'}}">
+        <label for="taxId">Social Security Number or EIN</label>
+        <div class="controls">
+          <input type="text" class="form-control input-lg" id="taxId" value="000000000">
+          <span class="help-block">{{errorMessage 'taxId'}}</span>
+        </div>
+      </div>
+      {{#with recipient}}
+      <p><strong>Bank Name:</strong> {{bankName}}</p>
+      <p><strong>Account Number:</strong> *{{last4}}</p>
+      {{/with}}
+
+      <button type="submit" class="btn btn-default btn-lg btn-success btn-block submit-billing-form bottom25" id="update-recipient-button">
+        Update Account
+      </button>
+
+      {{> errors}}
+    </form>
+  </div>
+</div>
+</template>
