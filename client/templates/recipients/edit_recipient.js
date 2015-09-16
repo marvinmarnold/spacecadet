@@ -23,6 +23,8 @@ Template.editRecipient.events({
       taxId: taxId
     });
 
+    if (errors.present) return finishWBankFieldErrors(submitButton, errors);
+
     Meteor.call('updateRecipient',
           response.id,
           accountName,
@@ -54,3 +56,7 @@ var validateRecipient = function (bank) {
 Template.editRecipient.onCreated(function() {
   Session.set('editRecipientErrors', {});
 });
+
+var finishWBankFieldErrors = function(submitButton, errors) {
+  return finishWFieldErrors('editRecipientErrors', submitButton, errors);
+}

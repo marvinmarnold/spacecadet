@@ -12,8 +12,8 @@
         <h4><b>{{bankName}}</b> ({{country}}/{{currency}}) </h4>
         <h4><b>Account Number:</b> **{{last4}}</h4>
         <h4><b>Routing Number:</b> {{routingNumber}}</h4>
-<!--         <a href="{{pathFor 'editRecipient'}}" class="btn btn-success edit-account btn-block">Update Account</a>
- -->        {{#unless isDefault}}
+         <a href="{{pathFor 'editRecipient'}}" class="btn btn-success edit-account btn-block">Update Account</a>
+        {{#unless isDefault}}
           <button class="btn btn-info activate-account btn-block">
           Activate
           </button>

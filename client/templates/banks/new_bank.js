@@ -52,8 +52,6 @@ Template.newBank.events({
           storeableAccount,
           taxId,
           function(error, dockingId) {
-
-    console.log("three");
             if(error) {
                 finishWErrors(submitButton, "Could not create account");
             } else {
