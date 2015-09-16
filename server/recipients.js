@@ -52,10 +52,8 @@ Meteor.methods({
 
     // Users can only update Recipients they created
     var recipient = Recipients.findOne({userId: userId, _id: recipientId});
-    console.log("server1 " + recipient._id);
 
     if(recipient) {
-      console.log("server2 ");
       // Update the Account Name of the Recipient stored in DB
       // don't save tax ID to DB
       Recipients.update({_id: recipientId}, {$set: {accountName: accountName}});
@@ -64,15 +62,12 @@ Meteor.methods({
       Stripe = StripeAPI(Meteor.settings.stripe_sk);
       var updateRecipient = Meteor.wrapAsync(Stripe.recipients.update, Stripe.recipients);
       try {
-        console.log("server3 ");
         var result = updateRecipient(recipient.stripeId, {
           name: accountName,
           tax_id: taxId
         });
         return result.id;
       } catch (error) {
-        console.log("server4" + error.message);
-
         throw new Meteor.Error("stripe-charge-error", error.message);
       }
     }
