@@ -42,19 +42,40 @@ Meteor.methods({
       _id: recipientId
     };
   },
-  // 'updateRecipient': function(recipientId, accountName, taxid) {
-  //   check(recipientId, String);
-  //   check(accountName, String);
-  //   check(taxId, String);
+  'updateRecipient': function(recipientId, accountName, taxId) {
+    check(recipientId, String);
+    check(accountName, String);
+    check(taxId, String);
 
-  //   var user = Meteor.user();
-  //   var userId = user._id;
+    var user = Meteor.user();
+    var userId = user._id;
 
-  //   var recipient = Recipients.findOne({userId: userId, _id: recipientId});
+    // Users can only update Recipients they created
+    var recipient = Recipients.findOne({userId: userId, _id: recipientId});
+    console.log("server1 " + recipient._id);
 
-  //   if(recipient) {
-  //     Recipients.update({_id: recipientId}, {$set: {accountName: accountName, taxId, taxId}})
-  //   }
+    if(recipient) {
+      console.log("server2 ");
+      // Update the Account Name of the Recipient stored in DB
+      // don't save tax ID to DB
+      Recipients.update({_id: recipientId}, {$set: {accountName: accountName}});
 
-  // }
+      // Tell Stripe about new Tax ID and Account Name
+      Stripe = StripeAPI(Meteor.settings.stripe_sk);
+      var updateRecipient = Meteor.wrapAsync(Stripe.recipients.update, Stripe.recipients);
+      try {
+        console.log("server3 ");
+        var result = updateRecipient(recipient.stripeId, {
+          name: accountName,
+          tax_id: taxId
+        });
+        return result.id;
+      } catch (error) {
+        console.log("server4" + error.message);
+
+        throw new Meteor.Error("stripe-charge-error", error.message);
+      }
+    }
+    return false;
+  }
 });

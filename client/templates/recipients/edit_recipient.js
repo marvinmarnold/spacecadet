@@ -25,18 +25,20 @@ Template.editRecipient.events({
 
     if (errors.present) return finishWBankFieldErrors(submitButton, errors);
 
+    var recipientId = this._id;
+
     Meteor.call('updateRecipient',
-          response.id,
-          accountName,
-          taxId,
-          function(error, dockingId) {
-            if(error) {
-                finishWErrors(submitButton, "Could not update account");
-            } else {
-                Router.go('recipients');
-            }
-          }
-        );
+      recipientId,
+      accountName,
+      taxId,
+      function(error, dockingId) {
+        if(error) {
+            finishWErrors(submitButton, "Could not update account");
+        } else {
+            Router.go('recipients');
+        }
+      }
+    );
   }
 });
 
@@ -46,7 +48,7 @@ var validateRecipient = function (bank) {
     errors.accountName =  "Please provide an account name";
     errors.present = true;
   } if (!bank.taxId) {
-    errors.taxId =  "The tax ID is not valid";
+    errors.taxId =  "The Tax ID is not valid. You must reconfirm your Tax ID each time you update this account.";
     errors.present = true;
   }
 
