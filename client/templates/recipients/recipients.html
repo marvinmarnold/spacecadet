@@ -9,6 +9,7 @@
     {{#each recipients}}
       <div class="col-md-4 bottom50">
         <h4><b>{{accountName}}</b> {{_isDefault}}</h4>
+        <span class="label {{isVerifiedLabel}}" style="text-transform:capitalize;">{{isVerified}}</span>
         <h4><b>{{bankName}}</b> ({{country}}/{{currency}}) </h4>
         <h4><b>Account Number:</b> **{{last4}}</h4>
         <h4><b>Routing Number:</b> {{routingNumber}}</h4>

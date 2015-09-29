@@ -53,6 +53,7 @@ Template.newBank.events({
           taxId,
           function(error, dockingId) {
             if(error) {
+              console.log(error);
                 finishWErrors(submitButton, "Could not create account");
             } else {
                 Router.go('recipients');

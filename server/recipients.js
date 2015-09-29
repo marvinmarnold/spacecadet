@@ -23,6 +23,7 @@ Meteor.methods({
         tax_id: taxId
       });
       recipientAttributes.stripeId = result.id;
+      recipientAttributes.stripeType = result.type;
     } catch (error) {
       throw new Meteor.Error("stripe-charge-error", error.message);
     }
@@ -54,10 +55,6 @@ Meteor.methods({
     var recipient = Recipients.findOne({userId: userId, _id: recipientId});
 
     if(recipient) {
-      // Update the Account Name of the Recipient stored in DB
-      // don't save tax ID to DB
-      Recipients.update({_id: recipientId}, {$set: {accountName: accountName}});
-
       // Tell Stripe about new Tax ID and Account Name
       Stripe = StripeAPI(Meteor.settings.stripe_sk);
       var updateRecipient = Meteor.wrapAsync(Stripe.recipients.update, Stripe.recipients);
@@ -66,11 +63,35 @@ Meteor.methods({
           name: accountName,
           tax_id: taxId
         });
+
+      // Update the Account Name of the Recipient stored in DB
+      // don't save tax ID to DB
+      Recipients.update({_id: recipientId}, {$set: {accountName: accountName}});
+
         return result.id;
       } catch (error) {
         throw new Meteor.Error("stripe-charge-error", error.message);
       }
     }
     return false;
+  },
+  'checkRecipient': function(recipientId) {
+    // Ask Stripe if recipient is verified
+    check(recipientId, String);
+    recipient = Recipients.findOne(recipientId);
+    if(managesAccount(recipient)) {
+      Stripe = StripeAPI(Meteor.settings.stripe_sk);
+
+      var retrieveRecipient = Meteor.wrapAsync(Stripe.recipients.retrieve, Stripe.recipients);
+      try {
+        var result = retrieveRecipient(recipient.stripeId);
+        var verified = result.verified;
+        Recipients.update(recipientId, {$set: {stripeVerified: result.verified}});
+        return result.verified;
+      } catch (error) {
+        throw new Meteor.Error("stripe-charge-error", error.message);
+      }
+    }
+    return true;
   }
 });
