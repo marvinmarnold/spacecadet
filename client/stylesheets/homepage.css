@@ -41,3 +41,7 @@
   margin-bottom: 50px;
   min-height: 4.5em;
 }
+
+.checkbox > label:nth-child(1) {
+  color: black;
+}
